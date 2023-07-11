@@ -28,15 +28,15 @@
   }
 
   .title {
-    font-weight: bold;
-    font-size: 5rem;
+    font-weight: 600;
+    font-size: 4rem;
   }
 
   .school {
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: #eee;
     margin-bottom: 32px;
-    font-weight: 400;
+    font-weight: 300;
   }
 
   .mission {

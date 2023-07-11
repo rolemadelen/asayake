@@ -6,7 +6,7 @@
   let mainWrapper
   let mouse = {x:0, y:0};
   let currImage = 0
-  const numberOfImages = 14
+  const numberOfImages = 15
   $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/bg/${key+1}.jpg`)
   $: {
     if(mainWrapper) {
@@ -26,13 +26,13 @@
 
   const handleMouseOver = (e) => {
     const c = document.querySelector('.cursor');
-    c.style.width = "35px";
-    c.style.height = "35px";
+    c.style.width = "30px";
+    c.style.height = "30px";
   }
   const handleMouseLeave = (e) => {
     const c = document.querySelector('.cursor');
-    c.style.width = "20px";
-    c.style.height = "20px";
+    c.style.width = "0px";
+    c.style.height = "0px";
   }
 
   const handleClick = (e) => {
@@ -63,8 +63,8 @@
     <Hero />
   </div>
   <div class="pagination">
-    <button on:click={handleClick} data-name='left'> ˂ </button>
-    <button on:click={handleClick} data-name='right'> ˃ </button>
+    <button on:mouseover={handleMouseOver} on:mouseleave={handleMouseLeave} on:click={handleClick} data-name='left'> ˂ </button>
+    <button on:mouseover={handleMouseOver} on:mouseleave={handleMouseLeave} on:click={handleClick} data-name='right'> ˃ </button>
     <div>
       {currImage+1} / {numberOfImages}
     </div>
@@ -73,6 +73,7 @@
 
 <style>
   .pagination {
+    font-weight: 300;
     display: flex;
     align-items: center;
     position: absolute;
@@ -81,6 +82,7 @@
     color: #eee;
     font-size: 14px;
   }
+
   .wrapper {
     width: 100vw;
     height: 100vh;
@@ -89,9 +91,8 @@
   }
 
   .main-wrapper {
-    cursor: none;
     background-color: #791111;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
 
     background-image: url('/bg/1.jpg');
     background-size: cover;
@@ -105,7 +106,6 @@
   }
 
   button {
-    cursor: none;
     background-color: #ffffff11;
     color: #eee;
     border-radius: 999px;
@@ -116,6 +116,7 @@
     margin-right: 0.5rem;
     transition: background-color 0.2s ease;
     font-size: 14px;
+    cursor: none;
   }
 
   button:hover {
