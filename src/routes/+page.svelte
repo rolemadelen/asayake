@@ -1,22 +1,51 @@
 <script>
   import Hero from './Hero.svelte'
   import Header from './Header.svelte'
-  import { onMount } from 'svelte';
+  import Cursor from './Cursor.svelte'
 
-  let bgPos = 0;
-  let mainWrapper;
-
-  const numberOfImages = 14;
-  $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/bg/${key+1}.jpg`);
+  let mainWrapper
+  let mouse = {x:0, y:0};
+  let currImage = 0
+  const numberOfImages = 14
+  $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/bg/${key+1}.jpg`)
   $: {
     if(mainWrapper) {
-      mainWrapper.style.backgroundImage = `url('${preloadImageUrls[bgPos]}')`
+      mainWrapper.style.backgroundImage = `url('${preloadImageUrls[currImage]}')`
     }
   }
-
-  setInterval(() => {
-    bgPos = (bgPos + 1) % numberOfImages;
+  let interval = setInterval(() => {
+    currImage = (currImage + 1) % numberOfImages
   }, 5000)
+
+  const handleMouseMove = (e) => {
+    mouse.x = e.clientX
+    mouse.y = e.clientY
+    document.querySelector('.cursor').style.top = `${mouse.y-10}px`
+    document.querySelector('.cursor').style.left = `${mouse.x-10}px`
+  }
+
+  const handleMouseOver = (e) => {
+    const c = document.querySelector('.cursor');
+    c.style.width = "35px";
+    c.style.height = "35px";
+  }
+  const handleMouseLeave = (e) => {
+    const c = document.querySelector('.cursor');
+    c.style.width = "20px";
+    c.style.height = "20px";
+  }
+
+  const handleClick = (e) => {
+    clearInterval(interval);
+    if(e.currentTarget.dataset.name === 'left')
+      currImage = currImage == 0 ? numberOfImages - 1 : (currImage - 1)
+    else 
+      currImage = (currImage + 1) % numberOfImages
+
+    interval = setInterval(() => {
+      currImage = (currImage + 1) % numberOfImages
+    }, 5000)
+  }
 </script>
 
 <svelte:head>
@@ -25,17 +54,33 @@
   {/each}
 </svelte:head>
 
-
-<main bind:this="{mainWrapper}" class='main-wrapper'>
+<Cursor />
+<main bind:this="{mainWrapper}" on:mousemove={handleMouseMove} class='main-wrapper'>
   <div class='wrapper'>
     <div class='body'>
-      <Header page="home" />
+      <Header page="home" on:mouseover={handleMouseOver} on:mouseleave={handleMouseLeave}/>
     </div>
     <Hero />
   </div>
+  <div class="pagination">
+    <button on:click={handleClick} data-name='left'> ˂ </button>
+    <button on:click={handleClick} data-name='right'> ˃ </button>
+    <div>
+      {currImage+1} / {numberOfImages}
+    </div>
+</div>
 </main>
 
 <style>
+  .pagination {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 5rem;
+    right: 5rem;
+    color: #eee;
+    font-size: 14px;
+  }
   .wrapper {
     width: 100vw;
     height: 100vh;
@@ -44,7 +89,8 @@
   }
 
   .main-wrapper {
-    background-color: #b7302d;
+    cursor: none;
+    background-color: #791111;
     font-family: 'Roboto', sans-serif;
 
     background-image: url('/bg/1.jpg');
@@ -56,5 +102,24 @@
   }
   .wrapper {
     max-width: 1920px;
+  }
+
+  button {
+    cursor: none;
+    background-color: #ffffff11;
+    color: #eee;
+    border-radius: 999px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #791111;
+    backdrop-filter: blur(3px);
+    margin-right: 0.5rem;
+    transition: background-color 0.2s ease;
+    font-size: 14px;
+  }
+
+  button:hover {
+    background-color: #791111;
+    color: #ccc;
   }
 </style>
