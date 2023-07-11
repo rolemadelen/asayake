@@ -30,13 +30,13 @@
 
   const handleMouseOver = (e) => {
     const c = document.querySelector('.cursor');
-    c.style.width = "35px";
-    c.style.height = "35px";
+    c.style.width = "30px";
+    c.style.height = "30px";
   }
   const handleMouseLeave = (e) => {
     const c = document.querySelector('.cursor');
-    c.style.width = "20px";
-    c.style.height = "20px";
+    c.style.width = "0px";
+    c.style.height = "0px";
   }
 
 </script>
@@ -72,8 +72,7 @@
 
 <style>
   main {
-    cursor: none;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
   }
 
   .wrapper {
@@ -98,7 +97,7 @@
 
   .body-bg {
     position: absolute;
-    top: 160px;
+    top: 130px;
     width: 100%;
     border-radius: 100px 100px 0 0;
     background-color: #791111;
@@ -110,32 +109,27 @@
   }
 
   .body .title {
-    font-size: 60px;
+    font-weight: 600;
+    font-size: 3rem;
     margin-bottom: 64px;
   }
 
   .body p {
     line-height: 1.5;
-    font-size: 18px;
     width: 40%;
     margin-bottom: 2rem;
   }
 
   .gen img {
     position: absolute;
-    right: 250px;
-    top: 250px;
-    width: 600px;
+    right: 200px;
+    top: 235px;
+    width: 700px;
     border-radius: 10px;
     transition: transform 0.3s ease;
   }
 
-  .gen img:hover {
-    transform: scale(1.3);
+  .wrapper a {
+    cursor: none;
   }
-
-  a {
-    cursor: none !important;
-  }
-
 </style>
