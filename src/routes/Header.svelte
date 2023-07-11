@@ -3,7 +3,7 @@
 </script>
 
 <header>
-  <nav class='nav'>
+  <nav class='nav nocursor' on:mouseover on:mouseleave>
     <a href="/about" class='nav-item' class:active={page==='about'}>
       <span>About</span>
       <span>About</span>
@@ -59,7 +59,7 @@
 
   .nav-item span {
     transition: transform 0.4s cubic-bezier(0, 0.2, 0, 0.75);
-    opacity: 0.80;
+    opacity: 0.9;
   }
 
   .nav-item span:first-child {
@@ -104,5 +104,9 @@
   a {
     color: inherit;
     text-decoration: none;
+  }
+
+  .nocursor a {
+    cursor: none !important;
   }
 </style>
