@@ -6,7 +6,7 @@
   let mainWrapper
   let mouse = {x:0, y:0};
   let currImage = 0
-  const numberOfImages = 15
+  const numberOfImages = 14
   $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/bg/${key+1}.jpg`)
   $: {
     if(mainWrapper) {
