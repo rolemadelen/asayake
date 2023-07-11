@@ -38,6 +38,7 @@
   }
 
   .nav {
+    cursor: none;
     display: flex;
   }
 
@@ -51,7 +52,7 @@
     align-items: center; 
     overflow: hidden;
     margin: auto 1.5rem;
-    font-weight: bold;
+    font-weight: 500;
     letter-spacing: 1px;
     transform: translateY(0);
     text-transform: uppercase;
@@ -59,14 +60,13 @@
 
   .nav-item span {
     transition: transform 0.4s cubic-bezier(0, 0.2, 0, 0.75);
-    opacity: 0.9;
+    opacity: 0.8;
   }
 
   .nav-item span:first-child {
     transform:  translateY(50%);
   }
   .nav-item span:last-child {
-    font-size: 17px;
     transform: translateY(150%);
   }
 
