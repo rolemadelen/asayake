@@ -1,6 +1,7 @@
 <script>
   import Header from "/src/routes/Header.svelte"
   import Cursor from '../Cursor.svelte'
+  import Footer from '../Footer.svelte'
 
   let mouse = {x:0, y:0};
   let currImage = 0;
@@ -50,10 +51,10 @@
 <Cursor />
 <main class='main-wrapper' on:mousemove={handleMouseMove}>
   <div class='wrapper'>
-    <a href="/" on:mouseover={handleMouseOver} on:mouseleave={handleMouseLeave}>
+    <a href="/" on:mouseover={handleMouseOver} on:focus on:mouseleave={handleMouseLeave}>
       <img src="/asayake-logo.png" alt="logo" class="logo"/>
     </a>
-    <Header page="about" on:mouseover={handleMouseOver} on:mouseleave={handleMouseLeave}/>
+    <Header page="about" on:mouseover={handleMouseOver} on:focus on:mouseleave={handleMouseLeave}/>
   </div>
   <div bind:this="{bodyBg}" class='body-bg'>
     <div class="body">
@@ -67,6 +68,7 @@
       <div class='gen'>
         <img bind:this={genBg} src="/gens/1.jpg" alt='gen'/>
     </div>
+    <Footer />
   </div>
 </main>
 
@@ -122,9 +124,9 @@
 
   .gen img {
     position: absolute;
-    right: 200px;
+    right: clamp(150px, 10rem, 200px);
     top: 235px;
-    width: 700px;
+    width: clamp(600px, 38rem, 750px);
     border-radius: 10px;
     transition: transform 0.3s ease;
   }

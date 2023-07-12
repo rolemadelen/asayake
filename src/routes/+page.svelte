@@ -58,15 +58,15 @@
 <main bind:this="{mainWrapper}" on:mousemove={handleMouseMove} class='main-wrapper'>
   <div class='wrapper'>
     <div class='body'>
-      <Header page="home" on:mouseover={handleMouseOver} on:mouseleave={handleMouseLeave}/>
+      <Header page="home" on:mouseover={handleMouseOver} on:focus on:mouseleave={handleMouseLeave}/>
     </div>
     <Hero />
   </div>
   <div class="pagination">
-    <button on:mouseover={handleMouseOver} on:mouseleave={handleMouseLeave} on:click={handleClick} data-name='left'> ˂ </button>
-    <button on:mouseover={handleMouseOver} on:mouseleave={handleMouseLeave} on:click={handleClick} data-name='right'> ˃ </button>
-    <div>
-      {currImage+1} / {numberOfImages}
+    <button on:mouseover={handleMouseOver} on:focus on:mouseleave={handleMouseLeave} on:click={handleClick} data-name='left'> ˂ </button>
+    <button on:mouseover={handleMouseOver} on:focus on:mouseleave={handleMouseLeave} on:click={handleClick} data-name='right'> ˃ </button>
+    <div class='number'>
+      <span>{currImage+1}</span> / <span>{numberOfImages}</span>
     </div>
 </div>
 </main>
@@ -81,6 +81,12 @@
     right: 5rem;
     color: #eee;
     font-size: 14px;
+  }
+
+  .pagination .number span {
+    display: inline-block;
+    width: 15px;
+    text-align: center;
   }
 
   .wrapper {
@@ -100,9 +106,6 @@
     background-position: center;
     height: 100vh;
     width: 100vw;
-  }
-  .wrapper {
-    max-width: 1920px;
   }
 
   button {

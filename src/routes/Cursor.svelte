@@ -8,6 +8,8 @@
   position: fixed;
   width: 0px;
   height: 0px;
+  top: -10rem;
+  left: -10rem;
   border-radius: 999px;
   pointer-events: none;
   backdrop-filter: invert(1);

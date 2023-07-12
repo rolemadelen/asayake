@@ -59,7 +59,7 @@
   }
 
   .nav-item span {
-    transition: transform 0.4s cubic-bezier(0, 0.2, 0, 0.75);
+    transition: transform 0.4s cubic-bezier(1,-0.33, 0, 0.41);
     opacity: 0.8;
   }
 
@@ -78,7 +78,7 @@
     border-bottom: 1px solid #791111;
     left: -100%;
     bottom: 0;
-    transition: left 0.3s ease;
+    transition: left 0.3s cubic-bezier(1,-0.33, 0, 0.41);
     border-radius: 999px;
   }
 
