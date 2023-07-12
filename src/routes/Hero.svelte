@@ -42,7 +42,7 @@
   .mission {
     letter-spacing: 0.5px;
     line-height: 1.25;
-    width: 60%;
+    width: 55%;
     font-weight: 300;
   }
 
