@@ -69,7 +69,7 @@
     font-weight: 200;
     display: flex;
     height: 4rem;
-    transition: height 0.3s cubic-bezier(1,-0.33, 0, 0.41);
+    transition: height 0.3s ease-in-out;
   }
 
   footer div {
