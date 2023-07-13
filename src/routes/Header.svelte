@@ -3,12 +3,12 @@
 </script>
 
 <header>
-  <nav class='nav nocursor' on:mouseover on:mouseleave>
+  <nav class='nav'>
     <a href="/about" class='nav-item' class:active={page==='about'}>
       <span>About</span>
       <span>About</span>
     </a>
-    <a href="/members" class='nav-item'>
+    <a href="/members" class='nav-item' class:active={page==='members'}>
       <span>Members</span>
       <span>Members</span>
     </a>
@@ -35,10 +35,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #eee;
   }
 
   .nav {
-    cursor: none;
     display: flex;
   }
 
@@ -104,9 +104,5 @@
   a {
     color: inherit;
     text-decoration: none;
-  }
-
-  .nocursor a {
-    cursor: none !important;
   }
 </style>

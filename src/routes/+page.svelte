@@ -1,7 +1,6 @@
 <script>
-  import Hero from './Hero.svelte'
   import Header from './Header.svelte'
-  import Cursor from './Cursor.svelte'
+  import { onMount } from 'svelte'
 
   let mainWrapper
   let mouse = {x:0, y:0};
@@ -13,27 +12,14 @@
       mainWrapper.style.backgroundImage = `url('${preloadImageUrls[currImage]}')`
     }
   }
+
   let interval = setInterval(() => {
     currImage = (currImage + 1) % numberOfImages
   }, 5000)
 
-  const handleMouseMove = (e) => {
-    mouse.x = e.clientX
-    mouse.y = e.clientY
-    document.querySelector('.cursor').style.top = `${mouse.y-10}px`
-    document.querySelector('.cursor').style.left = `${mouse.x-10}px`
-  }
-
-  const handleMouseOver = (e) => {
-    const c = document.querySelector('.cursor');
-    c.style.width = "30px";
-    c.style.height = "30px";
-  }
-  const handleMouseLeave = (e) => {
-    const c = document.querySelector('.cursor');
-    c.style.width = "0px";
-    c.style.height = "0px";
-  }
+  onMount(() => {
+    mainWrapper.style.backgroundImage = `url('${preloadImageUrls[currImage]}')`
+  })
 
   const handleClick = (e) => {
     clearInterval(interval);
@@ -54,76 +40,41 @@
   {/each}
 </svelte:head>
 
-<Cursor />
-<main bind:this="{mainWrapper}" on:mousemove={handleMouseMove} class='main-wrapper'>
-  <div class='wrapper'>
+<main bind:this="{mainWrapper}"  class='main-wrapper h-screen bg-asa-red bg-cover bg-no-repeat bg-center'>
+  <div class='h-full backdrop-brightness-75'>
     <div class='body'>
-      <Header page="home" on:mouseover={handleMouseOver} on:focus on:mouseleave={handleMouseLeave}/>
+      <Header page="home" />
     </div>
-    <Hero />
+    <div class='absolute bottom-16 left-16'>
+      <div class='opacity-90 text-[#eee] leading-5'>
+        <div class=''>
+          <div class='text-6xl font-semibold'>Asayake Taiko</div>
+          <div class='mt-3 mb-8 ml-1 font-light text-sm'>University of California, San Diego</div>
+        </div>
+        <div>
+          <div class='w-[40rem] font-light'>Our mission statement is to increase Japanese cultural awareness both within and outside of the UCSD community through the art of taiko.</div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="pagination">
-    <button on:mouseover={handleMouseOver} on:focus on:mouseleave={handleMouseLeave} on:click={handleClick} data-name='left'> ˂ </button>
-    <button on:mouseover={handleMouseOver} on:focus on:mouseleave={handleMouseLeave} on:click={handleClick} data-name='right'> ˃ </button>
-    <div class='number'>
-      <span>{currImage+1}</span> / <span>{numberOfImages}</span>
+  <div class="absolute right-16 bottom-16 flex items-center justify-center text-sm">
+    <button  on:click={handleClick} data-name='left' class='transition-colors duration-200 backdrop-blur-sm bg-white bg-opacity-10 hover:bg-asa-red w-8 h-8 rounded-full flex justify-center items-center mr-3'>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12.6667 3.33325L6 9.99992L12.6667 16.6666" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <button  on:click={handleClick} data-name='right' class='transition-colors duration-200 backdrop-blur-sm bg-white bg-opacity-10 hover:bg-asa-red w-8 h-8 rounded-full flex justify-center items-center mr-3'>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7.33333 3.33325L14 9.99992L7.33333 16.6666" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div class="text-gray-300 font-light">
+      <span class="inline-block text-3xl w-8 text-center">{currImage+1}</span> 
+      <span class="inline-block text-sm">/ {numberOfImages}</span>
     </div>
 </div>
 </main>
 
 <style>
-  .pagination {
-    font-weight: 300;
-    display: flex;
-    align-items: center;
-    position: absolute;
-    bottom: 5rem;
-    right: 5rem;
-    color: #eee;
-    font-size: 14px;
-  }
 
-  .pagination .number span {
-    display: inline-block;
-    width: 15px;
-    text-align: center;
-  }
-
-  .wrapper {
-    width: 100vw;
-    height: 100vh;
-    backdrop-filter: brightness(0.75);
-    color: #eee;
-  }
-
-  .main-wrapper {
-    background-color: #791111;
-    font-family: 'Poppins', sans-serif;
-
-    background-image: url('/bg/1.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
-    width: 100vw;
-  }
-
-  button {
-    background-color: #ffffff11;
-    color: #eee;
-    border-radius: 999px;
-    width: 30px;
-    height: 30px;
-    border: 1px solid #791111;
-    backdrop-filter: blur(3px);
-    margin-right: 0.5rem;
-    transition: background-color 0.2s ease;
-    font-size: 14px;
-    cursor: none;
-  }
-
-  button:hover {
-    background-color: #791111;
-    color: #ccc;
-  }
 </style>
