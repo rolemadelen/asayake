@@ -1,13 +1,11 @@
 <script>
   import Header from "/src/routes/Header.svelte"
-  import Cursor from '../Cursor.svelte'
   import Footer from '../Footer.svelte'
 
-  let mouse = {x:0, y:0};
   let currImage = 0;
   let genBg;
   let bodyBg;
-  const numberOfImages = 7;
+  const numberOfImages = 3;
   $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/gens/${key+1}.jpg`)
   $: {
     if(bodyBg) {
@@ -22,24 +20,6 @@
     currImage = (currImage + 1) % numberOfImages
   }, 5000)
 
-    const handleMouseMove = (e) => {
-    mouse.x = e.clientX
-    mouse.y = e.clientY
-    document.querySelector('.cursor').style.top = `${mouse.y-10}px`
-    document.querySelector('.cursor').style.left = `${mouse.x-10}px`
-  }
-
-  const handleMouseOver = (e) => {
-    const c = document.querySelector('.cursor');
-    c.style.width = "30px";
-    c.style.height = "30px";
-  }
-  const handleMouseLeave = (e) => {
-    const c = document.querySelector('.cursor');
-    c.style.width = "0px";
-    c.style.height = "0px";
-  }
-
 </script>
 
 <svelte:head>
@@ -48,13 +28,12 @@
   {/each}
 </svelte:head>
 
-<Cursor />
-<main class='main-wrapper' on:mousemove={handleMouseMove}>
+<main class='main-wrapper' >
   <div class='wrapper'>
-    <a href="/" on:mouseover={handleMouseOver} on:focus on:mouseleave={handleMouseLeave}>
+    <a href="/"   >
       <img src="/asayake-logo.png" alt="logo" class="logo"/>
     </a>
-    <Header page="about" on:mouseover={handleMouseOver} on:focus on:mouseleave={handleMouseLeave}/>
+    <Header page="about"   />
   </div>
   <div bind:this="{bodyBg}" class='body-bg'>
     <div class="body">
@@ -94,7 +73,7 @@
     color: #fff;
     font-weight: 300;
     height: 100vh;
-    backdrop-filter: blur(3px) brightness(0.35);
+    backdrop-filter: blur(3px) brightness(0.3);
   }
 
   .body-bg {
@@ -120,6 +99,8 @@
     line-height: 1.5;
     width: 40%;
     margin-bottom: 2rem;
+    font-weight: 400;
+    color: #eee;
   }
 
   .gen img {
@@ -131,7 +112,4 @@
     transition: transform 0.3s ease;
   }
 
-  .wrapper a {
-    cursor: none;
-  }
 </style>
