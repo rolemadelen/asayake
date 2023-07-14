@@ -3,10 +3,8 @@
   import FaFacebookF from 'svelte-icons/fa/FaFacebookF.svelte'
   import FaYoutube from 'svelte-icons/fa/FaYoutube.svelte'
   import IoMdMail from 'svelte-icons/io/IoMdMail.svelte'
-  import Cursor from './Cursor.svelte'
 </script>
 
-<Cursor />
 <footer>
   <div class='copyright'>
     <p>Copyright © 2023</p>
