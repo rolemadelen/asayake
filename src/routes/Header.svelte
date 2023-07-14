@@ -2,8 +2,15 @@
   export let page;
 </script>
 
-<header>
-  <nav class='nav'>
+<header class='flex justify-center items-center max-w-[1280px] mx-auto h-32 text-gray-50'>
+  <slot name='logo'>
+    <div class='flex-1'>
+      <a href="/" >
+        <img src="/asayake_logo.svg" alt="logo" class="logo"/>
+      </a>
+    </div>
+  </slot>
+  <nav class='flex' class:text-black={page!=='home'}>
     <a href="/about" class='nav-item' class:active={page==='about'}>
       <span>About</span>
       <span>About</span>
@@ -12,36 +19,26 @@
       <span>Members</span>
       <span>Members</span>
     </a>
-    <a href="/gallery" class='nav-item'>
+    <a href="/gallery" class='nav-item' class:active={page==='gallery'}>
       <span>Gallery</span>
       <span>Gallery</span>
     </a>
-    <a href="/concert" class='nav-item'>
+    <a href="/concert" class='nav-item' class:active={page==='concert'}>
       <span>Concert</span>
       <span>Concert</span>
     </a>
-    <a href="/contact" class='nav-item'>
+    <a href="/contact" class='nav-item' class:active={page==='contact'}>
       <span>Contact</span>
       <span>Contact</span>
     </a>
   </nav>
+  <div class='flex-1'></div>
 </header>
 
 <style>
-  header {
-    max-width: 1280px;
-    margin: auto;
-    height: 8rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #eee;
+  .logo {
+    min-width: 180px;
   }
-
-  .nav {
-    display: flex;
-  }
-
   .nav-item {
     position: relative;
     width: 100px;
@@ -82,10 +79,6 @@
     border-radius: 999px;
   }
 
-  .nav-item:hover {
-    cursor: pointer;
-  }
-
   .nav-item:hover::after {
     left: 0;
   }
@@ -97,6 +90,9 @@
     transform: translateY(-50%);
   }
 
+  .text-black {
+    color: #111;
+  }
   .nav-item.active {
     color: #791111;
   }

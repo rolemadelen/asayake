@@ -44,7 +44,11 @@
 <Cursor />
 <main bind:this="{mainWrapper}"  class='main-wrapper h-screen bg-asa-red bg-cover bg-no-repeat bg-center'>
   <div class='h-full backdrop-brightness-75'>
-    <Header page="home" />
+    <Header page="home">
+      <svelte:fragment slot="logo">
+        <div class="flex-1"></div>
+      </svelte:fragment>
+    </Header>
     <div class='absolute bottom-16 left-16'>
       <div class='opacity-90 text-[#eee] leading-5'>
         <div class=''>

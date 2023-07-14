@@ -2,23 +2,25 @@
   import Header from "/src/routes/Header.svelte"
   import Footer from '../Footer.svelte'
 
-  let currImage = 0;
-  let genBg;
-  let bodyBg;
-  const numberOfImages = 3;
+  let currImage = 0
+  let genBg
+  let bodyBg
+  const numberOfImages = 3
   $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/gens/${key+1}.jpg`)
   $: {
     if(bodyBg) {
       bodyBg.style.backgroundImage = `url('${preloadImageUrls[currImage]}')`
     }
     if(genBg) {
-      genBg.src = preloadImageUrls[currImage];
+      genBg.src = preloadImageUrls[currImage]
     }
   }
 
+  /*
   setInterval(() => {
     currImage = (currImage + 1) % numberOfImages
   }, 5000)
+  */
 
 </script>
 
@@ -28,59 +30,40 @@
   {/each}
 </svelte:head>
 
-<main class='main-wrapper' >
-  <div class='wrapper'>
-    <a href="/"   >
-      <img src="/asayake-logo.png" alt="logo" class="logo"/>
-    </a>
-    <Header page="about"   />
-  </div>
-  <div bind:this="{bodyBg}" class='body-bg'>
-    <div class="body">
-      <div class='title'>Who we are</div>
+<main class='main-wrapper'>
+  <Header page="about">
+  </Header>
+  <div bind:this="{bodyBg}" class='body-bg rounded-tl-[80px] rounded-tr-[80px] text-gray-200 font-light'>
+    <div class="bg-[#000000cc] min-h-screen h-full pt-20 pl-20 grid auto-rows-min grid-cols-2 gap-4 rounded-tl-[80px] rounded-tr-[80px] text-2xl leading-10">
+      <div class='text-5xl font-semibold mb-8'>Who we are</div>
       <p>Asayake Taiko is a Japanese drumming group founded in the spring of 2002 at the University of California, San Diego campus.</p>
       <p>In spring of 2002, Bobby Koga, Reid Matsuoka and several other students came together to start a taiko group at the University of California, San Diego. With financial support from the university, the fledgling group purchased various equipment in order to construct the Japanese drums in garages of devoted members. In spring of 2004, Asayake Taiko at UCSD debuted with their completed drums at the 3rd Annual Nikkei Student Union Culture Show.</p>
+      <div class='col-start-2 row-start-1 row-end-7 m-auto'>
+        <img class='w-3/4 m-auto rounded-lg' bind:this={genBg} src="/gens/1.jpg" alt='gen'/>
+      </div>
+    </div>
+  </div>
+  <div class='body-bg body-bg2 text-gray-200 font-light'>
+    <div class="bg-[#000000cc] min-h-screen h-full pt-20 pr-20 grid auto-rows-min grid-cols-2 gap-4 text-2xl leading-10">
       <p>Today, Asayake Taiko performs for on-campus cultural events, high school conferences, and various university functions. Likewise, Asayake Taiko aims to promote cultural awareness of Taiko to the greater San Diego area through performances and workshops at K-12 schools and other cultural functions.</p>
       <p>Each year, Asayake Taiko continues to grow in equipment and members to accomplish its mission statement: to promote cultural awareness not only in the UCSD campus community, but in the greater San Diego community as well.</p>
       <p>“Asayake” means “morning glow” in Japanese, and invokes the image of the early morning light playing on the ocean mist in La Jolla.</p>
+      <div class='col-start-1 row-start-1 row-end-7 m-auto'>
+        <img class='w-3/4 m-auto rounded-lg' src="/gens/2.jpg" alt='gen'/>
+      </div>
     </div>
-      <div class='gen'>
-        <img bind:this={genBg} src="/gens/1.jpg" alt='gen'/>
-    </div>
-    <Footer />
   </div>
+  <Footer />
 </main>
+
 
 <style>
   main {
     font-family: 'Poppins', sans-serif;
   }
 
-  .wrapper {
-    max-width: 1920px;
-  }
-
-  .logo {
-    position: absolute;
-    top: 34px;
-    left: 128px;
-    width: 200px;
-  }
-
-  .body {
-    border-radius: 100px 100px 0 0;
-    padding: 96px 0 0 256px;
-    color: #fff;
-    font-weight: 300;
-    height: 100vh;
-    backdrop-filter: blur(3px) brightness(0.3);
-  }
-
   .body-bg {
-    position: absolute;
-    top: 130px;
     width: 100%;
-    border-radius: 100px 100px 0 0;
     background-color: #791111;
     transition: top 0.5s ease-in-out;
     background-image: url('/gens/1.jpg');
@@ -89,27 +72,7 @@
     background-position: center;
   }
 
-  .body .title {
-    font-weight: 600;
-    font-size: 3rem;
-    margin-bottom: 64px;
+  .body-bg2 {
+    background-image: url('/gens/2.jpg');
   }
-
-  .body p {
-    line-height: 1.5;
-    width: 40%;
-    margin-bottom: 2rem;
-    font-weight: 400;
-    color: #eee;
-  }
-
-  .gen img {
-    position: absolute;
-    right: clamp(150px, 10rem, 200px);
-    top: 235px;
-    width: clamp(600px, 38rem, 750px);
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-  }
-
 </style>

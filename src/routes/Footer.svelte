@@ -4,53 +4,24 @@
   import FaYoutube from 'svelte-icons/fa/FaYoutube.svelte'
   import IoMdMail from 'svelte-icons/io/IoMdMail.svelte'
   import Cursor from './Cursor.svelte'
-
-  let mouse = {x:0, y:0}
-  const handleMouseOver = (e) => {
-    if(e.currentTarget.tagName === 'FOOTER') {
-      e.currentTarget.style.height = "6rem";
-    } else {
-      const c = document.querySelector('.cursor');
-      c.style.width = "30px";
-      c.style.height = "30px";
-    }
-  }
-
-  const handleMouseLeave = (e) => {
-    if(e.currentTarget.tagName === 'FOOTER') {
-      e.currentTarget.style.height = "4rem";
-    } else {
-      const c = document.querySelector('.cursor');
-      c.style.width = "0px";
-      c.style.height = "0px";
-    }
-  }
-
-  const handleMouseMove = (e) => {
-    mouse.x = e.clientX
-    mouse.y = e.clientY
-    document.querySelector('.cursor').style.top = `${mouse.y-10}px`
-    document.querySelector('.cursor').style.left = `${mouse.x-10}px`
-  }
-
 </script>
 
-  <Cursor />
-<footer on:mouseover={handleMouseOver} on:focus on:mouseleave={handleMouseLeave}>
+<Cursor />
+<footer>
   <div class='copyright'>
     <p>Copyright © 2023</p>
   </div>
   <div>
-    <a on:mouseover={handleMouseOver} on:focus on:mouseleave={handleMouseLeave} class='ig' href='https://www.instagram.com/asayake_taiko/' target="_blank" rel="noopener noreferrer">
+    <a class='ig' href='https://www.instagram.com/asayake_taiko/' target="_blank" rel="noopener noreferrer">
       <FaInstagram />
     </a>
-    <a on:mouseover={handleMouseOver} on:focus on:mouseleave={handleMouseLeave} class='fb' href='https://www.facebook.com/AsayakeTaiko/' target="_blank" rel="noopener noreferrer">
+    <a class='fb' href='https://www.facebook.com/AsayakeTaiko/' target="_blank" rel="noopener noreferrer">
       <FaFacebookF />
     </a>
-    <a on:mouseover={handleMouseOver} on:focus on:mouseleave={handleMouseLeave} class='yt' href='https://www.youtube.com/user/AsayakeTaiko/' target="_blank" rel="noopener noreferrer">
+    <a class='yt' href='https://www.youtube.com/user/AsayakeTaiko/' target="_blank" rel="noopener noreferrer">
       <FaYoutube />
     </a>
-    <a on:mouseover={handleMouseOver} on:focus on:mouseleave={handleMouseLeave} class='mail' href='mailto:asayaketaiko@gmail.com'>
+    <a class='mail' href='mailto:asayaketaiko@gmail.com'>
       <IoMdMail />
     </a>
   </div>
@@ -58,13 +29,10 @@
 
 <style>
   footer {
-    border-radius: 100px 100px 0 0;
     margin: 0;
     padding: 0;
-    position: absolute;
     width: 100%;
-    bottom: 0;
-    background-color: #791111cc;
+    background-color: #570d0d;
     color: white;
     font-weight: 200;
     display: flex;
@@ -91,10 +59,10 @@
   .yt,
   .fb,
   .mail {
-    width: 18px;
-    height: 18px;
+    width: 25px;
+    height: 25px;
     color: #eee;
-    border-radius: 8px;
+    border-radius: 5px;
     padding: 5px;
     background: linear-gradient(to right, transparent, transparent);
     transition: border-radius 0.3s ease, transform 0.3s ease;
@@ -118,7 +86,7 @@
   .fb:hover,
   .yt:hover,
   .mail:hover{
-    border-radius: 15px;
+    border-radius: 50px;
   }
 
   .copyright p {
