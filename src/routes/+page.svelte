@@ -1,16 +1,15 @@
 <script>
   import Header from './Header.svelte'
+  import Cursor from './Cursor.svelte'
   import { onMount } from 'svelte'
 
   let mainWrapper
-  let mouse = {x:0, y:0};
   let currImage = 0
   const numberOfImages = 14
   $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/bg/${key+1}.jpg`)
   $: {
-    if(mainWrapper) {
+    if(mainWrapper)
       mainWrapper.style.backgroundImage = `url('${preloadImageUrls[currImage]}')`
-    }
   }
 
   let interval = setInterval(() => {
@@ -32,19 +31,20 @@
       currImage = (currImage + 1) % numberOfImages
     }, 5000)
   }
+
 </script>
 
 <svelte:head>
   {#each preloadImageUrls as image}
     <link rel="preload" as="image" href={image} />
   {/each}
+  <meta name="description" content="Asayake Taiko | University of California San Diego" />
 </svelte:head>
 
+<Cursor />
 <main bind:this="{mainWrapper}"  class='main-wrapper h-screen bg-asa-red bg-cover bg-no-repeat bg-center'>
   <div class='h-full backdrop-brightness-75'>
-    <div class='body'>
-      <Header page="home" />
-    </div>
+    <Header page="home" />
     <div class='absolute bottom-16 left-16'>
       <div class='opacity-90 text-[#eee] leading-5'>
         <div class=''>
@@ -74,7 +74,3 @@
     </div>
 </div>
 </main>
-
-<style>
-
-</style>
