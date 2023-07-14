@@ -27,18 +27,25 @@
 
 <svelte:document on:mousemove={handleMouseMove} on:mousedown={handleMouseDown} on:mouseup={handleMouseUp}/>
 <div class='cursor w-3 h-3 fixed z-[999] rounded-full bg-asa-red'></div>
-<div class='cursor-second w-3 h-3 fixed z-[999] rounded-full bg-asa-red bg-opacity-50'></div>
+<div class='cursor-second w-2 h-2 fixed z-[998] rounded-full bg-asa-red bg-opacity-50'></div>
 
 <style>
 .cursor {
   pointer-events: none;
   transform: translate(-50%, -50%) scale(1);
   transition: opacity 0.15s ease-in-out 0s, transform 0.25s ease-in-out 0s;
+  will-change: left, top;
+  left: -10rem;
+  top: -10rem;
 }
 
 .cursor-second {
   pointer-events: none;
   transform: translate(-50%, -50%) scale(1);
-  transition: opacity 0.15s ease-in-out 0s, transform 0.25s ease-in-out 0s;
+  transition: top 0.1s ease, left 0.1s ease, opacity 0.15s ease-in-out 0s, transform 0.25s ease-in-out 0s;
+  backdrop-filter: invert(1);
+  will-change: transform, left, top;
+  left: -10rem;
+  top: -10rem;
 }
 </style>
