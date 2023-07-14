@@ -1,11 +1,15 @@
 <script>
-  import Header from "/src/routes/Header.svelte"
+  import Header from '/src/routes/Header.svelte'
+  import Footer from '/src/routes/Footer.svelte'
+  import Cursor from '/src/routes/Cursor.svelte'
 
 </script>
 
+<Cursor />
+<Header page="gallery" />
 <main class='main-wrapper'>
-  <Header page="gallery" />
 </main>
+<Footer />
 
 <svelte:head>
   <title>Asayake Taiko | Gallery</title>
