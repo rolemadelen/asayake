@@ -32,9 +32,8 @@
 </svelte:head>
 
 <Cursor />
+<Header page="about" />
 <main class='main-wrapper'>
-  <Header page="about">
-  </Header>
   <div bind:this="{bodyBg}" class='body-bg text-gray-200 font-light'>
     <div class="bg-[#000000cc] min-h-screen h-full pt-28 pl-28 grid auto-rows-min grid-cols-2 gap-4 text-xl leading-7">
       <div class='text-5xl font-semibold'>Who we are</div>
@@ -59,9 +58,8 @@
       </div>
     </div>
   </div>
-  <Footer />
 </main>
-
+<Footer />
 
 <style>
   main {

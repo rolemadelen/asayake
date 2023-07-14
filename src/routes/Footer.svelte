@@ -34,7 +34,7 @@
     color: white;
     font-weight: 200;
     display: flex;
-    height: 4rem;
+    height: 5rem;
     transition: height 0.3s ease-in-out;
   }
 
@@ -85,6 +85,7 @@
   .yt:hover,
   .mail:hover{
     border-radius: 50px;
+    transform: scale(1.3);
   }
 
   .copyright p {
