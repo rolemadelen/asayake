@@ -50,7 +50,7 @@
       </svelte:fragment>
     </Header>
     <div class='absolute bottom-16 left-16'>
-      <div class='opacity-90 text-[#eee] leading-5'>
+      <div class='opacity-90 text-white leading-5'>
         <div class=''>
           <div class='text-6xl font-semibold'>Asayake Taiko</div>
           <div class='mt-3 mb-8 ml-1 font-light text-sm'>University of California, San Diego</div>
@@ -67,12 +67,12 @@
         <path d="M12.6667 3.33325L6 9.99992L12.6667 16.6666" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
-    <button  on:click={handleClick} data-name='right' class='transition-colors duration-200 backdrop-blur-sm bg-white bg-opacity-10 hover:bg-asa-red w-8 h-8 rounded-full flex justify-center items-center mr-3'>
+    <button on:click={handleClick} data-name='right' class='transition-colors duration-200 backdrop-blur-sm bg-white bg-opacity-10 hover:bg-asa-red w-8 h-8 rounded-full flex justify-center items-center mr-3'>
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M7.33333 3.33325L14 9.99992L7.33333 16.6666" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
-    <div class="text-gray-300 font-light">
+    <div class="text-gray-100 font-light">
       <span class="inline-block text-3xl w-8 text-center">{currImage+1}</span> 
       <span class="inline-block text-sm">/ {numberOfImages}</span>
     </div>

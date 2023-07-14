@@ -2,7 +2,7 @@
   export let page;
 </script>
 
-<header class='flex justify-center items-center max-w-[1280px] mx-auto h-24 text-gray-50'>
+<header class='flex justify-center items-center max-w-[1280px] mx-auto h-24 text-white'>
   <slot name='logo'>
     <div class='flex-1'>
       <a href="/" >
@@ -32,32 +32,29 @@
       <span>Contact</span>
     </a>
   </nav>
-  <div class='flex-1'></div>
 </header>
 
 <style>
   .logo {
-    min-width: 160px;
+    min-width: 140px;
   }
   .nav-item {
     position: relative;
-    width: 100px;
+    width: auto;
     height: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center; 
     overflow: hidden;
-    margin: auto 1.5rem;
-    font-weight: 500;
+    margin: auto 1.2rem;
     letter-spacing: 1px;
     transform: translateY(0);
     text-transform: uppercase;
   }
 
   .nav-item span {
-    transition: transform 0.4s cubic-bezier(1,-0.33, 0, 0.41);
-    opacity: 0.8;
+    transition: transform 0.4s ease;
   }
 
   .nav-item span:first-child {

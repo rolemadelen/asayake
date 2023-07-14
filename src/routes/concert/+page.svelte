@@ -3,14 +3,11 @@
   import Footer from '../Footer.svelte'
   import Cursor from '../Cursor.svelte'
 
-  let start = 2022
-  let end = 2008
-
-  let years = []
-
-  while(start >= end) years.push(start--)
-
   const concerts = [
+    {
+      year: 2023,
+      title: 'Hazakura'
+    },
     {
       year: 2022,
       title: 'Taiko Story'
@@ -83,6 +80,7 @@
 <Cursor />
 <Header page="concert"/>
 <main class='my-12 main-wrapper overflow-hidden max-w-screen-2xl m-auto'>
+  <div class='text-2xl text-center pb-11'>Concerts Timeline</div>
   <div class='gallery grid grid-cols-2 auto-cols-fr auto-rows-fr'>
     <div></div>
     {#each concerts as concert, i}
@@ -93,30 +91,48 @@
 
       {#if i % 2 == 0}
       <div class='gallery_item before relative m-auto w-full h-full border-l-asa-red border-l-[1px] border-opacity-20 flex justify-center items-center after:top-[52%] lg:after:top-[51%]'>
+      <span class='absolute top-1/2 -left-full text-[15rem] opacity-[0.01] md:opacity-[0.025]  w-max'>{concert.title}</span>
         <div class='year absolute -left-[30rem] text-right w-[26rem] md:w-96'>
-            <p class='text-gray-500'>
+            <p class='text-xl'>
             {concert.year}
             </p>
-            <p class='text-md md:text-2xl'>
+            <p class='text-md md:text-2xl font-medium lg:text-3xl'>
             {concert.title}
           </p>
         </div>
-        <picture class='z-20'>
+        <picture class='z-20 lg:shadow-lg shadow-gray-500 hover:scale-110 duration-100'>
           <source srcset="/concerts/webp/poster_{concert.year}.webp" type="image/webp" />
           <img class='w-1/2 md:w-3/4 lg:w-full h-full max-w-xs m-auto' src="/concerts/poster_{concert.year}.jpg" loading="lazy" decoding="async" alt="{concert.title}"/>
         </picture>
       </div>
+      {:else if i === concerts.length - 1}
+        <div class='gallery_item after m-auto w-full h-full border-r-asa-red border-r-[1px] border-opacity-20 relative flex justify-center items-center after:top-[52%] lg:after:top-[51%]'>
+        <span class='absolute top-1/2 -right-full text-[15rem] opacity-[0.01] md:opacity-[0.025] w-max'>{concert.title}</span>
+          <div class='year absolute -right-[30rem] text-left w-[26rem] md:w-96'>
+              <p class='text-xl'>
+              {concert.year}
+              </p>
+              <p class='text-md font-medium md:text-2xl'>
+              {concert.title}
+            </p>
+            </div>
+          <picture class='z-20 lg:shadow-lg shadow-gray-500 hover:scale-110 duration-100'>
+            <source srcset="/concerts/webp/poster_{concert.year}.webp" type="image/webp" />
+            <img class='w-1/2 md:w-3/4 lg:w-full h-full max-w-xs m-auto' src="/concerts/poster_{concert.year}.jpg" loading="lazy" decoding="async" alt="{concert.title}"/>
+          </picture>
+        </div>
       {:else}
       <div class='gallery_item after m-auto w-full relative flex justify-center items-center after:top-[52%] lg:after:top-[51%]'>
+      <span class='absolute top-1/2 -right-full text-[15rem] opacity-[0.01] md:opacity-[0.025] w-max'>{concert.title}</span>
         <div class='year absolute -right-[30rem] text-left w-[26rem] md:w-96'>
-            <p class='text-gray-500'>
+            <p class='text-xl'>
             {concert.year}
             </p>
-            <p class='text-md md:text-2xl'>
+            <p class='text-md font-medium md:text-2xl'>
             {concert.title}
           </p>
           </div>
-        <picture class='z-20'>
+        <picture class='z-20 lg:shadow-lg shadow-gray-500 hover:scale-110 duration-100'>
           <source srcset="/concerts/webp/poster_{concert.year}.webp" type="image/webp" />
           <img class='w-1/2 md:w-3/4 lg:w-full h-full max-w-xs m-auto' src="/concerts/poster_{concert.year}.jpg" loading="lazy" decoding="async" alt="{concert.title}"/>
         </picture>
