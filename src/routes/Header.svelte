@@ -2,7 +2,7 @@
   export let page;
 </script>
 
-<header class='flex justify-center items-center max-w-[1280px] mx-auto h-32 text-gray-50'>
+<header class='flex justify-center items-center max-w-[1280px] mx-auto h-24 text-gray-50'>
   <slot name='logo'>
     <div class='flex-1'>
       <a href="/" >
@@ -37,7 +37,7 @@
 
 <style>
   .logo {
-    min-width: 180px;
+    min-width: 160px;
   }
   .nav-item {
     position: relative;

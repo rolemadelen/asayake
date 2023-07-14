@@ -1,6 +1,7 @@
 <script>
   import Header from "/src/routes/Header.svelte"
   import Footer from '../Footer.svelte'
+  import Cursor from '../Cursor.svelte'
 
   let currImage = 0
   let genBg
@@ -30,24 +31,29 @@
   {/each}
 </svelte:head>
 
+<Cursor />
 <main class='main-wrapper'>
   <Header page="about">
   </Header>
-  <div bind:this="{bodyBg}" class='body-bg rounded-tl-[80px] rounded-tr-[80px] text-gray-200 font-light'>
-    <div class="bg-[#000000cc] min-h-screen h-full pt-20 pl-20 grid auto-rows-min grid-cols-2 gap-4 rounded-tl-[80px] rounded-tr-[80px] text-2xl leading-10">
-      <div class='text-5xl font-semibold mb-8'>Who we are</div>
-      <p>Asayake Taiko is a Japanese drumming group founded in the spring of 2002 at the University of California, San Diego campus.</p>
-      <p>In spring of 2002, Bobby Koga, Reid Matsuoka and several other students came together to start a taiko group at the University of California, San Diego. With financial support from the university, the fledgling group purchased various equipment in order to construct the Japanese drums in garages of devoted members. In spring of 2004, Asayake Taiko at UCSD debuted with their completed drums at the 3rd Annual Nikkei Student Union Culture Show.</p>
+  <div bind:this="{bodyBg}" class='body-bg text-gray-200 font-light'>
+    <div class="bg-[#000000cc] min-h-screen h-full pt-28 pl-28 grid auto-rows-min grid-cols-2 gap-4 text-xl leading-7">
+      <div class='text-5xl font-semibold'>Who we are</div>
+      <p>
+        Asayake Taiko is a Japanese drumming group founded in the spring of 2002 at the University of California, San Diego campus. Our mission statement is to increase Japanese cultural awareness both within and outside of the UCSD community through taiko.
+      </p>
+      <div class='text-5xl font-semibold mt-20'>Our name</div>
+      <p>"Asayake" means "morning glow" in Japanese, and invokes the image of the early morning light playing on the ocean mist in La Jolla.</p>
       <div class='col-start-2 row-start-1 row-end-7 m-auto'>
         <img class='w-3/4 m-auto rounded-lg' bind:this={genBg} src="/gens/1.jpg" alt='gen'/>
       </div>
     </div>
   </div>
   <div class='body-bg body-bg2 text-gray-200 font-light'>
-    <div class="bg-[#000000cc] min-h-screen h-full pt-20 pr-20 grid auto-rows-min grid-cols-2 gap-4 text-2xl leading-10">
+    <div class="bg-[#000000cc] min-h-screen h-full pt-28 pr-28 grid auto-rows-min grid-cols-2 gap-4 text-xl leading-7">
+      <div class='text-5xl font-semibold mb-8'>History</div>
+      <p>In spring of 2002, Bobby Koga, Reid Matsuoka and several other students came together to start a taiko group at the University of California, San Diego. With financial support from the university, the fledgling group purchased various equipment in order to construct the Japanese drums in garages of devoted members. In spring of 2004, Asayake Taiko at UCSD debuted with their completed drums at the 3rd Annual Nikkei Student Union Culture Show.</p>
       <p>Today, Asayake Taiko performs for on-campus cultural events, high school conferences, and various university functions. Likewise, Asayake Taiko aims to promote cultural awareness of Taiko to the greater San Diego area through performances and workshops at K-12 schools and other cultural functions.</p>
       <p>Each year, Asayake Taiko continues to grow in equipment and members to accomplish its mission statement: to promote cultural awareness not only in the UCSD campus community, but in the greater San Diego community as well.</p>
-      <p>“Asayake” means “morning glow” in Japanese, and invokes the image of the early morning light playing on the ocean mist in La Jolla.</p>
       <div class='col-start-1 row-start-1 row-end-7 m-auto'>
         <img class='w-3/4 m-auto rounded-lg' src="/gens/2.jpg" alt='gen'/>
       </div>
