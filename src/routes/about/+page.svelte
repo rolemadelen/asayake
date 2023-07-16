@@ -25,7 +25,7 @@
   }
 
   const handleClick = (e) => {
-    readMoreDiv.classList.toggle('max-h-[1000px]');
+    readMoreDiv.classList.toggle('max-h-[5000px]');
     toggleReadMore = !toggleReadMore;
     
     if(toggleReadMore) {
@@ -49,22 +49,24 @@
 <Header page="about" />
 <main class='main-wrapper'>
   <div class='body-bg text-white font-light'>
-    <div class="bg-black flex justify-center items-center h-[40rem] bg-opacity-80">
-      <div class='max-w-screen-xl grid auto-rows-min grid-cols-2 gap-4 m-auto px-8'>
-        <div class='text-4xl font-medium'>Who we are</div>
-        <p>
-          Asayake Taiko is a Japanese drumming group founded in the spring of 2002 at the University of California, San Diego campus. Our mission statement is to increase Japanese cultural awareness both within and outside of the UCSD community through taiko.
-        </p>
-        <div class='text-4xl font-medium mt-10'>Our name</div>
-        <p>"Asayake" means "morning glow" in Japanese, and invokes the image of the early morning light playing on the ocean mist in La Jolla.</p>
-        <div role='button' tabindex='0' class='cursor-none relative col-start-2 row-start-1 row-end-7 m-auto' on:mouseover={handleMouseOver} on:mouseleave={handleMouseLeave} on:focus>
+    <div class="bg-black flex justify-center items-center bg-opacity-80">
+      <div class='max-w-screen-xl grid auto-rows-min grid-cols-1 md:grid-cols-2 gap-4 m-auto px-16 md:px-8 py-28'>
+        <div>
+          <div class='text-4xl font-medium mb-2'>Who we are</div>
+          <p class='mb-10'>
+            Asayake Taiko is a Japanese drumming group founded in the spring of 2002 at the University of California, San Diego campus. Our mission statement is to increase Japanese cultural awareness both within and outside of the UCSD community through taiko.
+          </p>
+          <div class='text-4xl font-medium mt-8 mb-2'>Our name</div>
+          <p>"Asayake" means "morning glow" in Japanese, and invokes the image of the early morning light playing on the ocean mist in La Jolla.</p>
+        </div>
+        <div role='button' tabindex='0' class='mt-8 md:mt-0 cursor-none relative m-auto' on:mouseover={handleMouseOver} on:mouseleave={handleMouseLeave} on:focus>
           <picture>
             <source srcset="/about/webp/1.webp" type="image/webp" />
-            <img class='w-4/5 m-auto rounded-lg' src="/about/1.jpg" loading="lazy" decoding="async" alt='gen'/>
+            <img class='w-full md:w-4/5 m-auto rounded-lg' src="/about/1.jpg" loading="lazy" decoding="async" alt='gen'/>
           </picture>
           <picture>
             <source srcset="/about/webp/2.webp" type="image/webp" />
-            <img class='hidden-gen w-4/5 mx-auto rounded-lg absolute right-[50%] top-[50%] translate-x-1/2 -translate-y-1/2 opacity-0 will-change-transform duration-300' src="/about/2.jpg" loading="lazy" decoding="async" alt='gen'/>
+            <img class='hidden-gen w-full md:w-4/5 mx-auto rounded-lg absolute right-[50%] top-[50%] translate-x-1/2 -translate-y-1/2 opacity-0 will-change-transform duration-300' src="/about/2.jpg" loading="lazy" decoding="async" alt='gen'/>
           </picture>
         </div>
       </div>
@@ -80,12 +82,12 @@
         <div bind:this="{readMoreDiv}" class='max-h-0 overflow-hidden duration-500'>
           <div>
             <div class='text-4xl font-medium mb-4 mt-10'>Origin</div>
-            <div class='grid grid-cols-2'>
-              <p>Taiko, meaning "drum", refers to a large family of Japanese percussive instruments. Traditional taiko had its use as a part of warfare, theater, festivals, and religious ceremonies. However, the art of taiko as we know it today can be traced back to Daihachi Oguchi in 1951. As a jazz drummer, Oguchi took traditional taiko music and arranged them to be performed as a group. This new ensemble style of taiko became known as kumi-daiko, which quickly spread to the rest of Japan and the world. Notable kumi-daiko ensembles that originated in Japan include Oguchi's own Osuwa Daiko, Oedo Sukeroku Daiko, Kodo, and Wadaiko Yamato.</p>
+            <div class='grid grid-cols-1 md:grid-cols-2'>
+              <p class='mb-8'>Taiko, meaning "drum", refers to a large family of Japanese percussive instruments. Traditional taiko had its use as a part of warfare, theater, festivals, and religious ceremonies. However, the art of taiko as we know it today can be traced back to Daihachi Oguchi in 1951. As a jazz drummer, Oguchi took traditional taiko music and arranged them to be performed as a group. This new ensemble style of taiko became known as kumi-daiko, which quickly spread to the rest of Japan and the world. Notable kumi-daiko ensembles that originated in Japan include Oguchi's own Osuwa Daiko, Oedo Sukeroku Daiko, Kodo, and Wadaiko Yamato.</p>
               <img class='rounded-lg m-auto w-4/5' src="/about/webp/oguchi.webp" alt="Daihachi Oguchi" />
             </div>
           </div>
-          <div class='grid grid-cols-2 gap-14 mb-8'>
+          <div class='grid grid-cols-1 md:grid-cols-2 md:gap-14 mb-4 md:mb-8'>
             <div>
               <div class='text-4xl font-medium mb-4 mt-10'>Spread</div>
               <p>Since its inception, kumi-daiko has become the dominant form of taiko performance outside of Japan. The spread of taiko in the United States started in the 1960s, when Seiichi Tanaka founded the San Francisco Taiko Dojo. This was closely followed by other groups such as Kinnara Taiko and San Jose Taiko. The taiko community continued to grow as groups began to be founded as university and college organizations. In 1990, Kyodo Taiko was founded on the campus of the University of California, Los Angeles, becoming the first collegiate taiko group.</p>
