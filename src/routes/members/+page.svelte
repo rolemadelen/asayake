@@ -6,7 +6,7 @@
 </script>
 
 <Cursor />
-<Header page="gallery" />
+<Header page="members" />
 <main class='main-wrapper'>
 </main>
 <Footer />

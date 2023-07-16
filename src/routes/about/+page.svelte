@@ -16,13 +16,11 @@
 
   const handleMouseOver = (e) => {
     const c = document.querySelector('.hidden-gen')
-    c.style.transform = "translate(50%, -50%)"
     c.classList.add('opacity-100')
   }
 
   const handleMouseLeave = (e) => {
     const c = document.querySelector('.hidden-gen')
-    c.style.transform = "translate(100%, -50%)"
     c.classList.remove('opacity-100')
   }
 
@@ -52,7 +50,7 @@
 <main class='main-wrapper'>
   <div class='body-bg text-white font-light'>
     <div class="bg-black flex justify-center items-center h-[40rem] bg-opacity-80">
-      <div class='max-w-screen-xl grid auto-rows-min grid-cols-2 gap-4 m-auto'>
+      <div class='max-w-screen-xl grid auto-rows-min grid-cols-2 gap-4 m-auto px-8'>
         <div class='text-4xl font-medium'>Who we are</div>
         <p>
           Asayake Taiko is a Japanese drumming group founded in the spring of 2002 at the University of California, San Diego campus. Our mission statement is to increase Japanese cultural awareness both within and outside of the UCSD community through taiko.
@@ -66,7 +64,7 @@
           </picture>
           <picture>
             <source srcset="/about/webp/2.webp" type="image/webp" />
-            <img class='hidden-gen w-4/5 mx-auto rounded-lg absolute right-[50%] top-[50%] translate-x-[100%] -translate-y-1/2 opacity-0 will-change-transform duration-300' src="/about/2.jpg" loading="lazy" decoding="async" alt='gen'/>
+            <img class='hidden-gen w-4/5 mx-auto rounded-lg absolute right-[50%] top-[50%] translate-x-1/2 -translate-y-1/2 opacity-0 will-change-transform duration-300' src="/about/2.jpg" loading="lazy" decoding="async" alt='gen'/>
           </picture>
         </div>
       </div>
@@ -74,7 +72,7 @@
   </div>
   <div class='body-bg2 text-white font-light'>
     <div class="flex justify-center items-center py-28 bg-white opacity-[0.95] text-[#222]">
-      <div class='max-w-screen-xl grid auto-rows-min grid-cols-1 gap-4 m-auto'>
+      <div class='max-w-screen-xl grid auto-rows-min grid-cols-1 gap-4 m-auto px-8'>
         <div class='text-4xl font-medium mt-10'>History</div>
         <p>In spring of 2002, Bobby Koga, Reid Matsuoka and several other students came together to start a taiko group at the University of California, San Diego. With financial support from the university, the fledgling group purchased various equipment in order to construct the Japanese drums in garages of devoted members. In spring of 2004, Asayake Taiko at UCSD debuted with their completed drums at the 3rd Annual Nikkei Student Union Culture Show.</p>
         <p>Today, Asayake Taiko performs for on-campus cultural events, high school conferences, and various university functions. Likewise, Asayake Taiko aims to promote cultural awareness of Taiko to the greater San Diego area through performances and workshops at K-12 schools and other cultural functions.</p>
