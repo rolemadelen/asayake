@@ -51,7 +51,7 @@
     </Header>
     <div class='absolute bottom-16 left-16'>
       <div class='opacity-90 text-white leading-5'>
-        <div class=''>
+        <div>
           <div class='text-6xl font-semibold'>Asayake Taiko</div>
           <div class='mt-3 mb-8 ml-1 font-light text-sm'>University of California, San Diego</div>
         </div>
