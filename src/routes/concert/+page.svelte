@@ -90,8 +90,8 @@
       {/if}
 
       {#if i % 2 == 0}
-      <div class='gallery_item before relative m-auto w-full h-full border-l-asa-red border-l-[1px] border-opacity-20 flex justify-center items-center after:top-[52%] lg:after:top-[51%]'>
-      <span class='absolute top-1/2 -left-full text-[15rem] opacity-[0.01] md:opacity-[0.025]  w-max'>{concert.title}</span>
+      <div class='gallery_item before relative m-auto w-full h-full border-l-asa-red border-l-[1px] border-opacity-20 flex justify-center items-center afteR:top-[52%] lg:after:top-[51%]'>
+        <span class='absolute top-1/2 -left-full text-[15rem] opacity-[0.01] md:opacity-[0.025]  w-max'>{concert.title}</span>
         <div class='year absolute -left-[30rem] text-right w-[26rem] md:w-96'>
             <p class='text-xl'>
             {concert.year}
@@ -112,7 +112,7 @@
               <p class='text-xl'>
               {concert.year}
               </p>
-              <p class='text-md font-medium md:text-2xl'>
+              <p class='text-md md:text-2xl font-medium lg:text-3xl'>
               {concert.title}
             </p>
             </div>
@@ -122,7 +122,7 @@
           </picture>
         </div>
       {:else}
-      <div class='gallery_item after m-auto w-full relative flex justify-center items-center after:top-[52%] lg:after:top-[51%]'>
+      <div class='gallery_item after m-auto w-full relative flex justify-center items-center after:top-[52%] lg:after:top-[51%] snap-start'>
       <span class='absolute top-1/2 -right-full text-[15rem] opacity-[0.01] md:opacity-[0.025] w-max'>{concert.title}</span>
         <div class='year absolute -right-[30rem] text-left w-[26rem] md:w-96'>
             <p class='text-xl'>
