@@ -128,6 +128,6 @@
   }
 
   .body-bg2 {
-    background-image: url('/bg/9.jpg');
+    background-image: url('/bg/webp/9.webp');
   }
 </style>

@@ -6,7 +6,7 @@
   let mainWrapper
   let currImage = 0
   const numberOfImages = 14
-  $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/bg/${key+1}.jpg`)
+  $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/bg/webp/${key+1}.webp`)
   $: {
     if(mainWrapper)
       mainWrapper.style.backgroundImage = `url('${preloadImageUrls[currImage]}')`
