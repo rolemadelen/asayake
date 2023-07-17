@@ -90,7 +90,7 @@
       {/if}
 
       {#if i % 2 == 0}
-      <div class='gallery_item before relative m-auto w-full h-full border-l-asa-red border-l-[1px] border-opacity-20 flex justify-center items-center afteR:top-[52%] lg:after:top-[51%]'>
+      <div class='gallery_item before relative m-auto w-full h-full border-l-asa-red border-l-[1px] border-opacity-20 flex justify-center items-center after:top-[52%] lg:after:top-[51%]'>
         <span class='absolute top-1/2 -left-full text-[15rem] opacity-[0.01] md:opacity-[0.025]  w-max'>{concert.title}</span>
         <div class='year absolute -left-[30rem] text-right w-[26rem] md:w-96'>
             <p class='text-xl'>
