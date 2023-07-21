@@ -30,7 +30,8 @@
     },
     {
       year: 2017,
-      title: "A Tale as Old as time"
+      title: "A Tale as Old as time",
+      link: "https://issuu.com/michaelhidayat/docs/asayake10thconcert/1"
     },
     {
       year: 2016,
@@ -38,7 +39,8 @@
     },
     {
       year: 2015,
-      title: "The Fellowship of the Drum"
+      title: "The Fellowship of the Drum",
+      link: "https://issuu.com/michaelhidayat/docs/complete_program.compressed__1__dfa8216eaa9200"
     },
     {
       year: 2014,
