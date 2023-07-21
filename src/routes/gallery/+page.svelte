@@ -27,14 +27,12 @@
   }
 
   const handleResize = (e) => {
-    setTimeout(() => {
-      const carouselImg = document.querySelector(`[data-carousel-id="${carouselId}"]`)
-      carouselImg.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    }, 150)
+    const carouselImg = document.querySelector(`[data-carousel-id="${carouselId}"]`)
+    carouselImg.scrollIntoView({ block: 'nearest', inline: 'center' });
   }
 </script>
 
-<svelte:window on:resize={handleResize } />
+<svelte:window on:resize={handleResize} />
 
 <svelte:head>
   <title>Asayake Taiko | Gallery</title>
@@ -44,7 +42,7 @@
 <Cursor />
 <Header page="gallery" />
 <main class='main-wrapper m-auto h-full md:h-screen bg-black'>
-  <div bind:this="{carousel}" class='hidden carousel md:flex overflow-hidden'>
+  <div bind:this="{carousel}" class='hidden carousel md:flex overflow-hidden z-10'>
     {#each Array(numberOfImages) as _, index (index)}
       <div>
         <div class='w-screen h-screen' data-carousel-id="{index+1}"></div>
@@ -52,7 +50,7 @@
     {/each}
   </div>
 
-  <div class='md:fixed bottom-0 flex flex-col md:flex-row h-full md:h-32 md:overflow-x-scroll'>
+  <div class='md:fixed bottom-0 flex flex-col md:flex-row h-full md:h-32 md:overflow-x-scroll z-50'>
     {#each Array(numberOfImages) as _, index (index)}
       <img data-id="{index+1}" src={`/gallery/gallery${index+1}.jpg`} alt="asayake" class="md:cursor-pointer hover:border-asa-red md:opacity-60 hover:opacity-100 duration-200" on:click={handleClick} />
     {/each}
@@ -78,5 +76,8 @@
   .carousel div {
     background-position: center;
     background-repeat: no-repeat;
+    touch-action: none;
+    -webkit-overflow-scrolling: none;
+    overscroll-behavior: none;
   }
 </style>
