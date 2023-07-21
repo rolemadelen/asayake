@@ -54,7 +54,7 @@
       </div>
     </div>
 
-    <div class='mb-16 border-t-[1px] px-8'>
+    <div class='mb-16 border-t-[1px] px-8 pb-8'>
       <div class='max-w-screen-xl text-3xl mt-16 mb-2'>Connect</div>
       <p class='font-light text-gray-500 max-w-[40rem]'>
         Be the first to receive updates! Like our Facebook page, follow us on Instagram, and/or subscribe to our YouTube channel.
@@ -86,7 +86,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </main>
 <Footer />
