@@ -19,7 +19,7 @@
     },
     {
       gen: "Gen 15",
-      members: ['Catie Sakurai', 'Fabian Lim', 'Samm Iwamasa', 'Austin Pukasamsombut', 'Dae Han', 'Ryian Okazaki', 'Katherine Santos']
+      members: ['Catie Sakurai', 'Fabian Lim', 'Samm Iwamasa', 'Austin Pukasamsombut', 'Dae Han', 'Ryan Okazaki', 'Katherine Santos']
     },
     {
       gen: "Gen 14",
@@ -390,8 +390,8 @@
   const handleMouseOver = (e) => {
     if(e.currentTarget.nodeName === 'LI') {
       const name = e.currentTarget.innerText
-      e.currentTarget.classList.add('text-asa-red', 'font-semibold')
       e.currentTarget.style.cursor = `url('/members/alumni/cursor/${name}.jpg'), default`
+      e.currentTarget.classList.add('text-asa-red', 'font-semibold')
     } else {
       e.currentTarget.children[1].classList.add('opacity-100')
     }
@@ -482,7 +482,7 @@
           <div class='mb-6'>
             <div class='text-lg font-semibold'>{alum.gen}</div>
             <ul>
-              {#each alum.members as member}
+              {#each alum.members.sort() as member}
                 <li class='text-sm py-1' on:mouseover={handleMouseOver} on:mouseleave={handleMouseLeave}>{member}</li>
               {/each}
             </ul>
