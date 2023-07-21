@@ -388,20 +388,10 @@
 
 
   const handleMouseOver = (e) => {
-    if(e.currentTarget.nodeName === 'LI') {
-      const name = e.currentTarget.innerText
-      e.currentTarget.style.cursor = `url('/members/alumni/cursor/${name}.jpg'), default`
-      e.currentTarget.classList.add('text-asa-red', 'font-semibold')
-    } else {
-      e.currentTarget.children[1].classList.add('opacity-100')
-    }
+    e.currentTarget.children[1].classList.add('opacity-100')
   }
   const handleMouseLeave = (e) => {
-    if(e.currentTarget.nodeName === 'LI') {
-      e.currentTarget.classList.remove('text-asa-red', 'font-semibold')
-    } else {
-      e.currentTarget.children[1].classList.remove('opacity-100')
-    }
+    e.currentTarget.children[1].classList.remove('opacity-100')
   }
 
   const handleClick = (e) => {
@@ -483,7 +473,7 @@
             <div class='text-lg font-semibold'>{alum.gen}</div>
             <ul>
               {#each alum.members.sort() as member}
-                <li class='text-sm py-1' on:mouseover={handleMouseOver} on:mouseleave={handleMouseLeave}>{member}</li>
+                <li class='text-sm py-1'>{member}</li>
               {/each}
             </ul>
           </div>
