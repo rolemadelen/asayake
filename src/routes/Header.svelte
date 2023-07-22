@@ -2,7 +2,7 @@
   export let page;
 </script>
 
-<header class='flex justify-center items-center max-w-screen-xl mx-auto h-24 text-white'>
+<header class='flex justify-center items-center max-w-screen-xl mx-auto h-24 text-white z-[9999]'>
   <slot name='logo'>
     <div class='flex-1'>
       <a href="/" >
