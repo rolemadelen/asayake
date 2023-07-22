@@ -1,15 +1,24 @@
 <script>
-  import Header from './Header.svelte'
   import Cursor from './Cursor.svelte'
+  import Header from './Header.svelte'
   import { onMount } from 'svelte'
 
   let mainWrapper
   let currImage = 0
+  let timeout;
   const numberOfImages = 14
+  let behavior = 'auto'
+
   $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/bg/webp/${key+1}.webp`)
   $: {
-    if(mainWrapper)
-      mainWrapper.style.backgroundImage = `url('${preloadImageUrls[currImage]}')`
+    if(mainWrapper) {
+      document.querySelector(`[data-id="${currImage+1}"]`).scrollIntoView({behavior: `${behavior}`, block: 'nearest', inline: 'center' })
+      document.querySelector('.backdrop-brightness-75').classList.remove('md:backdrop-blur-lg')
+      timeout = setTimeout(() => {
+        document.querySelector('.backdrop-brightness-75').classList.add('md:backdrop-blur-lg')
+      }, 4700)
+    }
+    behavior = 'auto'
   }
 
   let interval = setInterval(() => {
@@ -17,23 +26,35 @@
   }, 5000)
 
   onMount(() => {
-    mainWrapper.style.backgroundImage = `url('${preloadImageUrls[currImage]}')`
+    document.querySelectorAll('[data-id]').forEach((el, index) => {
+      el.children[0].style.backgroundImage = `url('${preloadImageUrls[index]}')`
+    })
+    document.querySelector(`[data-id="${currImage+1}"]`).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
   })
 
   const handleClick = (e) => {
-    clearInterval(interval);
-    if(e.currentTarget.dataset.name === 'left')
-      currImage = currImage == 0 ? numberOfImages - 1 : (currImage - 1)
-    else 
+    clearTimeout(timeout)
+    clearInterval(interval)
+    behavior = 'smooth'
+    if(e.currentTarget.dataset.name === 'left') {
+      if(currImage === 0) behavior = 'auto'
+      currImage = currImage === 0 ? numberOfImages - 1 : currImage - 1
+    } else {
+      if(currImage === numberOfImages - 1) behavior = 'auto'
       currImage = (currImage + 1) % numberOfImages
+    }
 
     interval = setInterval(() => {
       currImage = (currImage + 1) % numberOfImages
     }, 5000)
   }
 
+  const handleResize = (e) => {
+      document.querySelector(`[data-id="${currImage+1}"]`).scrollIntoView();
+  }
 </script>
 
+<svelte:window on:resize={handleResize} />
 <svelte:head>
   {#each preloadImageUrls as image}
     <link rel="preload" as="image" href={image} />
@@ -42,8 +63,15 @@
 </svelte:head>
 
 <Cursor />
-<main bind:this="{mainWrapper}"  class='main-wrapper h-screen bg-asa-red bg-cover bg-no-repeat bg-center'>
-  <div class='h-full backdrop-brightness-75'>
+<main bind:this="{mainWrapper}" class='main-wrapper h-screen bg-asa-red'>
+   <div class='absolute flex w-screen h-screen overflow-x-hidden'>
+    {#each preloadImageUrls as image, index }
+      <div data-id={index+1}>
+        <div class='w-screen h-screen relative bg-cover bg-center'></div>
+      </div>
+    {/each}
+  </div>
+  <div class='h-full w-full backdrop-brightness-75 backdrop-blur-0 duration-500'>
     <Header page="home">
       <svelte:fragment slot="logo">
         <div class="flex-1"></div>

@@ -21,7 +21,7 @@
     }, 100)
 
     setTimeout(() => {
-      nav.classList.add('translate-y-0')
+      nav.classList.add('!translate-y-0')
     }, 500)
   })
 
