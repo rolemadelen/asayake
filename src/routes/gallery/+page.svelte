@@ -54,7 +54,7 @@
  <div bind:this="{carousel}" class='hidden carousel md:flex overflow-hidden z-30 opacity-0 duration-300'>
     {#each Array(numberOfImages) as _, index (index)}
       <div>
-        <div class='w-screen h-screen relative bg-cover' data-carousel-id="{index+1}"></div>
+        <div class='w-screen h-screen relative bg-center' data-carousel-id="{index+1}"></div>
       </div>
     {/each}
   </div>

@@ -26,6 +26,7 @@
   }, 5000)
 
   onMount(() => {
+    if(timeout) clearTimeout(timeout);
     document.querySelectorAll('[data-id]').forEach((el, index) => {
       el.children[0].style.backgroundImage = `url('${preloadImageUrls[index]}')`
     })
