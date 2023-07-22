@@ -8,12 +8,6 @@
   const numberOfImages = 2;
   $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/about/${key+1}.jpg`)
 
-  /*
-  setInterval(() => {
-    currImage = (currImage + 1) % numberOfImages
-  }, 5000)
-  */
-
   const handleMouseOver = (e) => {
     const c = document.querySelector('.hidden-gen')
     c.classList.add('opacity-100')
@@ -61,8 +55,8 @@
         </div>
         <div role='button' tabindex='0' class='mt-8 md:mt-0 cursor-none relative m-auto' on:mouseover={handleMouseOver} on:mouseleave={handleMouseLeave} on:focus>
           <picture>
-            <source srcset="/about/webp/1.webp" type="image/webp" />
-            <img class='w-full md:w-4/5 m-auto rounded-lg' src="/about/1.jpg" loading="lazy" decoding="async" alt='gen'/>
+            <source srcset="/about/webp/3.webp" type="image/webp" />
+            <img class='w-full md:w-4/5 m-auto rounded-lg' src="/about/3.jpg" loading="lazy" decoding="async" alt='gen'/>
           </picture>
           <picture>
             <source srcset="/about/webp/2.webp" type="image/webp" />
@@ -125,9 +119,5 @@
   }
   .body-bg {
     background-image: url('/about/webp/1.webp');
-  }
-
-  .body-bg2 {
-    background-image: url('/bg/webp/9.webp');
   }
 </style>
