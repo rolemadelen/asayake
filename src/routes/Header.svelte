@@ -1,9 +1,4 @@
 <script>
-  import FaInstagram from 'svelte-icons/fa/FaInstagram.svelte'
-  import FaFacebookF from 'svelte-icons/fa/FaFacebookF.svelte'
-  import FaYoutube from 'svelte-icons/fa/FaYoutube.svelte'
-  import IoMdMail from 'svelte-icons/io/IoMdMail.svelte'
-
   export let page
   let hamburgerNav
 
@@ -18,7 +13,7 @@
   <slot name='logo'>
     <div class='flex-1'>
       <a href="/" >
-        <img src="/asayake_logo.svg" alt="logo" class="logo w-[140px] md:w-40 py-2 pl-2 md:py-0"/>
+        <img src="/asayake_logo.svg" alt="logo" class="logo w-[150px] md:w-40 py-2 pl-2 md:py-0"/>
       </a>
     </div>
   </slot>
@@ -99,6 +94,7 @@
     width: 50px;
     height: 50px;
     border-radius: 5px;
+    margin: 8px;
   }
 
   .menu-button {
