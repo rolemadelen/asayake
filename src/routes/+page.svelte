@@ -4,26 +4,46 @@
   import { onMount } from 'svelte'
 
   let mainWrapper
+  let prevImage = -1
   let currImage = 0
-  const numberOfImages = 14
+  let nextImage = 1
+  const numberOfImages = 13
   let behavior = 'smooth'
 
   $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/bg/webp/${key+1}.webp`)
   $: {
     if(currImage === 0 || currImage === numberOfImages-1) behavior = 'auto'
     if(mainWrapper) {
-      document.querySelector(`[data-id="${currImage+1}"]`).scrollIntoView({behavior: `${behavior}`, block: 'nearest', inline: 'center' })
+      const prev = document.querySelector(`[data-id="${prevImage+1}"]`);
+      const curr = document.querySelector(`[data-id="${currImage+1}"]`);
+      const next = document.querySelector(`[data-id="${nextImage+1}"]`);
+
+      if(prev) prev.children[0].style.backgroundPositionX = "0px"
+      curr.children[0].style.backgroundPositionX = "0px"
+      if(next) next.children[0].style.backgroundPositionX = "0px"
+
+      curr.scrollIntoView({behavior: `${behavior}`, block: 'nearest', inline: 'center' })
+      if(window.innerWidth <= 450) {
+        curr.children[0].style.backgroundPositionX = `-1000px`
+      } else if(window.innerWidth <= 600) {
+        curr.children[0].style.backgroundPositionX = `-800px`
+      } else if(window.innerWidth <= 767) {
+        curr.children[0].style.backgroundPositionX = `-${window.innerWidth}px`
+      }
     }
     behavior = 'smooth'
   }
 
   let interval = setInterval(() => {
+    prevImage = currImage
     currImage = (currImage + 1) % numberOfImages
+    nextImage = currImage + 1
   }, 5000)
 
   onMount(() => {
     document.querySelectorAll('[data-id]').forEach((el, index) => {
       el.children[0].style.backgroundImage = `url('${preloadImageUrls[index]}')`
+      el.children[0].style.backgroundPositionX = '0px'
     })
     document.querySelector(`[data-id="${currImage+1}"]`).scrollIntoView({ behavior, block: 'nearest', inline: 'center' })
   })
@@ -39,12 +59,18 @@
     }
 
     interval = setInterval(() => {
-      currImage = (currImage + 1) % numberOfImages
+    prevImage = currImage
+    currImage = (currImage + 1) % numberOfImages
+    nextImage = currImage + 1
     }, 5000)
   }
 
   const handleResize = (e) => {
-      document.querySelector(`[data-id="${currImage+1}"]`).scrollIntoView();
+    const curr = document.querySelector(`[data-id="${currImage+1}"]`);
+    if(window.innerWidth > 767) {
+      curr.children[0].style.backgroundPositionX = "0px"
+    }
+    curr.scrollIntoView({block: 'nearest', inline: 'center' })
   }
 </script>
 
@@ -61,7 +87,7 @@
    <div class='absolute flex w-screen h-screen overflow-x-hidden'>
     {#each preloadImageUrls as image, index }
       <div data-id={index+1}>
-        <div class='w-screen h-screen relative bg-cover bg-center'></div>
+        <div class='w-screen h-screen relative bg-cover md:bg-center transition-[background-position] duration-[5s] md:duration-0'></div>
       </div>
     {/each}
   </div>
@@ -71,19 +97,19 @@
         <div class="flex-1"></div>
       </svelte:fragment>
     </Header>
-    <div class='absolute bottom-16 left-16'>
+    <div class='absolute bottom-8 left-8 md:bottom-16 md:left-16 z-10'>
       <div class='opacity-90 text-white leading-5'>
         <div>
-          <div class='text-6xl font-semibold'>Asayake Taiko</div>
-          <div class='mt-3 mb-8 ml-1 font-light text-sm'>University of California, San Diego</div>
+          <div class='text-4xl md:text-6xl font-semibold'>Asayake Taiko</div>
+          <div class='md:mt-3 mb-8 ml-1 text-gray-300 font-light text-sm'>University of California, San Diego</div>
         </div>
         <div>
-          <div class='w-[40rem] font-light'>Our mission statement is to increase Japanese cultural awareness both within and outside of the UCSD community through the art of taiko.</div>
+          <div class='w-[22rem] text-sm md:w-[40rem] font-light'>Our mission statement is to increase Japanese cultural awareness both within and outside of the UCSD community through the art of taiko.</div>
         </div>
       </div>
     </div>
   </div>
-  <div class="absolute right-16 bottom-16 flex items-center justify-center text-sm">
+  <div class="absolute right-16 bottom-16 hidden md:flex items-center justify-center text-sm">
     <button  on:click={handleClick} data-name='left' class='transition-colors duration-200 backdrop-blur-sm bg-white bg-opacity-10 hover:bg-asa-red w-8 h-8 rounded-full flex justify-center items-center mr-3'>
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12.6667 3.33325L6 9.99992L12.6667 16.6666" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
