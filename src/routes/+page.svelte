@@ -5,20 +5,16 @@
 
   let mainWrapper
   let currImage = 0
-  let timeout;
   const numberOfImages = 14
-  let behavior = 'auto'
+  let behavior = 'smooth'
 
   $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/bg/webp/${key+1}.webp`)
   $: {
+    if(currImage === 0 || currImage === numberOfImages-1) behavior = 'auto'
     if(mainWrapper) {
       document.querySelector(`[data-id="${currImage+1}"]`).scrollIntoView({behavior: `${behavior}`, block: 'nearest', inline: 'center' })
-      document.querySelector('.backdrop-brightness-75').classList.remove('md:backdrop-blur-lg')
-      timeout = setTimeout(() => {
-        document.querySelector('.backdrop-brightness-75').classList.add('md:backdrop-blur-lg')
-      }, 4700)
     }
-    behavior = 'auto'
+    behavior = 'smooth'
   }
 
   let interval = setInterval(() => {
@@ -26,17 +22,14 @@
   }, 5000)
 
   onMount(() => {
-    if(timeout) clearTimeout(timeout);
     document.querySelectorAll('[data-id]').forEach((el, index) => {
       el.children[0].style.backgroundImage = `url('${preloadImageUrls[index]}')`
     })
-    document.querySelector(`[data-id="${currImage+1}"]`).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
+    document.querySelector(`[data-id="${currImage+1}"]`).scrollIntoView({ behavior, block: 'nearest', inline: 'center' })
   })
 
   const handleClick = (e) => {
-    clearTimeout(timeout)
     clearInterval(interval)
-    behavior = 'smooth'
     if(e.currentTarget.dataset.name === 'left') {
       if(currImage === 0) behavior = 'auto'
       currImage = currImage === 0 ? numberOfImages - 1 : currImage - 1
