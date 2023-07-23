@@ -23,7 +23,7 @@
       <span class='menu-button__line'></span>
       <span class='menu-button__line'></span>
     </div>
-    <div bind:this="{hamburgerNav}" class='fixed z-[-1] top-[-150%] left-0 hamburger-menu-nav w-screen h-screen bg-[#791111dd] rounded-bl-[200px] rounded-br-[500px] ease-in-out duration-700'>
+    <div bind:this="{hamburgerNav}" class='fixed z-[-1] top-[-120%] left-0 hamburger-menu-nav w-screen h-screen bg-[#791111ee] rounded-bl-[200px] rounded-br-[500px] ease-in-out duration-700'>
       <div class='flex flex-col pt-16'>
         <a href="/" class='nav-item' class:active={page==='home'}>
           <p>Home</p>
