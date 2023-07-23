@@ -19,7 +19,7 @@
     },
     {
       gen: "Gen 15",
-      members: ['Catie Sakurai', 'Fabian Lim', 'Samm Iwamasa', 'Austin Pukasamsombut', 'Dae Han', 'Ryan Okazaki', 'Katherine Santos']
+      members: ['Ivy Hang', 'Catie Sakurai', 'Fabian Lim', 'Samm Iwamasa', 'Austin Pukasamsombut', 'Dae Han', 'Ryan Okazaki', 'Katherine Santos']
     },
     {
       gen: "Gen 14",
