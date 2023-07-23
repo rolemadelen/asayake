@@ -23,11 +23,7 @@
       if(next) next.children[0].style.backgroundPositionX = "0px"
 
       curr.scrollIntoView({behavior: `${behavior}`, block: 'nearest', inline: 'center' })
-      if(window.innerWidth <= 450) {
-        curr.children[0].style.backgroundPositionX = `-1000px`
-      } else if(window.innerWidth <= 600) {
-        curr.children[0].style.backgroundPositionX = `-800px`
-      } else if(window.innerWidth <= 767) {
+      if(window.innerHeight > window.innerWidth && window.innerWidth <= 767) {
         curr.children[0].style.backgroundPositionX = `-${window.innerWidth}px`
       }
     }

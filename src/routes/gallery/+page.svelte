@@ -51,7 +51,7 @@
 <Cursor />
 <Header page="gallery" />
 <main class='main-wrapper m-auto h-full md:h-screen bg-black'>
- <div bind:this="{carousel}" class='hidden carousel md:flex overflow-hidden z-30 opacity-0 duration-300'>
+ <div bind:this="{carousel}" class='hidden carousel md:flex overflow-hidden z-30 opacity-0 md:duration-300'>
     {#each Array(numberOfImages) as _, index (index)}
       <div>
         <div class='w-screen h-screen relative bg-center' data-carousel-id="{index+1}"></div>
@@ -59,9 +59,9 @@
     {/each}
   </div>
 
-  <div class='carouselNav translate-y-[100%] md:fixed bottom-0 flex flex-col md:flex-row h-full md:h-32 md:overflow-x-scroll z-40 duration-300 transition-transform'>
+  <div class='carouselNav translate-y-[100%] md:fixed bottom-0 flex flex-col md:flex-row h-full md:h-32 md:overflow-x-scroll z-40 md:duration-300 transition-transform'>
     {#each Array(numberOfImages) as _, index (index)}
-      <img data-id="{index+1}" src={`/gallery/gallery${index+1}.jpg`} alt="asayake" class="md:cursor-pointer hover:border-asa-red md:opacity-60 hover:opacity-100 duration-300" on:click={handleClick} />
+      <img data-id="{index+1}" src={`/gallery/gallery${index+1}.jpg`} alt="asayake" class="md:cursor-pointer hover:border-asa-red md:opacity-60 hover:opacity-100 md:duration-300" on:click={handleClick} />
     {/each}
   </div>
   <div class='md:hidden'>
