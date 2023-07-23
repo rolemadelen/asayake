@@ -22,7 +22,7 @@
       <div class='text-3xl mt-16 mb-1'>Contact</div>
       <p class='font-light text-gray-500'>General inquiries? Performance Request? Let us know!</p>
       <div class="mt-4 flex items-center mb-16">
-        <div class='email w-10 mr-2 text-[#a4a4a4]'>
+        <div class='email w-8 mr-2 text-[#a4a4a4]'>
           <IoIosMail />
         </div>
         <p class='border-b-gray-300 border-dashed border-b-[1px]'>
@@ -36,7 +36,7 @@
       <p class='font-light text-gray-500 max-w-[40rem]'>Asayake Taiko is run on equipment and resources primarily sourced through fundraising and donations. We greatly appreciate any and all contributions, no matter the amount, that goes to the bettering of our team's musical and cultural development.</p>
       <div class='mt-4 grid grid-cols-2 md:grid-cols-3 my-auto max-w-screen-md gap-2'>
         <div class="mt-4 flex items-center">
-          <div class='email w-10 mr-2 text-[#253B80]'>
+          <div class='w-8 mr-2 text-[#253B80]'>
             <FaCcPaypal />
           </div>
           <p class='border-b-gray-300 border-dashed border-b-[1px]'>
@@ -44,7 +44,7 @@
           </p>
         </div>
         <div class="mt-4 flex items-center">
-          <div class='email w-10 mr-2 text-[#253B80]'>
+          <div class='w-8 mr-2 text-[#253B80]'>
             <img src="/icons/venmo.svg" alt="venmo" />
           </div>
           <p class='border-b-gray-300 border-dashed border-b-[1px]'>
@@ -61,7 +61,7 @@
       </p>
       <div class='mt-4 grid grid-cols-2 md:grid-cols-3 my-auto max-w-screen-md gap-2'>
         <div class="mt-4 flex items-center">
-          <div class='email w-10 mr-2 text-[#4267B2]'>
+          <div class='w-8 mr-2 text-[#4267B2]'>
             <FaFacebookSquare />
           </div>
           <p class='border-b-gray-300 border-dashed border-b-[1px]'>
@@ -69,7 +69,7 @@
           </p>
         </div>
         <div class="mt-4 flex items-center">
-          <div class='email w-10 mr-2 text-red'>
+          <div class='w-8 mr-2 text-red'>
             <FaInstagram />
           </div>
           <p class='border-b-gray-300 border-dashed border-b-[1px]'>
@@ -77,7 +77,7 @@
           </p>
         </div>
         <div class="mt-4 flex items-center">
-          <div class='email w-10 mr-2 text-red-700'>
+          <div class='w-8 mr-2 text-red-700'>
             <FaYoutube />
           </div>
           <p class='border-b-gray-300 border-dashed border-b-[1px]'>
