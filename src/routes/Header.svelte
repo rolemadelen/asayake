@@ -23,7 +23,7 @@
       <span class='menu-button__line'></span>
       <span class='menu-button__line'></span>
     </div>
-    <div bind:this="{hamburgerNav}" class='fixed z-[-1] top-[-120%] left-0 hamburger-menu-nav w-screen h-screen bg-[#791111ee] rounded-bl-[200px] rounded-br-[500px] ease-in-out duration-700'>
+    <div bind:this="{hamburgerNav}" class='fixed z-[-1] top-[-120%] left-0 overflow-hidden hamburger-menu-nav w-screen h-screen bg-[#791111ee] rounded-bl-[200px] rounded-br-[500px] ease-in-out duration-1000'>
       <div class='flex flex-col pt-16'>
         <a href="/" class='nav-item' class:active={page==='home'}>
           <p>Home</p>
@@ -44,7 +44,7 @@
           <p>Contact</p>
         </a>
       </div>
-      <div class='absolute w-full pt-4 bottom-14 left-1/2 -translate-x-1/2 text-sm m-auto text-center text-gray-300 mt-80 border-t-[1px] border-t-[#ffffff11]'>
+      <div class='absolute w-full overflow-hidden pt-4 bottom-14 left-1/2 -translate-x-1/2 text-sm m-auto text-center text-gray-300 mt-80 border-t-[1px] border-t-[#ffffff11]'>
         <p>asayaketaiko@gmail.com</p>
       </div>
     </div>
