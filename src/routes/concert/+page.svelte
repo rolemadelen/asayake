@@ -104,6 +104,7 @@
         </div>
         <picture class='z-20 lg:shadow-lg shadow-gray-500 hover:scale-110 duration-100'>
           <source srcset="/concerts/webp/poster_{concert.year}.webp" type="image/webp" />
+          <source srcset="/concerts/poster_{concert.year}.jpg" type="image/jpeg" />
           <img class='w-1/2 md:w-3/4 lg:w-full h-full max-w-xs m-auto' src="/concerts/poster_{concert.year}.jpg" loading="lazy" decoding="async" alt="{concert.title}"/>
         </picture>
       </div>
@@ -120,6 +121,7 @@
             </div>
           <picture class='z-20 lg:shadow-lg shadow-gray-500 hover:scale-110 duration-100'>
             <source srcset="/concerts/webp/poster_{concert.year}.webp" type="image/webp" />
+            <source srcset="/concerts/poster_{concert.year}.jpg" type="image/jpeg" />
             <img class='w-1/2 md:w-3/4 lg:w-full h-full max-w-xs m-auto' src="/concerts/poster_{concert.year}.jpg" loading="lazy" decoding="async" alt="{concert.title}"/>
           </picture>
         </div>
@@ -136,6 +138,7 @@
           </div>
         <picture class='z-20 lg:shadow-lg shadow-gray-500 hover:scale-110 duration-100'>
           <source srcset="/concerts/webp/poster_{concert.year}.webp" type="image/webp" />
+          <source srcset="/concerts/poster_{concert.year}.jpg" type="image/jpeg" />
           <img class='w-1/2 md:w-3/4 lg:w-full h-full max-w-xs m-auto' src="/concerts/poster_{concert.year}.jpg" loading="lazy" decoding="async" alt="{concert.title}"/>
         </picture>
       </div>
