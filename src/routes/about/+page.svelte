@@ -56,10 +56,12 @@
         <div role='button' tabindex='0' class='mt-8 md:mt-0 cursor-none relative m-auto' on:mouseover={handleMouseOver} on:mouseleave={handleMouseLeave} on:focus>
           <picture>
             <source srcset="/about/webp/3.webp" type="image/webp" />
+            <source srcset="/about/3.jpg" type="image/jpeg" />
             <img class='w-full md:w-4/5 m-auto rounded-lg' src="/about/3.jpg" loading="lazy" decoding="async" alt='gen'/>
           </picture>
           <picture>
             <source srcset="/about/webp/2.webp" type="image/webp" />
+            <source srcset="/about/2.jpg" type="image/jpeg" />
             <img class='hidden-gen w-full md:w-4/5 mx-auto rounded-lg absolute right-[50%] top-[50%] translate-x-1/2 -translate-y-1/2 opacity-0 will-change-transform duration-300' src="/about/2.jpg" loading="lazy" decoding="async" alt='gen'/>
           </picture>
         </div>
@@ -78,7 +80,11 @@
             <div class='text-4xl font-medium mb-4 mt-10'>Origin</div>
             <div class='grid grid-cols-1 md:grid-cols-2'>
               <p class='mb-8'>Taiko, meaning "drum", refers to a large family of Japanese percussive instruments. Traditional taiko had its use as a part of warfare, theater, festivals, and religious ceremonies. However, the art of taiko as we know it today can be traced back to Daihachi Oguchi in 1951. As a jazz drummer, Oguchi took traditional taiko music and arranged them to be performed as a group. This new ensemble style of taiko became known as kumi-daiko, which quickly spread to the rest of Japan and the world. Notable kumi-daiko ensembles that originated in Japan include Oguchi's own Osuwa Daiko, Oedo Sukeroku Daiko, Kodo, and Wadaiko Yamato.</p>
-              <img class='rounded-lg m-auto w-4/5' src="/about/webp/oguchi.webp" alt="Daihachi Oguchi" />
+              <picture>
+                <source srcset="/about/webp/oguchi.webp" type="image/webp" />
+                <source srcset="/about/oguchi.jpg" type="image/jpeg" />
+                <img class='rounded-lg m-auto w-4/5' src="/about/oguchi.jpg" alt="Daihachi Oguchi" />
+            </picture>
             </div>
           </div>
           <div class='grid grid-cols-1 md:grid-cols-2 md:gap-14 mb-4 md:mb-8'>
