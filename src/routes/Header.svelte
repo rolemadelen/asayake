@@ -35,7 +35,7 @@
           <p>Members</p>
         </a>
         <a href="/gallery" class='nav-item' class:active={page==='gallery'}>
-          <a>Gallery</a>
+          <p>Gallery</p>
         </a>
         <a href="/concert" class='nav-item' class:active={page==='concert'}>
           <p>Concert</p>
