@@ -464,8 +464,8 @@
   </div>
 {/each}
 
-  <div class='pt-10 pb-20 px-8 lg:px-16 '>
-    <div class='max-w-screen-xl m-auto'>
+  <div class='pt-10 pb-20'>
+    <div class='max-w-screen-xl m-auto px-8'>
       <h2 class='text-2xl py-6'>Alumni</h2>
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {#each alumni as alum}
