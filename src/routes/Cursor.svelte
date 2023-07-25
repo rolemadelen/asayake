@@ -2,6 +2,8 @@
   let mouse = {x:0, y:0}
 
   const handleMouseMove = (e) => {
+    const isMobile = window.innerHeight > window.innerWidth
+    if(isMobile) return;
     mouse.x = e.clientX;
     mouse.y = e.clientY;
 
