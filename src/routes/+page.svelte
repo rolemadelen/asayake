@@ -23,7 +23,8 @@
       if(next) next.children[0].style.backgroundPositionX = "0px"
 
       curr.scrollIntoView({behavior: `${behavior}`, block: 'nearest', inline: 'center' })
-      if(window.innerHeight > window.innerWidth && window.innerWidth <= 767) {
+      const isMobile = window.innerHeight > window.innerWidth
+      if(isMobile && window.innerWidth <= 767) {
         curr.children[0].style.backgroundPositionX = `-${window.innerWidth}px`
       }
     }
