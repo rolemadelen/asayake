@@ -436,11 +436,11 @@
             {/if}
             <span class='absolute bottom-2 right-2 text-white font-light text-md backdrop-blur-sm px-2 py-1 rounded-md'>{member.name}</span>
           </div>
-          <div role='button' tabindex="0" data-card="back" data-name="{member.name}" class='overflow-y-auto relative member-detail hidden rounded-md overflow-hidden' on:click={handleClick}>
+          <div role='button' tabindex="0" data-card="back" data-name="{member.name}" class='relative member-detail hidden rounded-md overflow-hidden' on:click={handleClick}>
             {#if member.imgs !== undefined}
               <img src="/members/{member.gen}/{member.imgs.alt}.jpg" alt="{member.name}" class='opacity-10'/>
             {/if}
-            <div class="absolute top-0 left-0 p-4">
+            <div class="absolute top-0 left-0 p-4 overflow-y-auto h-full">
               <div class='mb-4'>
                 <p class='text-xl font-semibold'>
                   {member.name}
