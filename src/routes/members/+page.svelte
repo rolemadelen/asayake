@@ -388,10 +388,14 @@
 
 
   const handleMouseOver = (e) => {
-    e.currentTarget.children[1].classList.add('opacity-100')
+    const isMobile = window.innerHeight > window.innerWidth
+    if(!isMobile)
+      e.currentTarget.children[1].classList.add('opacity-100')
   }
   const handleMouseLeave = (e) => {
-    e.currentTarget.children[1].classList.remove('opacity-100')
+    const isMobile = window.innerHeight > window.innerWidth
+    if(!isMobile)
+      e.currentTarget.children[1].classList.remove('opacity-100')
   }
 
   const handleClick = (e) => {
