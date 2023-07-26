@@ -21,12 +21,21 @@
       curr.children[0].style.backgroundPositionX = "0px"
       if(next) next.children[0].style.backgroundPositionX = "0px"
 
-      curr.scrollIntoView({behavior: `${behavior}`, block: 'nearest', inline: 'center' })
       const isMobile = window.innerHeight > window.innerWidth
-      console.log(isMobile)
-      console.log(window.innerWidth)
-      if(isMobile && window.innerWidth <= 767) {
-        curr.children[0].style.backgroundPositionX = `-${window.innerWidth}px`
+
+      if(isMobile) {
+        behavior = 'auto'
+      }
+      curr.scrollIntoView({behavior: `${behavior}`, block: 'nearest', inline: 'center' })
+      if(isMobile) {
+        const w = window.innerWidth 
+        if(w <= 640) {
+          curr.children[0].style.backgroundPositionX = '-850px'
+        } else if (w <= 768) {
+          curr.children[0].style.backgroundPositionX = '-700px'
+        } else if (w <= 1023) {
+          curr.children[0].style.backgroundPositionX = '-550px'
+        }
       }
     }
     behavior = 'smooth'
@@ -65,7 +74,7 @@
 
   const handleResize = (e) => {
     const curr = document.querySelector(`[data-id="${currImage+1}"]`);
-    if(window.innerWidth > 767) {
+    if(window.innerWidth > 1023) {
       curr.children[0].style.backgroundPositionX = "0px"
     }
     curr.scrollIntoView({block: 'nearest', inline: 'center' })
@@ -85,7 +94,7 @@
    <div class='absolute flex w-screen h-screen overflow-x-hidden'>
     {#each preloadImageUrls as image, index }
       <div data-id={index+1}>
-        <div class='w-screen h-screen relative bg-cover md:bg-center transition-[background-position] duration-[5s] md:duration-0'></div>
+        <div class='w-screen h-screen relative bg-cover lg:bg-center transition-[background-position] duration-[5s] lg:duration-0'></div>
       </div>
     {/each}
   </div>
@@ -103,7 +112,7 @@
       </div>
     </div>
   </div>
-  <div class="absolute right-16 bottom-16 hidden md:flex items-center justify-center text-sm">
+  <div class="absolute right-16 bottom-16 hidden lg:flex items-center justify-center text-sm">
     <button  on:click={handleClick} data-name='left' class='transition-colors duration-200 backdrop-blur-sm bg-white bg-opacity-10 hover:bg-asa-red w-8 h-8 rounded-full flex justify-center items-center mr-3'>
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12.6667 3.33325L6 9.99992L12.6667 16.6666" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
