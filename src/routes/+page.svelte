@@ -107,7 +107,7 @@
           <div class='md:mt-3 mb-8 ml-1 text-gray-300 font-light text-sm'>University of California, San Diego</div>
         </div>
         <div>
-          <div class='w-[22rem] text-sm md:w-[30rem] lg:w-[40rem] font-light'>Our mission statement is to increase Japanese cultural awareness both within and outside of the UCSD community through the art of taiko.</div>
+          <div class='w-[20rem] text-sm md:w-[30rem] lg:w-[40rem] font-light'>Our mission statement is to increase Japanese cultural awareness both within and outside of the UCSD community through the art of taiko.</div>
         </div>
       </div>
     </div>
