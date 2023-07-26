@@ -24,6 +24,8 @@
 
       curr.scrollIntoView({behavior: `${behavior}`, block: 'nearest', inline: 'center' })
       const isMobile = window.innerHeight > window.innerWidth
+      console.log(isMobile)
+      console.log(window.innerWidth)
       if(isMobile && window.innerWidth <= 767) {
         curr.children[0].style.backgroundPositionX = `-${window.innerWidth}px`
       }
@@ -88,7 +90,7 @@
       </div>
     {/each}
   </div>
-  <div class='h-full w-full backdrop-brightness-75 backdrop-blur-0 duration-500'>
+  <div class='h-full w-full backdrop-brightness-75 duration-500'>
     <Header page="home" />
     <div class='absolute bottom-6 left-6 sm:bottom-8 sm:left-8 md:bottom-16 md:left-16 z-10'>
       <div class='opacity-90 text-white leading-5'>
@@ -97,7 +99,7 @@
           <div class='md:mt-3 mb-8 ml-1 text-gray-300 font-light text-sm'>University of California, San Diego</div>
         </div>
         <div>
-          <div class='w-[22rem] text-sm md:w-[40rem] font-light'>Our mission statement is to increase Japanese cultural awareness both within and outside of the UCSD community through the art of taiko.</div>
+          <div class='w-[22rem] text-sm md:w-[30rem] lg:w-[40rem] font-light'>Our mission statement is to increase Japanese cultural awareness both within and outside of the UCSD community through the art of taiko.</div>
         </div>
       </div>
     </div>
