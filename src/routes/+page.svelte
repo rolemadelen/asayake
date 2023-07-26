@@ -87,7 +87,7 @@
    <div class='absolute flex w-screen h-screen overflow-x-hidden'>
     {#each preloadImageUrls as image, index }
       <div data-id={index+1}>
-        <div class='ease-linear w-screen h-screen relative bg-cover lg:bg-center transition-[background-position] duration-[5s] lg:duration-0'></div>
+        <div class='w-screen h-screen relative bg-cover lg:bg-center transition-[background-position] duration-[5s] lg:duration-0'></div>
       </div>
     {/each}
   </div>
