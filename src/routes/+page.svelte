@@ -94,7 +94,7 @@
         <div class="flex-1"></div>
       </svelte:fragment>
     </Header>
-    <div class='absolute bottom-8 left-8 md:bottom-16 md:left-16 z-10'>
+    <div class='absolute bottom-6 left-6 sm:bottom-8 sm:left-8 md:bottom-16 md:left-16 z-10'>
       <div class='opacity-90 text-white leading-5'>
         <div>
           <div class='text-4xl md:text-6xl font-semibold'>Asayake Taiko</div>

@@ -9,10 +9,10 @@
   }
 </script>
 
-<header class='flex justify-center max-w-screen-xl h-full mx-auto md:h-24 text-white z-[9999]'>
+<header class='flex justify-center max-w-screen-xl h-full mx-auto md:h-20 text-white z-[9999]'>
   <slot name='logo'>
     <div class='flex-1'>
-      <a href="/" >
+      <a href="/" class='flex h-full'>
         <img src="/asayake_logo.svg" alt="logo" class="logo w-[150px] md:w-40 py-2 pl-2 md:py-0"/>
       </a>
     </div>
