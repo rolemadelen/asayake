@@ -12,7 +12,6 @@
 
   $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/bg/webp/${key+1}.webp`)
   $: {
-    if(currImage === 0 || currImage === numberOfImages-1) behavior = 'auto'
     if(mainWrapper) {
       const prev = document.querySelector(`[data-id="${prevImage+1}"]`);
       const curr = document.querySelector(`[data-id="${currImage+1}"]`);
