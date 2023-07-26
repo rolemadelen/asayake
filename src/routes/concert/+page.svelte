@@ -98,7 +98,7 @@
             <p class='md:text-xl'>
             {concert.year}
             </p>
-            <p class='text-sm md:text-2xl font-light md:font-medium lg:text-3xl w-32 md:w-full float-right'>
+            <p class='text-sm md:text-2xl font-light md:font-medium lg:text-3xl'>
             {concert.title}
           </p>
         </div>
@@ -115,7 +115,7 @@
               <p class='md:text-xl'>
               {concert.year}
               </p>
-            <p class='text-sm md:text-2xl font-light md:font-medium lg:text-3xl w-32 md:w-full'>
+            <p class='text-sm md:text-2xl font-light md:font-medium lg:text-3xl'>
               {concert.title}
             </p>
             </div>
@@ -132,7 +132,7 @@
             <p class='md:text-xl'>
             {concert.year}
             </p>
-            <p class='text-sm md:text-2xl font-light md:font-medium lg:text-3xl w-32 md:w-full'>
+            <p class='text-sm md:text-2xl font-light md:font-medium lg:text-3xl'>
             {concert.title}
           </p>
           </div>
