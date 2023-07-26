@@ -405,19 +405,11 @@
     const back = document.querySelectorAll(`[data-name="${name}"]`)[1]
 
     if(isFront) {
-      setTimeout(() => {
-        front.classList.add('hidden')
-        back.classList.remove('hidden')
-      }, 100)
-      front.style.transform = "rotateY(180deg)"
-      back.style.transform = "rotateY(0deg)"
+      front.classList.add('hidden')
+      back.classList.remove('hidden')
     } else {
-      front.style.transform = "rotateY(0deg)"
-      back.style.transform = "rotateY(180deg)"
-      setTimeout(() => {
-        front.classList.remove('hidden')
-        back.classList.add('hidden')
-      }, 100)
+      front.classList.remove('hidden')
+      back.classList.add('hidden')
     }
   }
 </script>
@@ -437,16 +429,16 @@
       <h2 class='text-2xl text-center py-2'>{asa.gen}</h2>
       <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-4 sm:gap-1 lg:gap-1 px-8 snap-y snap-mandatory'>
         {#each asa.members as member} 
-          <div role='button' tabindex="0" data-card="front" data-name="{member.name}" class='snap-start bg-asa-red relative rounded-md overflow-hidden duration-150' on:click={handleClick} on:mouseover={handleMouseOver} on:mouseleave={handleMouseLeave} on:focus>
+          <div role='button' tabindex="0" data-card="front" data-name="{member.name}" class='snap-start bg-asa-red relative rounded-md overflow-hidden' on:click={handleClick} on:mouseover={handleMouseOver} on:mouseleave={handleMouseLeave} on:focus>
             {#if member.imgs !== undefined}
               <img src="/members/{member.gen}/{member.imgs.main}.jpg" alt="{member.name}" />
               <img class='absolute top-0 opacity-0 duration-300' src="/members/{member.gen}/{member.imgs.alt}.jpg" alt="{member.name}" />
             {/if}
             <span class='absolute bottom-2 right-2 text-white font-light text-md backdrop-blur-sm px-2 py-1 rounded-md'>{member.name}</span>
           </div>
-          <div role='button' tabindex="0" data-card="back" data-name="{member.name}" class='overflow-y-auto relative member-detail hidden rounded-md overflow-hidden duration-150' on:click={handleClick}>
+          <div role='button' tabindex="0" data-card="back" data-name="{member.name}" class='overflow-y-auto relative member-detail hidden rounded-md overflow-hidden' on:click={handleClick}>
             {#if member.imgs !== undefined}
-              <img src="/members/{member.gen}/{member.imgs.main}.jpg" alt="{member.name}" class='opacity-5'/>
+              <img src="/members/{member.gen}/{member.imgs.alt}.jpg" alt="{member.name}" class='opacity-10'/>
             {/if}
             <div class="absolute top-0 left-0 p-4">
               <div class='mb-4'>
