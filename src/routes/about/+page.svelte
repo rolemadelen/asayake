@@ -46,7 +46,7 @@
 <main class='main-wrapper'>
   <div class='body-bg text-white font-light'>
     <div class="bg-black flex justify-center items-center bg-opacity-80">
-      <div class='max-w-screen-xl grid auto-rows-min grid-cols-1 md:grid-cols-2 gap-4 m-auto px-16 md:px-8 py-28'>
+      <div class='max-w-screen-xl grid auto-rows-min grid-cols-1 md:grid-cols-2 gap-4 m-auto px-8 py-20 '>
         <div>
           <div class='text-4xl font-medium mb-2'>Who we are</div>
           <p class='mb-10'>
@@ -71,7 +71,7 @@
     </div>
   </div>
   <div class='body-bg2 text-white font-light'>
-    <div class="flex justify-center items-center py-28 bg-white opacity-[0.95] text-[#222]">
+    <div class="flex justify-center items-center pt-8 pb-20 bg-white opacity-[0.95] text-[#222]">
       <div class='max-w-screen-xl grid auto-rows-min grid-cols-1 gap-4 m-auto px-8'>
         <div class='text-4xl font-medium mt-10'>History</div>
         <p>In spring of 2002, Bobby Koga, Reid Matsuoka and several other students came together to start a taiko group at the University of California, San Diego. With financial support from the university, the fledgling group purchased various equipment in order to construct the Japanese drums in garages of devoted members. In spring of 2004, Asayake Taiko at UCSD debuted with their completed drums at the 3rd Annual Nikkei Student Union Culture Show.</p>
