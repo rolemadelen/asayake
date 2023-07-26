@@ -89,11 +89,7 @@
     {/each}
   </div>
   <div class='h-full w-full backdrop-brightness-75 backdrop-blur-0 duration-500'>
-    <Header page="home">
-      <svelte:fragment slot="logo">
-        <div class="flex-1"></div>
-      </svelte:fragment>
-    </Header>
+    <Header page="home" />
     <div class='absolute bottom-6 left-6 sm:bottom-8 sm:left-8 md:bottom-16 md:left-16 z-10'>
       <div class='opacity-90 text-white leading-5'>
         <div>
