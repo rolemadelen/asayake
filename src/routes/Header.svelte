@@ -9,7 +9,7 @@
   }
 </script>
 
-<header class='flex justify-center max-w-screen-xl h-full mx-auto md:h-20 text-white z-[9999]'>
+<header class='flex justify-center w-full h-full px-8 mx-auto md:h-20 text-white z-[9999]'>
   <slot name='logo'>
     <div class='flex-1'>
       <a href="/" class='flex h-full'>
