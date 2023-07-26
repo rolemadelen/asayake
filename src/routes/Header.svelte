@@ -9,15 +9,15 @@
   }
 </script>
 
-<header class='flex justify-center w-full h-full px-2 lg:max-w-screen-xl mx-auto lg:h-20 text-white z-[9999]'>
+<header class='flex justify-center w-full px-2 lg:max-w-screen-xl mx-auto h-20 text-white z-[9999]' class:full-width={page==='home'}>
   <slot name='logo'>
-    <div class='flex-1'>
+    <div class='flex-1' class:hide={page==='home'}>
       <a href="/" class='flex h-full'>
         <img src="/asayake_logo.svg" alt="logo" class="logo w-[150px] md:w-40 py-2 pl-2 md:py-0"/>
       </a>
     </div>
   </slot>
-  <nav class='hamburger-menu lg:hidden w-screen z-[999]'>
+  <nav class='hamburger-menu lg:hidden z-[999] !absolute right-4 top-4'>
     <div class='menu-button z-50' class:active={page!=='home'} on:click={handleClick}>
       <span class='menu-button__line'></span>
       <span class='menu-button__line'></span>
@@ -49,7 +49,7 @@
       </div>
     </div>
   </nav>
-  <nav class='menu hidden lg:flex z-[999]' class:text-black={page!=='home'}>
+  <nav class='menu hidden lg:flex z-[999]' class:mt-8={page==='home'} class:text-black={page!=='home'}>
     <a href="/about" class='nav-item' class:active={page==='about'}>
       <span>About</span>
       <span>About</span>
@@ -94,7 +94,6 @@
     width: 50px;
     height: 50px;
     border-radius: 5px;
-    margin: 8px;
   }
 
   .menu-button {
@@ -114,6 +113,15 @@
     background: white;
     width: 45%;
     z-index: 50;
+  }
+
+  .full-width {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  
+  .hide {
+    display: none;
   }
 
   :global(.menu-button.active .menu-button__line) {
