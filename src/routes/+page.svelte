@@ -27,15 +27,9 @@
         behavior = 'auto'
       }
       curr.scrollIntoView({behavior: `${behavior}`, block: 'nearest', inline: 'center' })
-      if(isMobile) {
-        const w = window.innerWidth 
-        if(w <= 640) {
-          curr.children[0].style.backgroundPositionX = '-850px'
-        } else if (w <= 768) {
-          curr.children[0].style.backgroundPositionX = '-700px'
-        } else if (w <= 1023) {
-          curr.children[0].style.backgroundPositionX = '-550px'
-        }
+      const w = window.innerWidth
+      if(isMobile && w <= 1023) {
+        curr.children[0].style.backgroundPositionX = `-${Math.min(550,w)}px`
       }
     }
     behavior = 'smooth'
