@@ -34,6 +34,8 @@
 </script>
 
 <svelte:head>
+  <title>Asayake Taiko | About</title>
+  <meta name="description" content="Asayake Taiko | About" />
   {#each preloadImageUrls as image}
     <link rel="preload" as="image" href={image} />
   {/each}
