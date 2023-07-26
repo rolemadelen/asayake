@@ -9,7 +9,7 @@
   }
 </script>
 
-<header class='flex justify-center w-full h-full md:px-20 mx-auto md:h-20 text-white z-[9999]'>
+<header class='flex justify-center w-full h-full md:px-20 mx-auto lg:h-20 text-white z-[9999]'>
   <slot name='logo'>
     <div class='flex-1'>
       <a href="/" class='flex h-full'>
@@ -17,7 +17,7 @@
       </a>
     </div>
   </slot>
-  <nav class='hamburger-menu md:hidden w-screen z-[999]'>
+  <nav class='hamburger-menu lg:hidden w-screen z-[999]'>
     <div class='menu-button z-50' class:active={page!=='home'} on:click={handleClick}>
       <span class='menu-button__line'></span>
       <span class='menu-button__line'></span>
@@ -49,7 +49,7 @@
       </div>
     </div>
   </nav>
-  <nav class='menu hidden md:flex z-[999]' class:text-black={page!=='home'}>
+  <nav class='menu hidden lg:flex z-[999]' class:text-black={page!=='home'}>
     <a href="/about" class='nav-item' class:active={page==='about'}>
       <span>About</span>
       <span>About</span>
