@@ -23,11 +23,13 @@
 
       const isMobile = window.innerHeight > window.innerWidth
 
+      if(currImage === 0) behavior = 'auto'
+
       curr.scrollIntoView({behavior: `${behavior}`, block: 'nearest', inline: 'center' })
       const w = window.innerWidth
       if(isMobile && w <= 1023) {
         curr.children[0].style.backgroundPositionX = `-${Math.min(550,w)}px`
-      }
+      } 
     }
     behavior = 'smooth'
   }
@@ -57,9 +59,9 @@
     }
 
     interval = setInterval(() => {
-    prevImage = currImage
-    currImage = (currImage + 1) % numberOfImages
-    nextImage = currImage + 1
+      prevImage = currImage
+      currImage = (currImage + 1) % numberOfImages
+      nextImage = currImage + 1
     }, 5000)
   }
 
