@@ -9,10 +9,10 @@
   }
 </script>
 
-<header class='flex justify-center w-full px-2 lg:max-w-screen-xl mx-auto h-20 text-white z-[9999]' class:full-width={page==='home'}>
+<header class='flex justify-center lg:px-10 h-20 text-white z-[9999]' class:full-width={page==='home'}>
   <slot name='logo'>
-    <div class='flex-1' class:hide={page==='home'}>
-      <a href="/" class='flex h-full'>
+    <div class='flex-1 pl-2 lg:pl-0'>
+      <a href="/" class='flex h-full' class:hide={page==='home'}>
         <img src="/asayake_logo.svg" alt="logo" class="logo w-[150px] md:w-40 py-2 pl-2 md:py-0"/>
       </a>
     </div>
@@ -49,7 +49,7 @@
       </div>
     </div>
   </nav>
-  <nav class='menu hidden lg:flex z-[999]' class:mt-8={page==='home'} class:text-black={page!=='home'}>
+  <nav class='menu hidden lg:flex z-[999] text-sm' class:text-black={page!=='home'}>
     <a href="/about" class='nav-item' class:active={page==='about'}>
       <span>About</span>
       <span>About</span>
