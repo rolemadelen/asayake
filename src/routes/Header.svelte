@@ -9,207 +9,229 @@
   }
 </script>
 
-<header class='flex justify-center lg:px-10 h-20 text-white z-[9999]' class:full-width={page==='home'}>
+<header class='text-white z-[999] relative'>
   <slot name='logo'>
-    <div class='flex-1 pl-2 lg:pl-0'>
-      <a href="/" class='flex h-full' class:hide={page==='home'}>
-        <img src="/asayake_logo.svg" alt="logo" class="logo w-[150px] md:w-40 py-2 pl-2 md:py-0"/>
+    <div class='flex-1'>
+      <a href="/" class='flex h-full' class:hidden={page==='home'}>
+        <img src="/asayake_logo.svg" alt="logo" class="logo"/>
       </a>
     </div>
   </slot>
-  <nav class='hamburger-menu lg:hidden z-[999] !absolute right-4 top-4'>
-    <div class='menu-button z-50' class:active={page!=='home'} on:click={handleClick}>
-      <span class='menu-button__line'></span>
-      <span class='menu-button__line'></span>
-      <span class='menu-button__line'></span>
-    </div>
-    <div bind:this="{hamburgerNav}" class='fixed z-[-1] top-[-120%] left-0 hamburger-menu-nav w-screen h-screen bg-[#791111ee] rounded-bl-[300px] rounded-br-[300px] ease-in-out duration-1000'>
-      <div class='flex flex-col pt-16'>
-        <a href="/" class='nav-item' class:active={page==='home'}>
-          <p>Home</p>
-        </a>
-        <a href="/about" class='nav-item' class:active={page==='about'}>
-          <p>About</p>
-        </a>
-        <a href="/members" class='nav-item' class:active={page==='members'}>
-          <p>Members</p>
-        </a>
-        <a href="/gallery" class='nav-item' class:active={page==='gallery'}>
-          <p>Gallery</p>
-        </a>
-        <a href="/concert" class='nav-item' class:active={page==='concert'}>
-          <p>Concert</p>
-        </a>
-        <a href="/contact" class='nav-item' class:active={page==='contact'}>
-          <p>Contact</p>
-        </a>
-      </div>
-      <div class='absolute w-full overflow-hidden pt-4 bottom-14 left-1/2 -translate-x-1/2 text-sm m-auto text-center text-gray-300 mt-80 border-t-[1px] border-t-[#ffffff11]'>
-        <p>asayaketaiko@gmail.com</p>
-      </div>
-    </div>
-  </nav>
-  <nav class='menu hidden lg:flex z-[999] text-sm' class:text-black={page!=='home'}>
-    <a href="/about" class='nav-item' class:active={page==='about'}>
+  
+  <nav class='menu flex items-center' class:text-black={page!=='home'}>
+    <a href="/about" class='nav-item hidden lg:flex' class:active={page==='about'}>
       <span>About</span>
       <span>About</span>
     </a>
-    <a href="/members" class='nav-item' class:active={page==='members'}>
+    <a href="/members" class='nav-item hidden lg:flex' class:active={page==='members'}>
       <span>Members</span>
       <span>Members</span>
     </a>
-    <a href="/gallery" class='nav-item' class:active={page==='gallery'}>
+    <a href="/gallery" class='nav-item hidden lg:flex' class:active={page==='gallery'}>
       <span>Gallery</span>
       <span>Gallery</span>
     </a>
-    <a href="/concert" class='nav-item' class:active={page==='concert'}>
+    <a href="/concert" class='nav-item hidden lg:flex' class:active={page==='concert'}>
       <span>Concert</span>
       <span>Concert</span>
     </a>
-    <a href="/contact" class='nav-item' class:active={page==='contact'}>
+    <a href="/contact" class='nav-item hidden lg:flex' class:active={page==='contact'}>
       <span>Contact</span>
       <span>Contact</span>
     </a>
+    <nav class='hamburger-menu relative'>
+      <div class='menu-button z-50 relative' class:text-black={page!=='home'} on:click={handleClick}>
+        <span class='menu-button__line'></span>
+        <span class='menu-button__line'></span>
+        <span class='menu-button__line'></span>
+      </div>
+
+      <div bind:this="{hamburgerNav}" class='fixed top-[-120%] left-0 hamburger-menu-nav w-screen h-screen bg-asa-red rounded-bl-[300px] rounded-br-[300px] ease-out duration-1000'>
+        <div class='flex flex-col items-center text-center pt-20'>
+          <a href="/" class='nav-item' class:active={page==='home'}>
+            <p>Home</p>
+          </a>
+          <a href="/about" class='nav-item' class:active={page==='about'}>
+            <p>About</p>
+          </a>
+          <a href="/members" class='nav-item' class:active={page==='members'}>
+            <p>Members</p>
+          </a>
+          <a href="/gallery" class='nav-item' class:active={page==='gallery'}>
+            <p>Gallery</p>
+          </a>
+          <a href="/concert" class='nav-item' class:active={page==='concert'}>
+            <p>Concert</p>
+          </a>
+          <a href="/contact" class='nav-item' class:active={page==='contact'}>
+            <p>Contact</p>
+          </a>
+        </div>
+        <div class='absolute w-full overflow-hidden pt-4 bottom-14 left-1/2 -translate-x-1/2 text-sm m-auto text-center text-gray-300 mt-80 border-t-[1px] border-t-[#ffffff11]'>
+          <p>asayaketaiko@gmail.com</p>
+        </div>
+      </div>
+    </nav>
   </nav>
 </header>
 
-<style>
+<style lang="scss">
+@function px2vw($size, $bp: 1920) {
+  @return ($size / $bp * 100) * 1vw;
+}
+
+header {
+  position: relative;
+  display: flex;
+  height: 80px;
+  align-items: center;
+  margin: auto 32px;
+
+  .logo {
+    width: 180px;
+  }
+}
+
+.menu {
   .nav-item {
     position: relative;
-    width: auto;
+    font-size: 14px;
+    font-weight: bold;
+    width: 80px;
     height: 40px;
-    display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
-    align-items: center; 
     overflow: hidden;
-    margin: auto 1.2rem;
-    letter-spacing: 1px;
     transform: translateY(0);
-    text-transform: uppercase;
-  }
+    margin-right: 32px;
+    letter-spacing: 0.5px;
 
-  .hamburger-menu {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    border-radius: 5px;
-  }
+    &::after {
+      content:"";
+      position: absolute;
+      width: 100%;
+      height: px2vw(1);
+      border-bottom: px2vw(1) solid #791111;
+      left: -100%;
+      bottom: 0;
+      transition: left 0.3s cubic-bezier(1,-0.33, 0, 0.41);
+      border-radius: 999px;
+    }
 
+    &:hover {
+      &::after {
+        left: 0;
+      }
+
+      span:first-child {
+        transform: translateY(-150%);
+      }
+
+      span:last-child {
+        transform: translateY(-50%);
+      }
+    }
+
+    &.active {
+      color: #791111;
+    }
+
+    span {
+      transition: transform 0.4s ease;
+
+      &:first-child {
+        transform:  translateY(50%);
+      }
+
+      &:last-child {
+        transform: translateY(150%);
+      }
+    }
+  }
+}
+
+.hamburger-menu {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  z-index: 50;
+  
+  .nav-item {
+    font-size: max(14px, px2vw(20));
+    width: max(80px, px2vw(100));
+
+    &.active {
+      color: inherit;
+    }
+  }
+  
   .menu-button {
     transition: all 0.6s;
     width: 50px;
     height: 50px;
     cursor: pointer;
-  }
 
-  .menu-button__line {
-    display: inline-block;
-    transition: all 0.4s;
-    position: absolute;
-    left: 14px;
-    height: 3px;
-    border-radius: 2px;
-    background: white;
-    width: 45%;
-    z-index: 50;
-  }
+    &.text-black {
+      .menu-button__line {
+        background-color: #111;
+      }
+    }
 
-  .full-width {
-    max-width: 100% !important;
-    width: 100% !important;
-  }
-  
-  .hide {
-    display: none;
-  }
+    &__line {
+      display: inline-block;
+      transition: all 0.4s;
+      position: absolute;
+      left: 14px;
+      height: 3px;
+      border-radius: 2px;
+      background-color: white;
+      width: 45%;
+      z-index: 50;
 
-  :global(.menu-button.active .menu-button__line) {
+      &:nth-of-type(1) {
+        top: 15px;
+      }
+      &:nth-of-type(2) {
+        top: 23px;
+      }
+      &:nth-of-type(3) {
+        top: 31px;
+      }
+    }
+  }
+}
+
+.text-black {
+  color: #111;
+}
+
+:global(.menu-button.active .menu-button__line) {
     background: black;
   }
-  .menu-button__line:nth-of-type(1) {
-    top: 15px;
-  }
-  .menu-button__line:nth-of-type(2) {
-    top: 23px;
-  }
-  .menu-button__line:nth-of-type(3) {
-    top: 31px;
-  }
 
-  :global(.hamburger-menu.active .menu-button__line:nth-of-type(1)) {
-    top: 18px;
-    left: 18px;
-    transform: translateY(6px) rotate(-45deg);
-    width: 30%;
-  }
+:global(.hamburger-menu.active .menu-button__line:nth-of-type(1)) {
+  top: 18px !important;
+  left: 18px !important;
+  transform: translateY(6px) rotate(-45deg) !important;
+  width: 30% !important;
+}
 
-  :global(.hamburger-menu.active .menu-button__line:nth-of-type(2)) {
-    opacity: 0;
-  }
+:global(.hamburger-menu.active .menu-button__line:nth-of-type(2)) {
+  opacity: 0 !important;
+}
 
-  :global(.hamburger-menu.active .menu-button__line:nth-of-type(3)) {
-    top: 30px;
-    left: 18px;
-    transform: translateY(-6px) rotate(45deg);
-    width: 30%;
-  }
+:global(.hamburger-menu.active .menu-button__line:nth-of-type(3)) {
+  top: 30px !important;
+  left: 18px !important;
+  transform: translateY(-6px) rotate(45deg) !important;
+  width: 30% !important;
+}
 
-  :global(.hamburger-menu.active .menu-button) {
-    transform: rotate(360deg);
-  }
-
-  .menu .nav-item span {
-    transition: transform 0.4s ease;
-  }
-
-  .menu .nav-item span:first-child {
-    transform:  translateY(50%);
-  }
-  .menu .nav-item span:last-child {
-    transform: translateY(150%);
-  }
-
-  .menu .nav-item::after {
-    content:"";
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    border-bottom: 1px solid #791111;
-    left: -100%;
-    bottom: 0;
-    transition: left 0.3s cubic-bezier(1,-0.33, 0, 0.41);
-    border-radius: 999px;
-  }
-
-  .menu .nav-item:hover::after {
-    left: 0;
-  }
-  
-  .menu .nav-item:hover span:first-child {
-    transform: translateY(-150%);
-  }
-  .menu .nav-item:hover span:last-child {
-    transform: translateY(-50%);
-  }
-
-  .text-black {
-    color: #111;
-  }
-  .menu .nav-item.active {
-    color: #791111;
-  }
-
-  .hamburger-menu .nav-item.active::after {
-    content: "";
-    width: 60%;
-    height: 1px;
-    margin: 0 auto;
-    background-color: #ffffff55;
-    border-radius: 10px;
-    position: absolute;
-    top: 50%;
-  }
+:global(.hamburger-menu.active .menu-button) {
+  transform: rotate(360deg) !important;
+}
 
   a {
     color: inherit;
