@@ -82,7 +82,6 @@
   <meta name="description" content="Asayake Taiko | University of California San Diego" />
 </svelte:head>
 
-<Cursor />
 <main bind:this="{mainWrapper}" class='main-wrapper h-screen bg-asa-red'>
    <div class='absolute flex w-screen h-screen overflow-x-hidden'>
     {#each preloadImageUrls as image, index }
@@ -91,34 +90,87 @@
       </div>
     {/each}
   </div>
-  <div class='h-full w-full backdrop-brightness-75 duration-500'>
-    <Header page="home" />
-    <div class='absolute bottom-6 left-6 sm:bottom-8 sm:left-8 md:bottom-16 md:left-16 z-10'>
-      <div class='opacity-90 text-white leading-5'>
-        <div>
-          <div class='text-4xl md:text-6xl font-semibold'>Asayake Taiko</div>
-          <div class='md:mt-3 mb-8 ml-1 text-gray-300 font-light text-sm'>University of California, San Diego</div>
-        </div>
-        <div>
-          <div class='w-[20rem] text-sm md:w-[30rem] lg:w-[40rem] font-light'>Our mission statement is to increase Japanese cultural awareness both within and outside of the UCSD community through the art of taiko.</div>
-        </div>
+  <Header page="home" />
+  <div class='absolute h-full w-full top-0 backdrop-brightness-75 duration-500'>
+    <div class='main absolute text-white leading-tight z-0'>
+      <div class='main-title'>
+        <div class='name font-bold'>Asayake Taiko</div>
+        <div class='school text-gray-300'>University of California, San Diego</div>
       </div>
+      <div class='mission'>Our mission statement is to increase Japanese cultural awareness both within and outside of the UCSD community through the art of taiko.</div>
     </div>
   </div>
-  <div class="absolute right-16 bottom-16 hidden lg:flex items-center justify-center text-sm">
-    <button  on:click={handleClick} data-name='left' class='transition-colors duration-200 backdrop-blur-sm bg-white bg-opacity-10 hover:bg-asa-red w-8 h-8 rounded-full flex justify-center items-center mr-3'>
+  <div class="pagination absolute hidden lg:flex items-center justify-center z-10">
+    <button  on:click={handleClick} data-name='left' class='transition-colors duration-200 backdrop-blur-sm bg-white bg-opacity-10 hover:bg-asa-red'>
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12.6667 3.33325L6 9.99992L12.6667 16.6666" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
-    <button on:click={handleClick} data-name='right' class='transition-colors duration-200 backdrop-blur-sm bg-white bg-opacity-10 hover:bg-asa-red w-8 h-8 rounded-full flex justify-center items-center mr-3'>
+    <button on:click={handleClick} data-name='right' class='transition-colors duration-200 backdrop-blur-sm bg-white bg-opacity-10 hover:bg-asa-red'>
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M7.33333 3.33325L14 9.99992L7.33333 16.6666" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
-    <div class="text-gray-100 font-light">
-      <span class="inline-block text-3xl w-8 text-center">{currImage+1}</span> 
-      <span class="inline-block text-sm">/ {numberOfImages}</span>
+    <div class="numbering text-gray-100 font-light">
+      <span class="inline-block text-center">{currImage+1}</span> 
+      <span class="inline-block">/ {numberOfImages}</span>
     </div>
-</div>
+  </div>
 </main>
+
+<style lang="scss">
+@function px2vw($size, $bp: 1920) {
+  @return ($size / $bp * 100) * 1vw;
+}
+
+.main {
+  left: px2vw(50);
+  bottom: px2vw(50);
+  &-title {
+    .name {
+      font-size: px2vw(60);
+    }
+    .school {
+      font-size: px2vw(16);
+      margin-top: px2vw(4);
+    }
+  }
+  .mission {
+    font-size: px2vw(16);
+    width: px2vw(600);
+    margin-top: px2vw(32);
+  }
+}
+
+.pagination {
+  right: px2vw(50);
+  bottom: px2vw(50);
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: px2vw(32);
+    height: px2vw(32);
+    margin-right: px2vw(10);
+    border-radius: 999px;
+
+    svg {
+      width: px2vw(20);
+      height: px2vw(20);
+    }
+  }
+
+  .numbering {
+    & > span:first-child {
+      width: px2vw(40);
+      font-size: px2vw(32);
+    }
+
+    & > span:last-child {
+      font-size: px2vw(14);
+      color: #eee;
+    }
+  }
+}
+</style>
