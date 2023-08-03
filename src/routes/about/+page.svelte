@@ -32,7 +32,7 @@
       e.currentTarget.innerText = "Read Less";
       // e.currentTarget.children[1].src = "/icons/up-arrow.svg";
     } else {
-      e.currentTarget.innerText = "What is Taiko?";
+      e.currentTarget.innerText = "Read More";
       // e.currentTarget.children[1].src = "/icons/down-arrow.svg";
     }
   }
@@ -117,7 +117,7 @@
     </div>
   </section>
   <div class='read-more-button'>
-    <button on:click={handleClick}>What is Taiko?</button>
+    <button on:click={handleClick}>Read More</button>
   </div>
 </main>
 

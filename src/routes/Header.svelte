@@ -1,52 +1,60 @@
 <script>
-  export let page
+  /**
+   * @type {string}
+   */
+   export let page;
+  /**
+   * @type {HTMLDivElement}
+   */
   let hamburgerNav
 
   const handleClick = (e) => {
-    document.querySelector('.hamburger-menu').classList.toggle('active')
+    document.querySelector('.hamburger-menu')?.classList.toggle('active')
     hamburgerNav.classList.toggle('!rounded-none')
     hamburgerNav.classList.toggle('!top-0')
   }
 </script>
 
-<header class='text-white z-[999] relative'>
+<header class='text-white z-[999] relative' class:backdrop-blur-md={page!=='home'}>
   <slot name='logo'>
-    <div class='flex-1'>
+    <div class=''>
       <a href="/" class='flex h-full' class:hidden={page==='home'}>
         <img src="/asayake_logo.svg" alt="logo" class="logo"/>
       </a>
     </div>
   </slot>
   
-  <nav class='menu flex items-center' class:text-black={page!=='home'}>
-    <a href="/about" class='nav-item hidden lg:flex' class:active={page==='about'}>
-      <span>About</span>
-      <span>About</span>
-    </a>
-    <a href="/members" class='nav-item hidden lg:flex' class:active={page==='members'}>
-      <span>Members</span>
-      <span>Members</span>
-    </a>
-    <a href="/gallery" class='nav-item hidden lg:flex' class:active={page==='gallery'}>
-      <span>Gallery</span>
-      <span>Gallery</span>
-    </a>
-    <a href="/concert" class='nav-item hidden lg:flex' class:active={page==='concert'}>
-      <span>Concert</span>
-      <span>Concert</span>
-    </a>
-    <a href="/contact" class='nav-item hidden lg:flex' class:active={page==='contact'}>
-      <span>Contact</span>
-      <span>Contact</span>
-    </a>
-    <nav class='hamburger-menu relative'>
+  <div class='flex items-center'>
+    <nav class='menu flex items-center' class:text-black={page!=='home'}>
+      <a href="/about" class='nav-item hidden lg:flex' class:active={page==='about'}>
+        <span>About</span>
+        <span>About</span>
+      </a>
+      <a href="/members" class='nav-item hidden lg:flex' class:active={page==='members'}>
+        <span>Members</span>
+        <span>Members</span>
+      </a>
+      <a href="/gallery" class='nav-item hidden lg:flex' class:active={page==='gallery'}>
+        <span>Gallery</span>
+        <span>Gallery</span>
+      </a>
+      <a href="/concert" class='nav-item hidden lg:flex' class:active={page==='concert'}>
+        <span>Concert</span>
+        <span>Concert</span>
+      </a>
+      <a href="/contact" class='nav-item hidden lg:flex' class:active={page==='contact'}>
+        <span>Contact</span>
+        <span>Contact</span>
+      </a>
+    </nav>
+    <nav class='hamburger-menu'>
       <div class='menu-button z-50 relative' class:text-black={page!=='home'} on:click={handleClick}>
         <span class='menu-button__line'></span>
         <span class='menu-button__line'></span>
         <span class='menu-button__line'></span>
       </div>
 
-      <div bind:this="{hamburgerNav}" class='fixed top-[-120%] left-0 hamburger-menu-nav w-screen h-screen bg-asa-red rounded-bl-[300px] rounded-br-[300px] ease-out duration-1000'>
+      <div bind:this="{hamburgerNav}" class:top-[-1200%]={page!=="home"} class:top-[-120%]={page==="home"}  class='hidden left-0 hamburger-menu-nav w-screen h-screen bg-asa-red rounded-bl-[300px] rounded-br-[300px] ease-out duration-1000'>
         <div class='flex flex-col items-center text-center pt-20'>
           <a href="/" class='nav-item' class:active={page==='home'}>
             <p>Home</p>
@@ -72,20 +80,22 @@
         </div>
       </div>
     </nav>
-  </nav>
+  </div>
 </header>
 
 <style lang="scss">
 @function px2vw($size, $bp: 1920) {
-  @return ($size / $bp * 100) * 1vw;
+  @return calc($size / $bp * 100) * 1vw;
 }
 
 header {
-  position: relative;
-  display: flex;
+  position: fixed;
+  width: 100%;
   height: 80px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin: auto 32px;
+  padding: 0 32px;
 
   .logo {
     width: 180px;
