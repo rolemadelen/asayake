@@ -2,7 +2,6 @@
   import Header from '/src/routes/Header.svelte'
   import Footer from '/src/routes/Footer.svelte'
   import Cursor from '/src/routes/Cursor.svelte'
-  import { onMount } from 'svelte'
 
   const alumni = [
     {
@@ -320,7 +319,7 @@
           major: "Cognitive and Behavioral Neuroscience",
           gen: "gen18",
           fav: "Kodomo",
-          quote: "It's my favorite song because its fun to play and interact with everyone in",
+          quote: "It's my favorite song because its fun to play and interact with everyone in!",
           imgs: {
             main: "makoa_bryson_main",
             alt: "makoa_bryson_alt"
@@ -376,24 +375,18 @@
 
   let displayMembers = currentMembers;
 
-  let banner;
-
-  // onMount(() => {
-  //   setTimeout(() => {
-  //     banner.children[0].classList.toggle('opacity-100');
-  //     banner.children[0].classList.toggle('backdrop-brightness-50');
-  //   }, 300)
-  //   setTimeout(() => {
-  //     banner.style.height = "600px";
-  //   }, 1200)
-  // })
-
-
   const handleMouseOver = (e) => {
     e.currentTarget.children[1].classList.remove('hidden');
+    e.currentTarget.children[3].classList.add('backdrop-brightness-50');
+    e.currentTarget.children[3].classList.add('!top-0');
+    e.currentTarget.children[3].classList.add('!rounded-none');
+    
   }
   const handleMouseLeave = (e) => {
     e.currentTarget.children[1].classList.add('hidden');
+    e.currentTarget.children[3].classList.remove('backdrop-brightness-50');
+    e.currentTarget.children[3].classList.remove('!top-0');
+    e.currentTarget.children[3].classList.remove('!rounded-none');
   }
 
   const handleClick = (e) => {
@@ -421,24 +414,13 @@
     } else if (selectedGen === '18') {
       displayMembers = currentMembers.filter(m => m.gen === "Gen 18");
     }
-    // const isFront = e.currentTarget.dataset.card === 'front'
-    // const name = e.currentTarget.dataset.name
-    // const front = document.querySelectorAll(`[data-name="${name}"]`)[0]
-    // const back = document.querySelectorAll(`[data-name="${name}"]`)[1]
-
-    // if(isFront) {
-    //   front.classList.add('hidden')
-    //   back.classList.remove('hidden')
-    // } else {
-    //   front.classList.remove('hidden')
-    //   back.classList.add('hidden')
-    // }
   }
+
 </script>
 
 <Header page="members" />
 <section class='banner-wrapper'>
-  <div bind:this={banner} class='banner'>
+  <div class='banner'>
     <h1>Meet Our Team</h1>
     <h2>Academic Year 21-22</h2>
   </div>
@@ -469,6 +451,9 @@
         <div class='member-info'>
           <span class='name'>{member.name}</span>
           <span class='major'>{member.major}</span>
+        </div>
+        <div class='member-quote top-[-100%] duration-500 ease'>
+          <p>{member.quote}</p>
         </div>
       </div>
       {/each}
@@ -578,16 +563,16 @@
   }
 
   .gen-members {
-    // border: 1px solid black;
     width: 100%;
 
     .gen-member {
+      overflow: hidden;
+      position: relative;
       height: px2vw(370);
       margin: 0 px2vw(10) px2vw(10) 0;
     }
 
     .member-image {
-      width: px2vw(400);
       height: px2vw(270);
       border-radius: px2vw(5);
 
@@ -596,6 +581,20 @@
         top: 0;
         left: 0;
       }
+    }
+
+    .member-quote {
+      border-radius: px2vw(5);
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: px2vw(270);
+      overflow-y: auto;
+      font-size: px2vw(16);
+      padding: px2vw(10);
+      border-radius: 0 0 px2vw(300) px2vw(300);
+      line-height: 1.5;
+      color: white;
     }
 
     .member-info {
