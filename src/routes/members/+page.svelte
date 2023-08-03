@@ -11,7 +11,7 @@
     },
     {
       gen: "Gen 17",
-      members: ['Jii Eu🐱', 'Alison Liu', 'Geoffery Hand', 'Miguel Lazaro', 'Yatavee Vajaphattana', 'Keita Kadokura', 'Nick Alan Wong', 'Jeff Onuma']
+      members: ['Jii Eu', 'Alison Liu', 'Geoffery Hand', 'Miguel Lazaro', 'Yatavee Vajaphattana', 'Keita Kadokura', 'Nick Alan Wong', 'Jeff Onuma']
     },
     {
       gen: "Gen 16",
@@ -374,17 +374,19 @@
     }
   ]
 
+  let displayMembers = currentMembers;
+
   let banner;
 
-  onMount(() => {
-    setTimeout(() => {
-      banner.children[0].classList.toggle('opacity-100');
-      banner.children[0].classList.toggle('backdrop-brightness-50');
-    }, 300)
-    setTimeout(() => {
-      banner.style.height = "600px";
-    }, 1200)
-  })
+  // onMount(() => {
+  //   setTimeout(() => {
+  //     banner.children[0].classList.toggle('opacity-100');
+  //     banner.children[0].classList.toggle('backdrop-brightness-50');
+  //   }, 300)
+  //   setTimeout(() => {
+  //     banner.style.height = "600px";
+  //   }, 1200)
+  // })
 
 
   const handleMouseOver = (e) => {
@@ -399,85 +401,94 @@
   }
 
   const handleClick = (e) => {
-    const isFront = e.currentTarget.dataset.card === 'front'
-    const name = e.currentTarget.dataset.name
-    const front = document.querySelectorAll(`[data-name="${name}"]`)[0]
-    const back = document.querySelectorAll(`[data-name="${name}"]`)[1]
+    const selectedGen = e.currentTarget.dataset.gen;
+    document.querySelector('li.active')?.classList.remove('active');
+    e.currentTarget.classList.toggle('active');
 
-    if(isFront) {
-      front.classList.add('hidden')
-      back.classList.remove('hidden')
-    } else {
-      front.classList.remove('hidden')
-      back.classList.add('hidden')
+    if(selectedGen === 'alumni') {
+      document.querySelector('.gen-members')?.classList.add('hidden');
+      document.querySelector('.alumni')?.classList.remove('hidden');
+      return;
     }
+
+    document.querySelector('.gen-members')?.classList.remove('hidden');
+    document.querySelector('.alumni')?.classList.add('hidden');
+
+    if(selectedGen === 'all') {
+      displayMembers = currentMembers;
+    } else if (selectedGen === '21') {
+      displayMembers = currentMembers.filter(m => m.gen === "Gen 21");
+    } else if (selectedGen === '20') {
+      displayMembers = currentMembers.filter(m => m.gen === "Gen 20");
+    } else if (selectedGen === '19') {
+      displayMembers = currentMembers.filter(m => m.gen === "Gen 19");
+    } else if (selectedGen === '18') {
+      displayMembers = currentMembers.filter(m => m.gen === "Gen 18");
+    }
+    // const isFront = e.currentTarget.dataset.card === 'front'
+    // const name = e.currentTarget.dataset.name
+    // const front = document.querySelectorAll(`[data-name="${name}"]`)[0]
+    // const back = document.querySelectorAll(`[data-name="${name}"]`)[1]
+
+    // if(isFront) {
+    //   front.classList.add('hidden')
+    //   back.classList.remove('hidden')
+    // } else {
+    //   front.classList.remove('hidden')
+    //   back.classList.add('hidden')
+    // }
   }
 </script>
 
-<Cursor />
 <Header page="members" />
-<div bind:this={banner} class='banner duration-500'>
-  <div class="w-full h-full flex flex-col justify-center items-center text-white opacity-0 duration-300">
-    <p class='text-3xl md:text-5xl font-semibold text-center'>Meet Our Team</p>
-    <p class='text-md text-gray-300 mt-2'>Academic Year 21-22</p>
+<section class='banner-wrapper'>
+  <div bind:this={banner} class='banner'>
+    <h1>Meet Our Team</h1>
+    <h2>Academic Year 21-22</h2>
   </div>
-</div>
-<main class='main-wrapper'>
-  {#each currentMembers as asa}
-  <div class='pt-10 pb-20 relative'>
-    <div class='max-w-screen-xl m-auto'>
-      <h2 class='text-2xl text-center py-2'>{asa.gen}</h2>
-      <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-4 sm:gap-1 lg:gap-1 px-8 snap-y snap-mandatory'>
-        {#each asa.members as member} 
-          <div role='button' tabindex="0" data-card="front" data-name="{member.name}" class='snap-start bg-asa-red relative rounded-md overflow-hidden' on:click={handleClick} on:mouseover={handleMouseOver} on:mouseleave={handleMouseLeave} on:focus>
-            {#if member.imgs !== undefined}
-              <img src="/members/{member.gen}/{member.imgs.main}.jpg" alt="{member.name}" />
-              <img class='absolute top-0 opacity-0 duration-300' src="/members/{member.gen}/{member.imgs.alt}.jpg" alt="{member.name}" />
-            {/if}
-            <span class='absolute bottom-2 right-2 text-white font-light text-md backdrop-blur-sm px-2 py-1 rounded-md'>{member.name}</span>
-          </div>
-          <div role='button' tabindex="0" data-card="back" data-name="{member.name}" class='relative member-detail hidden rounded-md overflow-hidden' on:click={handleClick}>
-            {#if member.imgs !== undefined}
-              <img src="/members/{member.gen}/{member.imgs.alt}.jpg" alt="{member.name}" class='opacity-10'/>
-            {/if}
-            <div class="absolute top-0 left-0 p-4 overflow-y-auto h-full">
-              <div class='mb-4'>
-                <p class='text-xl font-semibold'>
-                  {member.name}
-                </p>
-                <p class='text-sm font-light text-gray-500'>
-                  {member.major}
-                </p>
-              </div>
-              <p class='font-light'>
-                "{member.quote}"
-              </p>
-            </div>
-          </div>
-        {/each}
+</section>
+<section class='main'>
+  <aside class="gen-menu-wrapper">
+    <ul class='gen-menu'>
+      <li data-gen="all" on:click={handleClick} class='active'>All</li>
+      <li data-gen="21" on:click={handleClick} >Generation 21</li>
+      <li data-gen="20" on:click={handleClick} >Generation 20</li>
+      <li data-gen="19" on:click={handleClick} >Generation 19</li>
+      <li data-gen="18" on:click={handleClick} >Generation 18</li>
+      <li data-gen="alumni" on:click={handleClick} >Alumni</li>
+    </ul>
+  </aside>
+  <div class="gen-members grid grid-cols-3">
+    {#each displayMembers as m}
+      {#each m.members.sort((a, b) => {
+        if(a.name < b.name) return -1;
+        else return 1;
+      }) as member}
+      <div class='gen-member'>
+        <img class='member-image' src="/members/{member.gen}/{member.imgs.main}.jpg" alt="{member.name}" />
+        <div class='member-info'>
+          <span class='name'>{member.name}</span>
+          <span class='major'>{member.major}</span>
+        </div>
       </div>
-    </div>
+      {/each}
+    {/each}
   </div>
-{/each}
-
-  <div class='pt-10 pb-20'>
-    <div class='max-w-screen-xl m-auto px-8'>
-      <h2 class='text-2xl py-6'>Alumni</h2>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {#each alumni as alum}
-          <div class='mb-6'>
-            <div class='text-lg font-semibold'>{alum.gen}</div>
-            <ul>
-              {#each alum.members.sort() as member}
-                <li class='text-sm py-1'>{member}</li>
-              {/each}
-            </ul>
-          </div>
-        {/each}
+  <div class='hidden alumni'>
+    {#each alumni as alum} 
+      <div class='alum'>
+        <div class='alum-title'>
+          {alum.gen}
+        </div>
+        <div class='grid grid-cols-3'>
+          {#each alum.members.sort() as member} 
+          <div class='alum-name'>{member}</div>
+          {/each}
+        </div>
       </div>
-    </div>
+    {/each}
   </div>
-</main>
+</section>
 <Footer />
 
 <svelte:head>
@@ -485,18 +496,138 @@
   <meta name="description" content="Asayake Taiko | Members" />
 </svelte:head>
 
-<style>
-  main, .banner {
-    font-family: 'Poppins', sans-serif;
+<style lang="scss">
+  @function px2vw($size, $bp: 1920) {
+    @return calc($size / $bp * 100) * 1vw;
   }
 
+  .banner-wrapper {
+    padding-top: px2vw(80);
+  }
   .banner {
-    background-image: url('/members/banner.jpg');
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    border-top: px2vw(1) solid #eee;
+    border-bottom: px2vw(1) solid #eee;
+    height: px2vw(300);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+
+    background-color: #791111;
+    color: #eee;
+
+    h1 {
+      font-size: px2vw(64);
+      font-weight: bold;
+    }
+
+    h2 {
+      margin-top: px2vw(5);
+      font-size: px2vw(20);
+      font-weight: 600;
+    }
   }
 
+  .main {
+    display: flex;
+    position: relative;
+    padding: px2vw(100) 0;
+    height: 100%;
+    margin: auto px2vw(32);
+  }
+
+  .gen-menu-wrapper {
+    .gen-menu {
+      position: sticky;
+      top: max(100px, px2vw(200));
+      width: px2vw(350);
+      margin-right: px2vw(250);
+
+      li {
+        height: px2vw(50);
+        font-size: px2vw(24);
+        color: #777;
+        font-weight: 600;
+        position: relative;
+        display: flex;
+        align-items: center;
+        
+        &:hover {
+          cursor: pointer;
+        }
+
+        &.active {
+          color: #000;
+
+          &::before {
+            content: "";
+            position: absolute;
+            left: px2vw(-15);
+            top: 50%;
+            transform: translateY(-50%);
+            display: inline-block;
+            border-radius: 999px;
+            background-color: #791111;
+            width: px2vw(10);
+            height: px2vw(10);
+          }
+        }
+      }
+    }
+  }
+
+  .gen-members {
+    // border: 1px solid black;
+    width: 100%;
+
+    .gen-member {
+      height: px2vw(370);
+      margin: 0 px2vw(10) px2vw(10) 0;
+    }
+
+    .member-image {
+      width: px2vw(400);
+      height: px2vw(270);
+      border-radius: px2vw(5);
+    }
+
+    .member-info {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      
+      .name {
+        margin-top: px2vw(5);
+        font-size: px2vw(20);
+        font-weight: bold;
+      }
+      
+      .major {
+        margin-top: px2vw(5);
+        font-size: px2vw(12);
+        color: #777;
+      }
+    }
+  }
+
+  .alumni {
+    .alum {
+      margin-bottom: px2vw(76);
+    }
+    .alum-title {
+      line-height: 1;
+      font-size: px2vw(24);
+      font-weight: 600;
+      margin-bottom: px2vw(20);
+    }
+
+    .alum-name {
+      width: px2vw(300);
+      font-size: px2vw(18);
+      border-bottom: 1px solid #eee;
+      margin-right: px2vw(64);
+      margin-bottom: px2vw(10);
+    }
+  }
 </style>
