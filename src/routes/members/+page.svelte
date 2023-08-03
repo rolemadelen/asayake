@@ -390,14 +390,10 @@
 
 
   const handleMouseOver = (e) => {
-    const isMobile = window.innerHeight > window.innerWidth
-    if(!isMobile)
-      e.currentTarget.children[1].classList.add('opacity-100')
+    e.currentTarget.children[1].classList.remove('hidden');
   }
   const handleMouseLeave = (e) => {
-    const isMobile = window.innerHeight > window.innerWidth
-    if(!isMobile)
-      e.currentTarget.children[1].classList.remove('opacity-100')
+    e.currentTarget.children[1].classList.add('hidden');
   }
 
   const handleClick = (e) => {
@@ -449,6 +445,8 @@
 </section>
 <section class='main'>
   <aside class="gen-menu-wrapper">
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
     <ul class='gen-menu'>
       <li data-gen="all" on:click={handleClick} class='active'>All</li>
       <li data-gen="21" on:click={handleClick} >Generation 21</li>
@@ -464,8 +462,10 @@
         if(a.name < b.name) return -1;
         else return 1;
       }) as member}
-      <div class='gen-member'>
+      <!-- svelte-ignore a11y-no-static-element-interactions -->
+      <div class='gen-member relative' on:mouseover={handleMouseOver} on:mouseleave={handleMouseLeave} on:focus>
         <img class='member-image' src="/members/{member.gen}/{member.imgs.main}.jpg" alt="{member.name}" />
+        <img class='member-image member-image-alt hidden' src="/members/{member.gen}/{member.imgs.alt}.jpg" alt="{member.name} alt" />
         <div class='member-info'>
           <span class='name'>{member.name}</span>
           <span class='major'>{member.major}</span>
@@ -590,6 +590,12 @@
       width: px2vw(400);
       height: px2vw(270);
       border-radius: px2vw(5);
+
+      &-alt {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
     }
 
     .member-info {
