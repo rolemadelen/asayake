@@ -9,7 +9,7 @@
    */
   let logoSlide;
   /**
-   * @type {HTMLSectionElement}
+   * @type {HTMLElement}
    */
   let logo;
   
