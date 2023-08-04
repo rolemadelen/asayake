@@ -2,91 +2,166 @@
   import Header from '/src/routes/Header.svelte'
   import Footer from '/src/routes/Footer.svelte'
   import Cursor from '/src/routes/Cursor.svelte'
-  import { onMount } from 'svelte'
 
-  const numberOfImages = 34;
-  let carousel;
-  let carouselId = 1;
-
-  onMount(() => {
-    document.querySelector("[data-id='1']").classList.add('selected')
-
-    document.querySelectorAll("[data-carousel-id]").forEach((el, index) => {
-      el.style.backgroundImage = `url(/gallery/gallery${index+1}.jpg)`
-    })
-
-    const nav = document.querySelector('.carouselNav')
-    setTimeout(() => {
-      carousel.classList.remove('opacity-0')
-    }, 100)
-
-    setTimeout(() => {
-      nav.classList.add('!translate-y-0')
-    }, 500)
-  })
+  const numberOfImages = 34
+  /**
+   * @type {string[]}
+   */
+  let preloadImageUrls = []
+  $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/gallery/gallery${key+1}.jpg`)
 
   const handleClick = (e) => {
-    document.querySelector('.selected').classList.remove('selected')
-    carouselId = e.currentTarget.dataset.id 
-    carousel.children[0].src = `/gallery/gallery${carouselId}.jpg`
-    e.currentTarget.classList.add('selected');
+    const enlarge = document.querySelector('.enlarge-section')
 
-    const carouselImg = document.querySelector(`[data-carousel-id="${carouselId}"]`)
-    carouselImg.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-  }
-
-  const handleResize = (e) => {
-    const carouselImg = document.querySelector(`[data-carousel-id="${carouselId}"]`)
-    carouselImg.scrollIntoView({ block: 'nearest', inline: 'center' });
+    if(e.currentTarget.dataset.action === 'close') {
+      enlarge?.classList.add('hidden')
+    } else {
+      if(enlarge) {
+        enlarge.classList.remove('hidden')
+        enlarge.children[0].children[0].src= e.currentTarget.children[0].src
+      }
+    }
   }
 </script>
 
-<svelte:window on:resize={handleResize} />
-
 <svelte:head>
   <title>Asayake Taiko | Gallery</title>
+  {#each preloadImageUrls as image}
+  <link rel="preload" as="image" href={image} />
+  {/each}
   <meta name="description" content="Asayake Taiko | Gallery" />
 </svelte:head>
 
-<Cursor />
 <Header page="gallery" />
-<main class='main-wrapper m-auto h-full md:h-screen bg-black'>
- <div bind:this="{carousel}" class='hidden carousel md:flex overflow-hidden z-30 opacity-0 md:duration-300'>
-    {#each Array(numberOfImages) as _, index (index)}
-      <div>
-        <div class='w-screen h-screen relative bg-center' data-carousel-id="{index+1}"></div>
-      </div>
+<section class='banner-wrapper'>
+  <div class='banner'>
+    <h1>Gallery</h1>
+  </div>
+</section>
+<section class='gallery-wrapper'>
+  <span class='note'>*Click to Enlarge Image</span>
+  <div class='gallery'>
+    {#each preloadImageUrls as path, i}
+    <div class='gallery-image' on:click={handleClick}>
+      <img src="{path}" alt="img-{i}" />
+    </div>
     {/each}
   </div>
-
-  <div class='carouselNav translate-y-[100%] md:fixed bottom-0 flex flex-col md:flex-row h-full md:h-32 md:overflow-x-scroll z-40 md:duration-300 transition-transform'>
-    {#each Array(numberOfImages) as _, index (index)}
-      <img data-id="{index+1}" src={`/gallery/gallery${index+1}.jpg`} alt="asayake" class="md:cursor-pointer hover:border-asa-red md:opacity-60 hover:opacity-100 md:duration-300" on:click={handleClick} />
-    {/each}
+</section>
+<section class="enlarge-section hidden">
+  <div>
+    <img src="" alt="enlarged" />
   </div>
-  <div class='md:hidden'>
-    <Footer />
-  </div>
-</main>
+  <button class='close' data-action='close' on:click={handleClick}>CLOSE</button>
+</section>
+<Footer />
 
-<style>
-  main {
-    font-family: 'Poppins', sans-serif;
+<style lang="scss">
+  @function px2vw($size, $bp: 1920) {
+    @return calc($size / $bp * 100) * 1vw;
   }
 
-  ::-webkit-scrollbar {
-    display: none;
+  .banner-wrapper {
+    padding-top: px2vw(80);
+  }
+  .banner {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    height: px2vw(300);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+
+    background-color: #791111;
+    color: #fff;
+
+    h1 {
+      font-size: px2vw(64);
+      font-weight: bold;
+    }
   }
 
-  :global(.selected) {
-    opacity: 1 !important;
+  .note {
+    display: block;
+    font-size: px2vw(16);
+    margin: px2vw(50) auto px2vw(25);
+    color: #777;
   }
 
-  .carousel div {
-    background-position: center;
-    background-repeat: no-repeat;
-    touch-action: none;
-    -webkit-overflow-scrolling: none;
-    overscroll-behavior: none;
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+
+
+    &-wrapper {
+      margin: px2vw(100) auto;
+      margin-left: px2vw(31.5);
+    }
+
+    &-image {
+      width: px2vw(300);
+      height: px2vw(150);
+      position: relative;
+      overflow: hidden;
+      // display: inline-block;
+      margin-right: px2vw(11);
+      margin-bottom: px2vw(50);
+      will-change: transform;
+      transition: transform 0.5s ease;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: px2vw(5);
+      }
+      
+      &:hover {
+        transform: scale(1.3);
+        cursor: pointer;
+        z-index: 10;
+        
+        & + div {
+          transform: scale(1.08);
+          z-index: 8;
+          
+          & + div {
+            transform: scale(1.03);
+            z-index: 6;
+          }
+        }
+      }
+    }
+  }
+
+  .enlarge-section {
+    position: relative;
+
+    div {
+      position: fixed;
+      background-color: #000000cc;
+      top: 0;
+      z-index: 1000;
+      width: 100vw;
+      height: 100vh;
+
+      img {
+        position: fixed;
+        width: 70%;
+        z-index: 1000;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50% ,-50%);
+      }
+    }
+
+    .close {
+      position: fixed;
+      z-index: 1001;
+      color: #fff;
+      top: 0;
+      font-size: px2vw(20);
+    }
   }
 </style>
