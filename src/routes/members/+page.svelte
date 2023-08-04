@@ -377,16 +377,11 @@
 
   const handleMouseOver = (e) => {
     e.currentTarget.children[1].classList.remove('hidden');
-    e.currentTarget.children[3].classList.add('backdrop-brightness-50');
-    e.currentTarget.children[3].classList.add('!top-0');
-    e.currentTarget.children[3].classList.add('!rounded-none');
-    
+    e.currentTarget.children[3].classList.add('backdrop-brightness-[0.65]', '!top-0', '!rounded-none');
   }
   const handleMouseLeave = (e) => {
     e.currentTarget.children[1].classList.add('hidden');
-    e.currentTarget.children[3].classList.remove('backdrop-brightness-50');
-    e.currentTarget.children[3].classList.remove('!top-0');
-    e.currentTarget.children[3].classList.remove('!rounded-none');
+    e.currentTarget.children[3].classList.remove('backdrop-brightness-[0.65]', '!top-0', '!rounded-none');
   }
 
   const handleClick = (e) => {
@@ -490,8 +485,6 @@
     padding-top: px2vw(80);
   }
   .banner {
-    border-top: px2vw(1) solid #eee;
-    border-bottom: px2vw(1) solid #eee;
     height: px2vw(300);
     display: flex;
     flex-direction: column;
@@ -500,7 +493,7 @@
     line-height: 1;
 
     background-color: #791111;
-    color: #eee;
+    color: #fff;
 
     h1 {
       font-size: px2vw(64);
