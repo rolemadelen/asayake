@@ -120,7 +120,7 @@
 
 <style lang="scss">
 @function px2vw($size, $bp: 1920) {
-  @return ($size / $bp * 100) * 1vw;
+  @return calc($size / $bp * 100) * 1vw;
 }
 
 .main {

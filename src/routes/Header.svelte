@@ -91,31 +91,31 @@
 header {
   position: fixed;
   width: 100%;
-  height: 80px;
+  height: px2vw(80);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 32px;
+  padding: 0 px2vw(32);
 
   .logo {
-    width: 180px;
+    width: px2vw(180);
   }
 }
 
 .menu {
   .nav-item {
     position: relative;
-    font-size: 14px;
+    font-size: px2vw(14);
     font-weight: bold;
-    width: 80px;
-    height: 40px;
+    width: px2vw(80);
+    height: px2vw(40);
     flex-direction: column;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     transform: translateY(0);
-    margin-right: 32px;
-    letter-spacing: 0.5px;
+    margin-right: px2vw(32);
+    letter-spacing: px2vw(0.5);
 
     &::after {
       content:"";
@@ -126,7 +126,7 @@ header {
       left: -100%;
       bottom: 0;
       transition: left 0.3s cubic-bezier(1,-0.33, 0, 0.41);
-      border-radius: 999px;
+      border-radius: px2vw(999);
     }
 
     &:hover {
@@ -163,9 +163,9 @@ header {
 
 .hamburger-menu {
   position: relative;
-  width: 50px;
-  height: 50px;
-  border-radius: 5px;
+  width: px2vw(50);
+  height: px2vw(50);
+  border-radius: px2vw(5);
   z-index: 50;
   
   .nav-item {
@@ -179,8 +179,8 @@ header {
   
   .menu-button {
     transition: all 0.6s;
-    width: 50px;
-    height: 50px;
+    width: px2vw(50);
+    height: px2vw(50);
     cursor: pointer;
 
     &.text-black {
@@ -193,21 +193,21 @@ header {
       display: inline-block;
       transition: all 0.4s;
       position: absolute;
-      left: 14px;
-      height: 3px;
-      border-radius: 2px;
+      left: px2vw(14);
+      height: px2vw(3);
+      border-radius: px2vw(2);
       background-color: white;
       width: 45%;
       z-index: 50;
 
       &:nth-of-type(1) {
-        top: 15px;
+        top: px2vw(15);
       }
       &:nth-of-type(2) {
-        top: 23px;
+        top: px2vw(23);
       }
       &:nth-of-type(3) {
-        top: 31px;
+        top: px2vw(31);
       }
     }
   }
@@ -222,9 +222,9 @@ header {
   }
 
 :global(.hamburger-menu.active .menu-button__line:nth-of-type(1)) {
-  top: 18px !important;
-  left: 18px !important;
-  transform: translateY(6px) rotate(-45deg) !important;
+  top: px2vw(18) !important;
+  left: px2vw(18) !important;
+  transform: translateY(px2vw(6)) rotate(-45deg) !important;
   width: 30% !important;
 }
 
@@ -233,9 +233,9 @@ header {
 }
 
 :global(.hamburger-menu.active .menu-button__line:nth-of-type(3)) {
-  top: 30px !important;
-  left: 18px !important;
-  transform: translateY(-6px) rotate(45deg) !important;
+  top: px2vw(30) !important;
+  left: px2vw(18) !important;
+  transform: translateY(px2vw(-6)) rotate(45deg) !important;
   width: 30% !important;
 }
 
