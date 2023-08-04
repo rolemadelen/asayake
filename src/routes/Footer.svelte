@@ -40,17 +40,21 @@
 </footer>
 
 <style lang='scss'>
+  @function px2vw($size, $bp: 1920) {
+    @return calc($size / $bp * 100) * 1vw;
+  }
+  
   .footer {
     width: 100%;
-    height: 180px;
+    height: px2vw(180);
 
     &-top, &-bottom {
-      height: 90px;
+      height: px2vw(90);
       display: flex;
       flex-wrap: wrap;
       align-content: center;
-      padding: 0 32px;
-      border-top: 1px solid #eee;
+      padding: 0 px2vw(32);
+      border-top: px2vw(1) solid #eee;
     }
 
     &-top {
@@ -64,28 +68,28 @@
     }
 
     &-logo {
-      width: 50px;
-      height: 50px;
+      width: px2vw(50);
+      height: px2vw(50);
     }
 
     &-copyright,
     &-email {
       display: flex;
       align-items: center;
-      font-size: 12px;
+      font-size: px2vw(12);
       color: #333;
     }
 
     &-copyright {
-      margin-left: 10px;
+      margin-left: px2vw(10);
     }
 
     &-menu {
       display: flex;
-      font-size: 12px;
+      font-size: px2vw(12);
       &-item {
-        width: 60px;
-        margin-right: 20px;
+        width: px2vw(60);
+        margin-right: px2vw(20);
         text-align: center;
 
         &:hover {
@@ -99,12 +103,12 @@
       display: flex;
 
       svg {
-        width: 25px;
-        height: 25px;
+        width: px2vw(25);
+        height: px2vw(25);
       }
 
       &-ig, &-fb, &-yt {
-        margin-left: 40px;
+        margin-left: px2vw(40);
         position: relative;
         background-image: linear-gradient(to right, #000);
         z-index: 1;
@@ -130,7 +134,7 @@
           left: 0;
           z-index: -1;
           opacity: 0;
-          border-radius: 15px;
+          border-radius: px2vw(15);
           transition: opacity 0.3s ease;
           background-image: linear-gradient(45deg,#fccc63,#fbad50,#cd486b,#4c68d7);
         }
