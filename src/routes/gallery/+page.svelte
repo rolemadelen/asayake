@@ -12,13 +12,26 @@
 
   const handleClick = (e) => {
     const enlarge = document.querySelector('.enlarge-section')
+    const enlargedImg = enlarge.children[0].children[0];
+    let index = +(enlargedImg.alt.split('-')[1])
 
     if(e.currentTarget.dataset.action === 'close') {
       enlarge?.classList.add('hidden')
+    } else if (e.currentTarget.dataset.action === 'left') {
+      index = (index - 1) < 0 ? numberOfImages - 1 : index - 1
+      enlargedImg.src = preloadImageUrls[index];
+      enlargedImg.alt = `img-${index}`
+      console.log(index);
+      console.log(enlargedImg)
+    } else if (e.currentTarget.dataset.action === 'right') {
+      index = (index + 1) % numberOfImages
+      enlargedImg.src = preloadImageUrls[index]
+      enlargedImg.alt = `img-${index}`
     } else {
       if(enlarge) {
         enlarge.classList.remove('hidden')
-        enlarge.children[0].children[0].src= e.currentTarget.children[0].src
+        enlargedImg.src = e.currentTarget.children[0].src
+        enlargedImg.alt = e.currentTarget.children[0].alt
       }
     }
   }
@@ -51,8 +64,18 @@
 <section class="enlarge-section hidden">
   <div>
     <img src="" alt="enlarged" />
+    <button class='close' data-action='close' on:click={handleClick}>
+      <img src="/icons/close.svg" alt="close" />
+    </button>
+    <div class='nav'>
+      <button class='left' data-action='left' on:click={handleClick}>
+        <img src="/icons/left.svg" alt="left" />
+      </button>
+      <button class='right' data-action='right' on:click={handleClick}>
+        <img src="/icons/right.svg" alt="right" />
+      </button>
+    </div>
   </div>
-  <button class='close' data-action='close' on:click={handleClick}>CLOSE</button>
 </section>
 <Footer />
 
@@ -136,32 +159,39 @@
   }
 
   .enlarge-section {
-    position: relative;
+    position: fixed;
+    background-color: #000000cc;
+    top: 0;
+    z-index: 1000;
+    width: 100vw;
+    height: 100vh;
 
-    div {
+    & > div {
       position: fixed;
-      background-color: #000000cc;
-      top: 0;
       z-index: 1000;
-      width: 100vw;
-      height: 100vh;
-
-      img {
-        position: fixed;
-        width: 70%;
-        z-index: 1000;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50% ,-50%);
-      }
+      top: 50%;
+      left: 50%;
+      transform: translate(-50% ,-50%);
+      width: 65%;
     }
 
-    .close {
+    .close, .left, .right {
+      top: px2vw(-60);
+      width: px2vw(50);
+      height: px2vw(50);
       position: fixed;
       z-index: 1001;
-      color: #fff;
-      top: 0;
-      font-size: px2vw(20);
+    }
+
+    .nav {
+      display: flex;
+
+      .left {
+        right: 6%;
+      }
+      .right {
+        right: 0;
+      }
     }
   }
 </style>
