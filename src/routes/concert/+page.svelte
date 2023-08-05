@@ -114,7 +114,7 @@ const handleClick = (e) => {
         <span class='title'>{concert.title}</span>
         <span class='year'>{concert.year}</span>
         {#if concert.link !== undefined}
-          <span class='absolute right-[-5%] text-lg top-2 hover:top-[2.1%] hover:right-[-6%] duration-300'>
+          <span class='link absolute duration-300'>
             <a href="{concert.link}" target="_blank" rel="noopener noreferrer">↗</a>
           </span>
         {/if}
@@ -211,6 +211,18 @@ const handleClick = (e) => {
         font-size: px2vw(16);
       }
       
+      .link {
+        font-size: px2vw(16);
+        right: px2vw(-30);
+        top: 48%;
+        transform: translateY(-48%);
+        
+        &:hover {
+          top: 40%;
+          right: px2vw(-33);
+        }
+      }
+
       &.active {
         color: #000;
         border-bottom: 1px solid #791111;
