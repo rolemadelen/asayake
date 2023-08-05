@@ -87,6 +87,7 @@
     &-menu {
       display: flex;
       font-size: px2vw(12);
+      align-items: center;
       &-item {
         width: px2vw(60);
         margin-right: px2vw(20);
