@@ -84,8 +84,14 @@
 </header>
 
 <style lang="scss">
+$root-size: 16;
+
 @function px2vw($size, $bp: 1920) {
   @return calc($size / $bp * 100) * 1vw;
+}
+
+@function px2rem($size, $bp: 1920) {
+    @return calc($size / $root-size) * 1rem;
 }
 
 header {
