@@ -1,24 +1,15 @@
-<script>
+<script lang="ts">
   import Header from '../Header.svelte';
   import Footer from '../Footer.svelte'
   import Cursor from '../Cursor.svelte'
   import { onMount } from "svelte";
 
-  /**
-   * @type {HTMLDivElement}
-   */
-  let logoSlide;
-  /**
-   * @type {HTMLElement}
-   */
-  let logo;
-  
-  /**
-  * @type {HTMLDivElement}
-  */
-  let readMoreDiv;
-  let toggleReadMore = false;
-  const numberOfImages = 2;
+  let logoSlide: HTMLDivElement
+  let logo: HTMLElement
+  let readMoreDiv: HTMLDivElement
+  let toggleReadMore = false
+  const numberOfImages = 2
+
   $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/about/${key+1}.jpg`)
 
   const handleClick = (e) => {
