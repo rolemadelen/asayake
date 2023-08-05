@@ -487,18 +487,18 @@
   .banner {
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
-    height: px2vw(300);
+    height: px2vw(200);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     line-height: 1;
 
-    background-color: #791111;
-    color: #fff;
-    // color: #791111;
+    // background-color: #791111;
+    // color: #fff;
     
     h1 {
+      color: #791111;
       font-size: px2vw(64);
       font-weight: bold;
     }
@@ -507,6 +507,7 @@
       margin-top: px2vw(5);
       font-size: px2vw(18);
       font-weight: 600;
+      color: #791111de;
     }
   }
 
@@ -533,9 +534,11 @@
         position: relative;
         display: flex;
         align-items: center;
-        
+        transition: color 0.5s ease;
+
         &:hover {
           cursor: pointer;
+          color: #000;
         }
 
         &.active {

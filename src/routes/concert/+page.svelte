@@ -142,7 +142,7 @@ const handleClick = (e) => {
   .banner {
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
-    height: px2vw(300);
+    height: px2vw(200);
     display: flex;
     // flex-direction: column;
     justify-content: center;
@@ -151,12 +151,11 @@ const handleClick = (e) => {
     overflow-x: hidden;
     position: relative;
 
-    background-color: #791111;
-    color: #fff;
-    // color: #791111;
-
+    // background-color: #791111;
+    // color: #fff;
+    
     h1 {
-      margin-left: px2vw(32);
+      color: #791111;
       font-size: px2vw(64);
       font-weight: bold;
     }
@@ -174,7 +173,7 @@ const handleClick = (e) => {
     .right {
       div {
         width: px2vw(600);
-        // height: px2vw(800);
+        max-height: px2vw(800);
         margin-right: px2vw(250);
       }
       img {
