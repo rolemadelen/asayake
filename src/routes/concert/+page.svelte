@@ -191,12 +191,12 @@ const handleClick = (e) => {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: #777;
+      color: #999;
       height: px2vw(50);
       width: px2vw(557);
       border-bottom: 1px solid #eee;
       cursor: pointer;
-      transition: color 0.5s ease, font-weight 0.5s ease, border-bottom 0.5s ease;
+      transition: color 0.5s ease, border-bottom 0.5s ease;
       
       &:hover {
         color: black;
@@ -204,6 +204,7 @@ const handleClick = (e) => {
 
       .title {
         font-size: px2vw(20);
+        font-weight: 600;
       }
       
       .year {
@@ -212,7 +213,6 @@ const handleClick = (e) => {
       
       &.active {
         color: #000;
-        font-weight: 600;
         border-bottom: 1px solid #791111;
       }
     }
