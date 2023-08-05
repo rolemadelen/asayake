@@ -421,7 +421,7 @@
   </div>
 </section>
 <section class='main'>
-  <aside class="gen-menu-wrapper">
+  <nav class="gen-menu-wrapper">
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
     <ul class='gen-menu'>
@@ -432,7 +432,7 @@
       <li data-gen="18" on:click={handleClick} >Generation 18</li>
       <li data-gen="alumni" on:click={handleClick} >Alumni</li>
     </ul>
-  </aside>
+  </nav>
   <div class="gen-members grid grid-cols-3">
     {#each displayMembers as m}
       {#each m.members.sort((a, b) => {
@@ -485,6 +485,8 @@
     padding-top: px2vw(80);
   }
   .banner {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
     height: px2vw(300);
     display: flex;
     flex-direction: column;
@@ -494,7 +496,8 @@
 
     background-color: #791111;
     color: #fff;
-
+    // color: #791111;
+    
     h1 {
       font-size: px2vw(64);
       font-weight: bold;
@@ -502,7 +505,7 @@
 
     h2 {
       margin-top: px2vw(5);
-      font-size: px2vw(20);
+      font-size: px2vw(18);
       font-weight: 600;
     }
   }
