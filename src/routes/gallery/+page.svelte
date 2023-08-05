@@ -99,6 +99,7 @@
 
     background-color: #791111;
     color: #fff;
+    // color: #791111;
 
     h1 {
       font-size: px2vw(64);

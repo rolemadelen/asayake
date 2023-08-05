@@ -1,5 +1,5 @@
 <script>
-  import Header from '/src/routes/Header.svelte'
+  import Header from '../Header.svelte';
   import Footer from '../Footer.svelte'
   import Cursor from '../Cursor.svelte'
 
@@ -14,7 +14,8 @@
     },
     {
       year: 2021,
-      title: 'Virtual Showcase'
+      title: 'Virtual Showcase',
+      link: 'https://www.youtube.com/watch?v=OBxfIHyMfyA'
     },
     {
       year: 2020,
@@ -31,7 +32,6 @@
     {
       year: 2017,
       title: "A Tale as Old as time",
-      link: "https://issuu.com/michaelhidayat/docs/asayake10thconcert/1"
     },
     {
       year: 2016,
@@ -40,7 +40,6 @@
     {
       year: 2015,
       title: "The Fellowship of the Drum",
-      link: "https://issuu.com/michaelhidayat/docs/complete_program.compressed__1__dfa8216eaa9200"
     },
     {
       year: 2014,
@@ -72,121 +71,159 @@
     }
   ]
 
+const handleClick = (e) => {
+  document.querySelector('li.active')?.classList.remove('active');
+  e.currentTarget.classList.toggle('active');
+
+  const title = e.currentTarget.children[0].innerText;
+  const year = e.currentTarget.children[1].innerText;
+  /**
+   * @type {HTMLImageElement | null}
+   */
+  const posterImg = document.querySelector('.concert-poster > img');
+  if(posterImg) {
+    posterImg.src = `/concerts/webp/poster_${year}.webp`;
+    posterImg.alt = title;
+  }
+}
 </script>
 
 <svelte:head>
   <title>Asayake Taiko | Concert</title>
   <meta name="description" content="Asayake Taiko | Concert" />
+  <!-- {#each preloadImageUrls as image}
+  <link rel="preload" as="image" href={image} />
+  {/each} -->
 </svelte:head>
 
-<Cursor />
-<Header page="concert"/>
-<main class='my-12 main-wrapper overflow-hidden max-w-screen-2xl m-auto'>
-  <div class='text-2xl text-center pb-11'>Concerts Timeline</div>
-  <div class='gallery grid grid-cols-2 auto-cols-fr auto-rows-fr'>
-    <div></div>
-    {#each concerts as concert, i}
-      {#if i != 0 && i % 2 == 0}
-        <div class='border-l-asa-red border-l-[1px] border-opacity-20'></div>
-        <div></div>
-      {/if}
-
-      {#if i % 2 == 0}
-      <div class='gallery_item before relative m-auto w-full h-full border-l-asa-red border-l-[1px] border-opacity-20 flex justify-center items-center after:top-[52%] lg:after:top-[51%]'>
-        <span class='absolute top-1/2 -left-full text-[15rem] opacity-[0.01] md:opacity-[0.025]  w-max'>{concert.title}</span>
-        <div class='year absolute -left-[30rem] text-right w-[26rem] md:w-96'>
-            <p class='md:text-xl'>
-            {concert.year}
-            </p>
-            <p class='text-sm md:text-2xl font-light md:font-medium lg:text-3xl'>
-            {concert.title}
-          </p>
-        </div>
-        <picture class='z-20 lg:shadow-lg shadow-gray-500 hover:scale-110 duration-100'>
-          <source srcset="/concerts/webp/poster_{concert.year}.webp" type="image/webp" />
-          <source srcset="/concerts/poster_{concert.year}.jpg" type="image/jpeg" />
-          <img class='w-1/2 md:w-3/4 lg:w-full h-full max-w-xs m-auto' src="/concerts/poster_{concert.year}.jpg" loading="lazy" decoding="async" alt="{concert.title}"/>
-        </picture>
-      </div>
-      {:else if i === concerts.length - 1}
-        <div class='gallery_item after m-auto w-full h-full border-r-asa-red border-r-[1px] border-opacity-20 relative flex justify-center items-center after:top-[52%] lg:after:top-[51%]'>
-        <span class='absolute top-1/2 -right-full text-[15rem] opacity-[0.01] md:opacity-[0.025] w-max'>{concert.title}</span>
-          <div class='year absolute -right-[30rem] text-left w-[26rem] md:w-96'>
-              <p class='md:text-xl'>
-              {concert.year}
-              </p>
-            <p class='text-sm md:text-2xl font-light md:font-medium lg:text-3xl'>
-              {concert.title}
-            </p>
-            </div>
-          <picture class='z-20 lg:shadow-lg shadow-gray-500 hover:scale-110 duration-100'>
-            <source srcset="/concerts/webp/poster_{concert.year}.webp" type="image/webp" />
-            <source srcset="/concerts/poster_{concert.year}.jpg" type="image/jpeg" />
-            <img class='w-1/2 md:w-3/4 lg:w-full h-full max-w-xs m-auto' src="/concerts/poster_{concert.year}.jpg" loading="lazy" decoding="async" alt="{concert.title}"/>
-          </picture>
-        </div>
-      {:else}
-      <div class='gallery_item after m-auto w-full relative flex justify-center items-center after:top-[52%] lg:after:top-[51%] snap-start'>
-      <span class='absolute top-1/2 -right-full text-[15rem] opacity-[0.01] md:opacity-[0.025] w-max'>{concert.title}</span>
-        <div class='year absolute -right-[30rem] text-left w-[26rem] md:w-96'>
-            <p class='md:text-xl'>
-            {concert.year}
-            </p>
-            <p class='text-sm md:text-2xl font-light md:font-medium lg:text-3xl'>
-            {concert.title}
-          </p>
-          </div>
-        <picture class='z-20 lg:shadow-lg shadow-gray-500 hover:scale-110 duration-100'>
-          <source srcset="/concerts/webp/poster_{concert.year}.webp" type="image/webp" />
-          <source srcset="/concerts/poster_{concert.year}.jpg" type="image/jpeg" />
-          <img class='w-1/2 md:w-3/4 lg:w-full h-full max-w-xs m-auto' src="/concerts/poster_{concert.year}.jpg" loading="lazy" decoding="async" alt="{concert.title}"/>
-        </picture>
-      </div>
-      {/if}
-    {/each}
+<Header page="concert" />
+<section class='banner-wrapper'>
+  <div class='banner'>
+    <div>
+      <h1>Concert</h1>
+    </div>
   </div>
-</main>
+</section>
+<section class='main-section'> 
+  <nav class='left'>
+    <ul class='concert-menu'>
+      {#each concerts as concert, i}
+      <!-- svelte-ignore a11y-click-events-have-key-events -->
+      <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+      <li class='concert-menu-item relative' class:active={i===0} on:click={handleClick}>
+        <span class='title'>{concert.title}</span>
+        <span class='year'>{concert.year}</span>
+        {#if concert.link !== undefined}
+          <span class='absolute right-[-5%] text-lg top-2 hover:top-[2.1%] hover:right-[-6%] duration-300'>
+            <a href="{concert.link}" target="_blank" rel="noopener noreferrer">↗</a>
+          </span>
+        {/if}
+      </li>
+      {/each}
+    </ul>
+  </nav>
+  <div class='right'>
+    <div class='concert-poster'>
+      <img src="/concerts/webp/poster_2023.webp" alt="Hazakura" />
+    </div>
+  </div>
+</section>
 <Footer />
 
-<style>
-  main {
-    font-family: 'Poppins', sans-serif;
+<style lang="scss">
+  @function px2vw($size, $bp: 1920) {
+    @return calc($size / $bp * 100) * 1vw;
   }
 
-  .after::before,
-  .before::before {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    background-color: #79111177;
-    border-radius: 999px;
-    width: 10px;
-    height: 10px;
-    top: 50%;
-    z-index: 2;
+  .banner-wrapper {
+    padding-top: px2vw(80);
+    // overflow: hidden;
   }
-  .after::before {
-    right: -5.5px;
-  }
-  .before::before {
-    left: -5.5px;
+  .banner {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    height: px2vw(300);
+    display: flex;
+    // flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    overflow-x: hidden;
+    position: relative;
+
+    background-color: #791111;
+    color: #fff;
+    // color: #791111;
+
+    h1 {
+      margin-left: px2vw(32);
+      font-size: px2vw(64);
+      font-weight: bold;
+    }
   }
 
-  .after::after,
-  .before::after {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    width: 20rem;
-    border: 1px solid #791111;
-    opacity: 8%;
-    z-index: 0;
+  .main-section {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    .left, .right {
+      margin: px2vw(100) px2vw(32);
+    }
+
+    .right {
+      div {
+        width: px2vw(600);
+        // height: px2vw(800);
+        margin-right: px2vw(250);
+      }
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
 
-  .before::after {
-    left: -60px;
+  .concert-menu {
+    margin-left: px2vw(78);
+
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #777;
+      height: px2vw(50);
+      width: px2vw(557);
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+      transition: color 0.5s ease, font-weight 0.5s ease, border-bottom 0.5s ease;
+      
+      &:hover {
+        color: black;
+      }
+
+      .title {
+        font-size: px2vw(20);
+      }
+      
+      .year {
+        font-size: px2vw(16);
+      }
+      
+      &.active {
+        color: #000;
+        font-weight: 600;
+        border-bottom: 1px solid #791111;
+      }
+    }
   }
-  .after::after {
-    right: -60px;
+
+  @keyframes slide {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
   }
 </style>
