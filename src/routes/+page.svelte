@@ -1,51 +1,51 @@
-<script>
+<script lang="ts">
   import Cursor from './Cursor.svelte'
   import Header from './Header.svelte'
   import { onMount } from 'svelte'
 
-  let mainWrapper
-  let prevImage = -1
-  let currImage = 0
-  let nextImage = 1
-  const numberOfImages = 13
-  let behavior = 'smooth'
+  let mainWrapper: HTMLElement;
+  let prevImage = -1;
+  let currImage = 0;
+  let nextImage = 1;
+  const numberOfImages = 14;
+  let behavior: ScrollBehavior = 'smooth';
 
-  $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/bg/webp/${key+1}.webp`)
+  $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/bg/webp/${key+1}.webp`);
   $: {
     if(mainWrapper) {
-      const prev = document.querySelector(`[data-id="${prevImage+1}"]`);
-      const curr = document.querySelector(`[data-id="${currImage+1}"]`);
-      const next = document.querySelector(`[data-id="${nextImage+1}"]`);
+      const prev = document.querySelector(`[data-id="${prevImage+1}"]`) as HTMLElement;
+      const curr = document.querySelector(`[data-id="${currImage+1}"]`) as HTMLElement;
+      const next = document.querySelector(`[data-id="${nextImage+1}"]`) as HTMLElement;
 
-      if(prev) prev.children[0].style.backgroundPositionX = "0px"
-      curr.children[0].style.backgroundPositionX = "0px"
-      if(next) next.children[0].style.backgroundPositionX = "0px"
+      if(prev) (prev.children[0] as HTMLElement).style.backgroundPositionX = "0px";
+      (curr.children[0] as HTMLElement).style.backgroundPositionX = "0px";
+      if(next) (next.children[0] as HTMLElement).style.backgroundPositionX = "0px";
 
-      const isMobile = window.innerHeight > window.innerWidth
+      const isMobile = window.innerHeight > window.innerWidth;
 
-      if(currImage === 0) behavior = 'auto'
+      if(currImage === 0) behavior = 'auto';
 
       curr.scrollIntoView({behavior: `${behavior}`, block: 'nearest', inline: 'center' })
       const w = window.innerWidth
       if(isMobile && w <= 1023) {
-        curr.children[0].style.backgroundPositionX = `-${Math.min(550,w)}px`
+        (curr.children[0] as HTMLElement).style.backgroundPositionX = `-${Math.min(550,w)}px`;
       } 
     }
     behavior = 'smooth'
   }
 
   let interval = setInterval(() => {
-    prevImage = currImage
-    currImage = (currImage + 1) % numberOfImages
-    nextImage = currImage + 1
+    prevImage = currImage;
+    currImage = (currImage + 1) % numberOfImages;
+    nextImage = currImage + 1;
   }, 5000)
 
   onMount(() => {
     document.querySelectorAll('[data-id]').forEach((el, index) => {
-      el.children[0].style.backgroundImage = `url('${preloadImageUrls[index]}')`
-      el.children[0].style.backgroundPositionX = '0px'
+      (el.children[0] as HTMLElement).style.backgroundImage = `url('${preloadImageUrls[index]}')`;
+      (el.children[0] as HTMLElement).style.backgroundPositionX = '0px';
     })
-    document.querySelector(`[data-id="${currImage+1}"]`).scrollIntoView({ behavior, block: 'nearest', inline: 'center' })
+    document.querySelector(`[data-id="${currImage+1}"]`)?.scrollIntoView({ behavior, block: 'nearest', inline: 'center' })
   })
 
   const handleClick = (e) => {
@@ -66,9 +66,9 @@
   }
 
   const handleResize = (e) => {
-    const curr = document.querySelector(`[data-id="${currImage+1}"]`);
+    const curr = document.querySelector(`[data-id="${currImage+1}"]`) as HTMLElement;
     if(window.innerWidth > 1023) {
-      curr.children[0].style.backgroundPositionX = "0px"
+      (curr.children[0] as HTMLElement).style.backgroundPositionX = "0px"
     }
     curr.scrollIntoView({block: 'nearest', inline: 'center' })
   }

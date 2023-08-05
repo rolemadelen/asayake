@@ -1,9 +1,31 @@
-<script>
-  import Header from '/src/routes/Header.svelte'
-  import Footer from '/src/routes/Footer.svelte'
-  import Cursor from '/src/routes/Cursor.svelte'
+<script lang="ts">
+import Header from '../Header.svelte';
+  import Footer from '../Footer.svelte'
+  import Cursor from '../Cursor.svelte'
 
-  const alumni = [
+  type AlumniType = {
+    gen: string,
+    members: string[]
+  }
+
+  type Member = {
+    name: string,
+    gen: string,
+    major: string,
+    fav: string,
+    quote: string,
+    imgs: {
+      main: string,
+      alt: string
+    }
+  }
+  
+  type MemberType = {
+    gen: string,
+    members: Member[]
+  }
+
+  const alumni: AlumniType[] = [
     {
       gen: "Gen 18",
       members: ['Henry Narabe', 'Jeremy Aban', 'David Song', 'Akihiro Fujita']
@@ -42,7 +64,7 @@
     },
   ];
 
-  const currentMembers = [
+  const currentMembers: MemberType[] = [
     {
       gen: "Gen 21",
       members: [
@@ -516,7 +538,7 @@
     position: relative;
     padding: px2vw(100) 0;
     height: 100%;
-    margin: auto px2vw(32);
+    margin: auto px2vw(64);
   }
 
   .gen-menu-wrapper {

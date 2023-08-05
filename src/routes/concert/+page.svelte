@@ -1,9 +1,15 @@
-<script>
+<script lang="ts">
   import Header from '../Header.svelte';
   import Footer from '../Footer.svelte'
   import Cursor from '../Cursor.svelte'
 
-  const concerts = [
+  type PosterType = {
+    year: number,
+    title: string,
+    link?: string | undefined
+  }
+
+  const concerts: PosterType[] = [
     {
       year: 2023,
       title: 'Hazakura'
@@ -77,10 +83,7 @@ const handleClick = (e) => {
 
   const title = e.currentTarget.children[0].innerText;
   const year = e.currentTarget.children[1].innerText;
-  /**
-   * @type {HTMLImageElement | null}
-   */
-  const posterImg = document.querySelector('.concert-poster > img');
+  const posterImg: HTMLImageElement | null = document.querySelector('.concert-poster > img');
   if(posterImg) {
     posterImg.src = `/concerts/webp/poster_${year}.webp`;
     posterImg.alt = title;
@@ -91,9 +94,6 @@ const handleClick = (e) => {
 <svelte:head>
   <title>Asayake Taiko | Concert</title>
   <meta name="description" content="Asayake Taiko | Concert" />
-  <!-- {#each preloadImageUrls as image}
-  <link rel="preload" as="image" href={image} />
-  {/each} -->
 </svelte:head>
 
 <Header page="concert" />

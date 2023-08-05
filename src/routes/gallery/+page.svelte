@@ -1,31 +1,31 @@
-<script>
-  import Header from '/src/routes/Header.svelte'
-  import Footer from '/src/routes/Footer.svelte'
-  import Cursor from '/src/routes/Cursor.svelte'
+<script lang="ts">
+  import Header from '../Header.svelte';
+  import Footer from '../Footer.svelte';
+  import Cursor from '../Cursor.svelte';
 
   const numberOfImages = 34
-  /**
-   * @type {string[]}
-   */
-  let preloadImageUrls = []
+  const numberOfImages2 = 13
+  const totalImages = numberOfImages + numberOfImages2
+
+  let preloadedImg: string[] = [];
   $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/gallery/gallery${key+1}.jpg`)
+  $: preloadImageUrls2 = [...Array(numberOfImages2).keys()].map((key) => `/bg/webp/${key+1}.webp`)
+  $: preloadedImg = [...preloadImageUrls, ...preloadImageUrls2];
 
   const handleClick = (e) => {
-    const enlarge = document.querySelector('.enlarge-section')
-    const enlargedImg = enlarge.children[0].children[0];
+    const enlarge: HTMLDivElement | null = document.querySelector('.enlarge-section')
+    const enlargedImg = enlarge!.children[0].children[0] as HTMLImageElement;
     let index = +(enlargedImg.alt.split('-')[1])
 
     if(e.currentTarget.dataset.action === 'close') {
       enlarge?.classList.add('hidden')
     } else if (e.currentTarget.dataset.action === 'left') {
-      index = (index - 1) < 0 ? numberOfImages - 1 : index - 1
-      enlargedImg.src = preloadImageUrls[index];
+      index = (index - 1) < 0 ? totalImages - 1 : index - 1
+      enlargedImg.src = preloadedImg[index];
       enlargedImg.alt = `img-${index}`
-      console.log(index);
-      console.log(enlargedImg)
     } else if (e.currentTarget.dataset.action === 'right') {
-      index = (index + 1) % numberOfImages
-      enlargedImg.src = preloadImageUrls[index]
+      index = (index + 1) % totalImages
+      enlargedImg.src = preloadedImg[index]
       enlargedImg.alt = `img-${index}`
     } else {
       if(enlarge) {
@@ -42,16 +42,19 @@
   {#each preloadImageUrls as image}
   <link rel="preload" as="image" href={image} />
   {/each}
+  {#each preloadImageUrls2 as image}
+  <link rel="preload" as="image" href={image} />
+  {/each}
   <meta name="description" content="Asayake Taiko | Gallery" />
 </svelte:head>
 
 <Header page="gallery" />
-<section class='banner-wrapper'>
+<div class='banner-wrapper'>
   <div class='banner'>
     <h1>Gallery</h1>
   </div>
-</section>
-<section class='gallery-wrapper'>
+</div>
+<div class='gallery-wrapper'>
   <span class='note'>*Click to Enlarge Image</span>
   <div class='gallery'>
     {#each preloadImageUrls as path, i}
@@ -59,9 +62,14 @@
       <img src="{path}" alt="img-{i}" />
     </div>
     {/each}
+    {#each preloadImageUrls2 as path, i}
+    <div class='gallery-image' on:click={handleClick}>
+      <img src="{path}" alt="img-{i+34}" />
+    </div>
+    {/each}
   </div>
-</section>
-<section class="enlarge-section hidden">
+</div>
+<div class="enlarge-section hidden">
   <div>
     <img src="" alt="enlarged" />
     <button class='close' data-action='close' on:click={handleClick}>
@@ -76,7 +84,7 @@
       </button>
     </div>
   </div>
-</section>
+</div>
 <Footer />
 
 <style lang="scss">
@@ -129,7 +137,6 @@
       height: px2vw(150);
       position: relative;
       overflow: hidden;
-      // display: inline-block;
       margin-right: px2vw(11);
       margin-bottom: px2vw(30);
       will-change: transform;
@@ -144,16 +151,6 @@
         transform: scale(1.3);
         cursor: pointer;
         z-index: 10;
-        
-        // & + div {
-        //   transform: scale(1.08);
-        //   z-index: 8;
-          
-        //   & + div {
-        //     transform: scale(1.03);
-        //     z-index: 6;
-        //   }
-        // }
       }
     }
   }
@@ -172,8 +169,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50% ,-50%);
-      width: px2vw(946);
-      height: px2vw(560);
+      width: px2vw(1000);
 
       img {
         width: 100%;
