@@ -15,7 +15,7 @@
   const handleClick = (e) => {
     toggleReadMore = !toggleReadMore;
     document.querySelector('.read-more')?.classList.toggle('!mb-0');
-    readMoreDiv.classList.toggle('!max-h-[100vh]')
+    readMoreDiv.classList.toggle('!max-h-[200vh]')
     e.currentTarget.classList.toggle('!bg-white');
     e.currentTarget.classList.toggle('!text-[#791111]');
     
@@ -97,16 +97,33 @@
         <div class='read-more-title'>Origin</div>
         <div class='read-more-content'>Taiko, meaning "drum", refers to a large family of Japanese percussive instruments. Traditional taiko had its use as a part of warfare, theater, festivals, and religious ceremonies. However, the art of taiko as we know it today can be traced back to Daihachi Oguchi in 1951. As a jazz drummer, Oguchi took traditional taiko music and arranged them to be performed as a group. This new ensemble style of taiko became known as kumi-daiko, which quickly spread to the rest of Japan and the world. Notable kumi-daiko ensembles that originated in Japan include Oguchi's own Osuwa Daiko, Oedo Sukeroku Daiko, Kodo, and Wadaiko Yamato.</div>
       </div>
-      <div class='cell'>
-        <div class='read-more-title'>Spread</div>
-        <div class='read-more-content'>Since its inception, kumi-daiko has become the dominant form of taiko performance outside of Japan. The spread of taiko in the United States started in the 1960s, when Seiichi Tanaka founded the San Francisco Taiko Dojo. This was closely followed by other groups such as Kinnara Taiko and San Jose Taiko. The taiko community continued to grow as groups began to be founded as university and college organizations. In 1990, Kyodo Taiko was founded on the campus of the University of California, Los Angeles, becoming the first collegiate taiko group.</div>
+      <div class='col-span-2 !mt-20 !my-8'>
+        <div class='flex'>
+          <div class='section-title'>
+            <div class="flex items-center">
+              <div>Spread</div>
+            </div>
+          </div>
+          <div class="section-content">
+            <p>  Since its inception, kumi-daiko has become the dominant form of taiko performance outside of Japan. The spread of taiko in the United States started in the 1960s, when Seiichi Tanaka founded the San Francisco Taiko Dojo. This was closely followed by other groups such as Kinnara Taiko and San Jose Taiko. The taiko community continued to grow as groups began to be founded as university and college organizations. In 1990, Kyodo Taiko was founded on the campus of the University of California, Los Angeles, becoming the first collegiate taiko group.</p>
+          </div>
+        </div>
       </div>
-      <div class='cell'>
-        <div class='read-more-title'>Today</div>
-        <div class='read-more-content'>The growth of the taiko community continues today, through the founding of new groups, as well as the art form receiving more mainstream attention. Taiko has been featured in performances such as Cirque du Soleil and at events such as the Academy Awards and the Grammy Awards. Professional ensembles have gone on to tour the entire world, bringing the art of taiko to a wider audience. Events such as the North American Taiko Conference and the Intercollegiate Taiko Invitational has further facilitated the growth of the taiko community by bringing together performers from all over the country in order to learn from one another.</div>
+      <div class='col-span-2 !my-8'>
+        <div class='flex'>
+          <div class='section-title'>
+            <div class="flex items-center">
+              <div>Today</div>
+            </div>
+          </div>
+          <div class="section-content">
+            <p>The growth of the taiko community continues today, through the founding of new groups, as well as the art form receiving more mainstream attention. Taiko has been featured in performances such as Cirque du Soleil and at events such as the Academy Awards and the Grammy Awards. Professional ensembles have gone on to tour the entire world, bringing the art of taiko to a wider audience. Events such as the North American Taiko Conference and the Intercollegiate Taiko Invitational has further facilitated the growth of the taiko community by bringing together performers from all over the country in order to learn from one another.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+  
   <div class='read-more-button'>
     <button on:click={handleClick}>Read More</button>
   </div>
@@ -177,7 +194,7 @@
   }
 
   .section {
-    margin: px2vw(120) px2vw(32);
+    margin: px2vw(120) px2vw(64);
     display: flex;
 
     &-title {
@@ -300,11 +317,10 @@
       font-size: px2vw(64);
       font-weight: 600;
       line-height: 1;
-      margin-bottom: px2vw(10);
+      margin-bottom: px2vw(20);
     }
 
     &-content {
-      padding-right: px2vw(120);
       font-size: px2vw(24);
       line-height: 1.5;
     }
