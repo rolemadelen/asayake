@@ -90,49 +90,49 @@ $root-size: 16;
   @return calc($size / $bp * 100) * 1vw;
 }
 
-@function px2rem($size, $bp: 1920) {
+@function px2rem($size, $root-size: 16) {
     @return calc($size / $root-size) * 1rem;
 }
 
 header {
   position: fixed;
   width: 100%;
-  height: px2vw(80);
+  height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 px2vw(32);
+  padding: 0 32px;
 
   .logo {
-    width: px2vw(180);
+    width: 180px;
   }
 }
 
 .menu {
   .nav-item {
     position: relative;
-    font-size: px2vw(14);
+    font-size: px2rem(14);
     font-weight: bold;
-    width: px2vw(80);
-    height: px2vw(40);
+    width: 80px;
+    height: 40px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     transform: translateY(0);
-    margin-right: px2vw(32);
-    letter-spacing: px2vw(0.5);
+    margin-right: 32px;
+    letter-spacing: 0.5px;
 
     &::after {
       content:"";
       position: absolute;
       width: 100%;
-      height: px2vw(1);
-      border-bottom: px2vw(1) solid #791111;
+      height: 1px;
+      border-bottom: 1px solid #791111;
       left: -100%;
       bottom: 0;
       transition: left 0.3s cubic-bezier(1,-0.33, 0, 0.41);
-      border-radius: px2vw(999);
+      border-radius: 999px;
     }
 
     &:hover {
@@ -169,14 +169,14 @@ header {
 
 .hamburger-menu {
   position: relative;
-  width: px2vw(50);
-  height: px2vw(50);
+  width: 50px;
+  height: 50px;
   border-radius: px2vw(5);
   z-index: 50;
   
   .nav-item {
-    font-size: max(14px, px2vw(20));
-    width: max(80px, px2vw(100));
+    font-size: px2rem(20);
+    width: 100px;
 
     &.active {
       color: inherit;
@@ -185,8 +185,8 @@ header {
   
   .menu-button {
     transition: all 0.6s;
-    width: px2vw(50);
-    height: px2vw(50);
+    width: 50px;
+    height: 50px;
     cursor: pointer;
 
     &.text-black {
@@ -199,21 +199,21 @@ header {
       display: inline-block;
       transition: all 0.4s;
       position: absolute;
-      left: px2vw(14);
-      height: px2vw(3);
-      border-radius: px2vw(2);
+      left: 14px;
+      height: 3px;
+      border-radius: 2px;
       background-color: white;
       width: 45%;
       z-index: 50;
 
       &:nth-of-type(1) {
-        top: px2vw(15);
+        top: 15px;
       }
       &:nth-of-type(2) {
-        top: px2vw(23);
+        top: 23px;
       }
       &:nth-of-type(3) {
-        top: px2vw(31);
+        top: 31px;
       }
     }
   }
@@ -228,9 +228,9 @@ header {
   }
 
 :global(.hamburger-menu.active .menu-button__line:nth-of-type(1)) {
-  top: px2vw(18) !important;
-  left: px2vw(18) !important;
-  transform: translateY(px2vw(6)) rotate(-45deg) !important;
+  top: 18px !important;
+  left: 18px !important;
+  transform: translateY(6px) rotate(-45deg) !important;
   width: 30% !important;
 }
 
@@ -239,9 +239,9 @@ header {
 }
 
 :global(.hamburger-menu.active .menu-button__line:nth-of-type(3)) {
-  top: px2vw(30) !important;
-  left: px2vw(18) !important;
-  transform: translateY(px2vw(-6)) rotate(45deg) !important;
+  top: 30px !important;
+  left: 18px !important;
+  transform: translateY(-6px) rotate(45deg) !important;
   width: 30% !important;
 }
 

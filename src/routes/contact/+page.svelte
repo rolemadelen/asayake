@@ -132,67 +132,67 @@
   @function px2vw($size, $bp: 1920) {
     @return calc($size / $bp * 100) * 1vw;
   }
+  @function px2rem($size, $root_size: 16) {
+    @return calc($size / $root_size) * 1rem;
+  }
 
   .banner-wrapper {
-    padding-top: px2vw(80);
+    padding-top: 80px;
   }
   .banner {
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
-    height: px2vw(200);
+    height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     line-height: 1;
 
-    // background-color: #791111;
-    // color: #fff;
-    
     h1 {
       color: #791111;
-      font-size: px2vw(64);
+      font-size: px2rem(64);
       font-weight: bold;
     }
   }
   
   .main {
-    margin: px2vw(100) px2vw(64);
+    margin: 100px 32px;
     display: flex;
     justify-content: space-between;
 
     h2 {
-      font-size: px2vw(24);
+      font-size: px2rem(24);
       font-weight: 600;
     }
     .left {
-      width: px2vw(400);
+      width: 400px;
 
       &-section {
-        font-size: px2vw(16);
+        font-size: px2rem(16);
         line-height: 1.5;
 
         .links {
-          margin-top: px2vw(15);
+          margin-top: 15px;
           display: flex;
           align-items: center;
 
           span {
-            font-size: px2vw(14);
+            font-size: px2rem(14);
             color: #777;
-            padding-left: px2vw(5);
+            padding-left: 5px;
             transition: color 0.3s ease;
           }
 
           svg {
-            width: px2vw(30);
-            height: px2vw(30);
+            width: 30px;
+            height: 30px;
             will-change: transform;
             transition: transform 0.3s ease;
           }
 
           &-yt, &-ig, &-fb, &-paypal, &-venmo {
-            margin-right: px2vw(50);
+            margin-right: 50px;
             display: flex;
             align-items: center;
             
@@ -214,49 +214,49 @@
         color: #111;
 
         svg {
-          width: px2vw(25);
-          height: px2vw(20);
-          margin-right: px2vw(10);
+          width: 25px;
+          height: 20px;
+          margin-right: 10px;
         }
       }
       h2 {
-        margin-bottom: px2vw(5);
+        margin-bottom: 5px;
       }
 
       & > div {
-        margin-bottom: px2vw(100);
+        margin-bottom: 100px;
       }
     }
     .right {
-      width: px2vw(830);
-      margin-right: px2vw(223);
-      padding-left: px2vw(64);
-      border-left: px2vw(1) solid #eee;
+      width: 830px;
+      margin-right: 223px;
+      padding-left: 64px;
+      border-left: 1px solid #eee;
 
       h2 {
-        margin-bottom: px2vw(40);
+        margin-bottom: 40px;
       }
     }
   }
 
   form {
     .submit {
-      margin-top: px2vw(60);
+      margin-top: 60px;
       background-color: #791111;
-      width: px2vw(280);
-      height: px2vw(60);
+      width: 280px;
+      height: 60px;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: px2vw(18);
+      font-size: px2rem(18);
       color: #eee;
       font-weight: 500;
-      border-radius: px2vw(5);
-      box-shadow: 0 0 px2vw(5) 0px black;
+      border-radius: 5px;
+      box-shadow: 0 0 5px 0 black;
 
       svg {
-        width: px2vw(40);
-        margin-left: px2vw(30);
+        width: 40px;
+        margin-left: 30px;
       }
       
       &:hover {
@@ -267,13 +267,13 @@
     }
 
     input, textarea {
-      border: px2vw(1) solid #bcbcbc;
-      border-radius: px2vw(5);
-      font-size: px2vw(16);
-      padding: 0 px2vw(24);
+      border: 1px solid #bcbcbc;
+      border-radius: 5px;
+      font-size: px2rem(16);
+      padding: 0 24px;
 
       &::placeholder {
-        font-size: px2vw(14);
+        font-size: px2rem(14);
         color: #bbb;
       }
     }
@@ -283,21 +283,21 @@
       justify-content: space-between;
       label {
         color: #333;
-        font-size: px2vw(14);
-        margin-bottom: px2vw(5);
+        font-size: px2rem(14);
+        margin-bottom: 5px;
       }
 
       input {
-        height: px2vw(50);
-        width: px2vw(360);
-        margin-bottom: px2vw(32);
+        height: 50px;
+        width: 360px;
+        margin-bottom: 32px;
       }
     }
 
     textarea {
       width: 100%;
-      height: px2vw(177);
-      padding-top: px2vw(20);
+      height: 177px;
+      padding-top: 20px;
       line-height: 1.25;
     }
   }
@@ -307,7 +307,7 @@
     transform: translateX(0);
   }
   to {
-    transform: translateX(px2vw(20));
+    transform: translateX(20px);
   }
 
 }

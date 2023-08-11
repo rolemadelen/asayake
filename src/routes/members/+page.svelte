@@ -502,14 +502,17 @@ import Header from '../Header.svelte';
   @function px2vw($size, $bp: 1920) {
     @return calc($size / $bp * 100) * 1vw;
   }
+  @function px2rem($size, $root_size: 16) {
+    @return calc($size / $root_size) * 1rem;
+  }
 
   .banner-wrapper {
-    padding-top: px2vw(80);
+    padding-top: 80px;
   }
   .banner {
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
-    height: px2vw(200);
+    height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -521,13 +524,13 @@ import Header from '../Header.svelte';
     
     h1 {
       color: #791111;
-      font-size: px2vw(64);
+      font-size: px2rem(64);
       font-weight: bold;
     }
 
     h2 {
-      margin-top: px2vw(5);
-      font-size: px2vw(18);
+      margin-top: 5px;
+      font-size: px2rem(18);
       font-weight: 600;
       color: #791111de;
     }
@@ -536,21 +539,21 @@ import Header from '../Header.svelte';
   .main {
     display: flex;
     position: relative;
-    padding: px2vw(100) 0;
+    padding: 100px 0;
     height: 100%;
-    margin: auto px2vw(64);
+    margin: auto 64px;
   }
 
   .gen-menu-wrapper {
     .gen-menu {
       position: sticky;
-      top: max(100px, px2vw(200));
-      width: px2vw(350);
-      margin-right: px2vw(250);
+      top: 200px;
+      width: 350px;
+      margin-right: 250px;
 
       li {
-        height: px2vw(50);
-        font-size: px2vw(24);
+        height: 50px;
+        font-size: px2rem(24);
         color: #777;
         font-weight: 600;
         position: relative;
@@ -569,14 +572,14 @@ import Header from '../Header.svelte';
           &::before {
             content: "";
             position: absolute;
-            left: px2vw(-15);
+            left: -15px;
             top: 50%;
             transform: translateY(-50%);
             display: inline-block;
             border-radius: 999px;
             background-color: #791111;
-            width: px2vw(10);
-            height: px2vw(10);
+            width: 10px;
+            height: 10px;
           }
         }
       }
@@ -589,13 +592,13 @@ import Header from '../Header.svelte';
     .gen-member {
       overflow: hidden;
       position: relative;
-      height: px2vw(370);
-      margin: 0 px2vw(10) px2vw(10) 0;
+      height: 370px;
+      margin: 0 10px 10px 0;
     }
 
     .member-image {
-      height: px2vw(270);
-      border-radius: px2vw(5);
+      height: 270px;
+      border-radius: 5px;
 
       &-alt {
         position: absolute;
@@ -605,15 +608,15 @@ import Header from '../Header.svelte';
     }
 
     .member-quote {
-      border-radius: px2vw(5);
+      border-radius: 5px;
       position: absolute;
       left: 0;
       width: 100%;
-      height: px2vw(270);
+      height: 270px;
       overflow-y: auto;
-      font-size: px2vw(16);
-      padding: px2vw(10);
-      border-radius: 0 0 px2vw(300) px2vw(300);
+      font-size: px2rem(16);
+      padding: 10px;
+      border-radius: 0 0 300px 300px;
       line-height: 1.5;
       color: white;
     }
@@ -624,14 +627,14 @@ import Header from '../Header.svelte';
       line-height: 1;
       
       .name {
-        margin-top: px2vw(5);
-        font-size: px2vw(20);
+        margin-top: 5px;
+        font-size: px2rem(20);
         font-weight: bold;
       }
       
       .major {
-        margin-top: px2vw(5);
-        font-size: px2vw(12);
+        margin-top: 5px;
+        font-size: px2rem(12);
         color: #777;
       }
     }
@@ -639,21 +642,21 @@ import Header from '../Header.svelte';
 
   .alumni {
     .alum {
-      margin-bottom: px2vw(76);
+      margin-bottom: 76px;
     }
     .alum-title {
       line-height: 1;
-      font-size: px2vw(24);
+      font-size: px2rem(24);
       font-weight: 600;
-      margin-bottom: px2vw(20);
+      margin-bottom: 20px;
     }
 
     .alum-name {
-      width: px2vw(300);
-      font-size: px2vw(18);
+      width: 300px;
+      font-size: px2rem(18);
       border-bottom: 1px solid #eee;
-      margin-right: px2vw(64);
-      margin-bottom: px2vw(10);
+      margin-right: 64px;
+      margin-bottom: 10px;
     }
   }
 </style>

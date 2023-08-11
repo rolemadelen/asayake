@@ -91,34 +91,33 @@
   @function px2vw($size, $bp: 1920) {
     @return calc($size / $bp * 100) * 1vw;
   }
-
+  @function px2rem($size, $root_size: 16) {
+    @return calc($size / $root_size) * 1rem;
+  }
   .banner-wrapper {
-    padding-top: px2vw(80);
+    padding-top: 80px;
   }
   .banner {
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
-    height: px2vw(200);
+    height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     line-height: 1;
 
-    // background-color: #791111;
-    // color: #fff;
-    
     h1 {
       color: #791111;
-      font-size: px2vw(64);
+      font-size: px2rem(64);
       font-weight: bold;
     }
   }
 
   .note {
     display: block;
-    font-size: px2vw(16);
-    margin: px2vw(50) auto px2vw(25);
+    font-size: px2rem(16);
+    margin: 50px auto 25px;
     color: #777;
   }
 
@@ -128,17 +127,17 @@
     align-items: center;
 
     &-wrapper {
-      margin: px2vw(100) auto;
-      margin-left: px2vw(31.5);
+      margin: 100px auto;
+      margin-left: 32px;
     }
 
     &-image {
-      width: px2vw(300);
-      height: px2vw(150);
+      width: 300px;
+      height: 150px;
       position: relative;
       overflow: hidden;
-      margin-right: px2vw(11);
-      margin-bottom: px2vw(30);
+      margin-right: 11px;
+      margin-bottom:30px;
       will-change: transform;
       transition: transform 0.5s ease;
       
@@ -169,7 +168,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50% ,-50%);
-      width: px2vw(1000);
+      width: 1000px;
 
       img {
         width: 100%;
@@ -178,9 +177,9 @@
     }
 
     .close, .left, .right {
-      top: px2vw(-60);
-      width: px2vw(35);
-      height: px2vw(35);
+      top: -60px;
+      width: 35px;
+      height: 35px;
       position: fixed;
       z-index: 1001;
     }
