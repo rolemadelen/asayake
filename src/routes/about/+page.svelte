@@ -208,7 +208,7 @@
     }
     &::after {
       content: "scroll";
-      font-size: 12px;
+      font-size: px2rem(12);
       color: #d9d9d9;
       position: absolute;
       bottom: -32px;
@@ -222,7 +222,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 64px;
+    font-size: px2rem(64);
     color: #fff;
     font-weight: bold;
     opacity: 0.8;
@@ -239,20 +239,20 @@
       line-height: 1;
 
       div > div:nth-child(1) {
-        font-size: 64px;
+        font-size: px2rem(64);
         font-weight: 600;
         margin-right: 10px;
       }
 
       div > div:nth-child(2) {
-        font-size: 20px;
+        font-size: px2rem(20);
         color: #333;
       }
     }
 
     &-content {
       flex: 0.5;
-      font-size: 24px;
+      font-size: px2rem(24);
       line-height: 1.5;
 
       p {
@@ -313,7 +313,7 @@
       box-shadow: 1px 1px 5px 0px black;
       width: 200px;
       height: 50px;
-      font-size: 18px;
+      font-size: px2rem(18);
       background-color: #791111;
       color: #fff;
       font-weight: 500;
@@ -345,14 +345,14 @@
     }
     
     &-title {
-      font-size: 64px;
+      font-size: px2rem(64);
       font-weight: 600;
       line-height: 1;
       margin-bottom: 20px;
     }
 
     &-content {
-      font-size: 24px;
+      font-size: px2rem(24);
       line-height: 1.5;
     }
   }

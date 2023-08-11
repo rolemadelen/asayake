@@ -135,28 +135,28 @@ const handleClick = (e) => {
     @return calc($size / $bp * 100) * 1vw;
   }
 
+  @function px2rem($size, $root_size: 16) {
+    @return calc($size / $root_size) * 1rem;
+  }
+
   .banner-wrapper {
-    padding-top: px2vw(80);
+    padding-top: 80px;
     // overflow: hidden;
   }
   .banner {
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
-    height: px2vw(200);
+    height: 200px;
     display: flex;
-    // flex-direction: column;
     justify-content: center;
     align-items: center;
     line-height: 1;
     overflow-x: hidden;
     position: relative;
-
-    // background-color: #791111;
-    // color: #fff;
     
     h1 {
       color: #791111;
-      font-size: px2vw(64);
+      font-size: 64px;
       font-weight: bold;
     }
   }
@@ -167,14 +167,14 @@ const handleClick = (e) => {
     position: relative;
 
     .left, .right {
-      margin: px2vw(100) px2vw(32);
+      margin: 100px 32px;
     }
 
     .right {
       div {
-        width: px2vw(600);
-        max-height: px2vw(800);
-        margin-right: px2vw(250);
+        width: 600px;
+        max-height: 800px;
+        margin-right: 250px;
       }
       img {
         width: 100%;
@@ -184,15 +184,15 @@ const handleClick = (e) => {
   }
 
   .concert-menu {
-    margin-left: px2vw(78);
+    margin-left: 78px;
 
     &-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
       color: #999;
-      height: px2vw(50);
-      width: px2vw(557);
+      height: 50px;
+      width: 557px;
       border-bottom: 1px solid #eee;
       cursor: pointer;
       transition: color 0.5s ease, border-bottom 0.5s ease;
@@ -202,23 +202,23 @@ const handleClick = (e) => {
       }
 
       .title {
-        font-size: px2vw(20);
+        font-size: px2rem(20);
         font-weight: 600;
       }
       
       .year {
-        font-size: px2vw(16);
+        font-size: px2rem(16);
       }
       
       .link {
-        font-size: px2vw(16);
-        right: px2vw(-30);
+        font-size: px2rem(16);
+        right: -30px;
         top: 48%;
         transform: translateY(-48%);
         
         &:hover {
           top: 40%;
-          right: px2vw(-33);
+          right: -33px;
         }
       }
 

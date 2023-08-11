@@ -84,7 +84,7 @@
 
 <main bind:this="{mainWrapper}" class='main-wrapper h-screen bg-asa-red'>
    <div class='absolute flex w-screen h-screen overflow-x-hidden'>
-    {#each preloadImageUrls as image, index }
+    {#each preloadImageUrls as _, index }
       <div data-id={index+1}>
         <div class='w-screen h-screen relative bg-cover lg:bg-center transition-[background-position] duration-[5s] lg:duration-0'></div>
       </div>
@@ -122,53 +122,57 @@
 @function px2vw($size, $bp: 1920) {
   @return calc($size / $bp * 100) * 1vw;
 }
+@function px2rem($size, $root_size: 16) {
+  @return calc($size / $root_size) * 1rem;
+}
 
 .main {
-  left: px2vw(50);
-  bottom: px2vw(50);
+  left: 50px;
+  bottom: 50px;
+
   &-title {
     .name {
-      font-size: px2vw(60);
+      font-size: px2rem(60)
     }
     .school {
-      font-size: px2vw(16);
-      margin-top: px2vw(4);
+      font-size: px2rem(16);
+      margin-top: 4px;
     }
   }
   .mission {
-    font-size: px2vw(16);
-    width: px2vw(600);
-    margin-top: px2vw(32);
+    font-size: px2rem(16);
+    width: 600px;
+    margin-top: 32px;
   }
 }
 
 .pagination {
-  right: px2vw(50);
-  bottom: px2vw(50);
+  right: 50px;
+  bottom: 50px;
 
   button {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: px2vw(32);
-    height: px2vw(32);
-    margin-right: px2vw(10);
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
     border-radius: 999px;
 
     svg {
-      width: px2vw(20);
-      height: px2vw(20);
+      width: 20px;
+      height: 20px;
     }
   }
 
   .numbering {
     & > span:first-child {
-      width: px2vw(40);
-      font-size: px2vw(32);
+      width: 40px;
+      font-size: px2rem(32);
     }
 
     & > span:last-child {
-      font-size: px2vw(14);
+      font-size: px2rem(14);
       color: #eee;
     }
   }
