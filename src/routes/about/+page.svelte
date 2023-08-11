@@ -4,8 +4,8 @@
   import Cursor from '../Cursor.svelte'
   import { onMount } from "svelte";
 
-  let logoSlide: HTMLDivElement
-  let logo: HTMLElement
+  let imageSlide: HTMLDivElement
+  let imageElem: HTMLElement
   let readMoreDiv: HTMLDivElement
   let toggleReadMore = false
   const numberOfImages = 2
@@ -28,10 +28,10 @@
     }
   }
 
-  onMount(() => {
-    let copy = logoSlide.cloneNode(true)
-    logo.appendChild(copy)
-  })
+  // onMount(() => {
+  //   let copy = imageSlide.cloneNode(true)
+  //   imageElem.appendChild(copy)
+  // })
 </script>
 
 <svelte:head>
@@ -64,14 +64,46 @@
     </div>
   </section>
 
-  <section bind:this="{logo}" class='logos'>
-    <div bind:this="{logoSlide}" class="logo-slide">
-      <img src="/about/temp/1.jpg" alt="asa1"/>
-      <img src="/about/temp/2.jpg" alt="asa2"/>
-      <img src="/about/temp/3.jpg" alt="asa3"/>
-      <img src="/about/temp/4.jpg" alt="asa4"/>
-      <img src="/about/temp/5.jpg" alt="asa5"/>
-      <img src="/about/temp/6.jpg" alt="asa6"/>
+  <section bind:this="{imageElem}" class='images'>
+    <div bind:this="{imageSlide}" class="image-slide max-w-full whitespace-nowrap">
+      <div class="inline-flex justify-center items-center mx-4">
+        <img src="/about/temp/1.jpg" alt="asa1"/>
+      </div>
+      <div class="inline-flex justify-center items-center mx-4">
+        <img src="/about/temp/2.jpg" alt="asa2"/>
+      </div>
+      <div class="inline-flex justify-center items-center mx-4">
+        <img src="/about/temp/3.jpg" alt="asa3"/>
+      </div>
+      <div class="inline-flex justify-center items-center mx-4">
+        <img src="/about/temp/4.jpg" alt="asa4"/>
+      </div>
+      <div class="inline-flex justify-center items-center mx-4">
+        <img src="/about/temp/5.jpg" alt="asa5"/>
+      </div>
+      <div class="inline-flex justify-center items-center mx-4">
+        <img src="/about/temp/6.jpg" alt="asa6"/>
+      </div>
+    </div>
+    <div bind:this="{imageSlide}" class="image-slide max-w-full whitespace-nowrap">
+      <div class="inline-flex justify-center items-center mx-4">
+        <img src="/about/temp/1.jpg" alt="asa1"/>
+      </div>
+      <div class="inline-flex justify-center items-center mx-4">
+        <img src="/about/temp/2.jpg" alt="asa2"/>
+      </div>
+      <div class="inline-flex justify-center items-center mx-4">
+        <img src="/about/temp/3.jpg" alt="asa3"/>
+      </div>
+      <div class="inline-flex justify-center items-center mx-4">
+        <img src="/about/temp/4.jpg" alt="asa4"/>
+      </div>
+      <div class="inline-flex justify-center items-center mx-4">
+        <img src="/about/temp/5.jpg" alt="asa5"/>
+      </div>
+      <div class="inline-flex justify-center items-center mx-4">
+        <img src="/about/temp/6.jpg" alt="asa6"/>
+      </div>
     </div>
   </section>
 
@@ -135,6 +167,9 @@
   @function px2vw($size, $bp: 1920) {
     @return calc($size / $bp * 100) * 1vw;
   }
+  @function px2rem($size, $root_size: 16) {
+    @return calc($size / $root_size) * 1rem;
+  }
 
   video {
     object-fit: cover;
@@ -147,14 +182,14 @@
   
   .mouse-scroll {
     position: absolute;
-    bottom: px2vw(50);
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
     display: inline-block;
-    width: px2vw(15);
-    height: px2vw(23);
+    width: 15px;
+    height: 23px;
     border: 1px solid #d9d9d9;
-    border-radius: px2vw(8);
+    border-radius: 8px;
     box-shadow: 0 1px 3px 0 white;
     animation: slideUp 1.5s ease;
 
@@ -163,20 +198,20 @@
       color: red;
       position: absolute;
       background-color: #d9d9d9;
-      width: px2vw(3);
-      height: px2vw(4);
+      width: 3px;
+      height: 4px;
       border-radius: 999px;
-      top: px2vw(3);
+      top: 3px;
       left: 50%;
       transform: translateX(-50%);
       animation: slideDown 1s infinite ease;
     }
     &::after {
       content: "scroll";
-      font-size: px2vw(12);
+      font-size: 12px;
       color: #d9d9d9;
       position: absolute;
-      bottom: px2vw(-32);
+      bottom: -32px;
       left: 50%;
       transform: translateX(-50%);
     }
@@ -187,14 +222,14 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: px2vw(64);
+    font-size: 64px;
     color: #fff;
     font-weight: bold;
     opacity: 0.8;
   }
 
   .section {
-    margin: px2vw(120) px2vw(64);
+    margin: 120px 64px;
     display: flex;
 
     &-title {
@@ -204,31 +239,34 @@
       line-height: 1;
 
       div > div:nth-child(1) {
-        font-size: px2vw(64);
+        font-size: 64px;
         font-weight: 600;
-        margin-right: px2vw(10);
+        margin-right: 10px;
       }
 
       div > div:nth-child(2) {
-        font-size: px2vw(20);
+        font-size: 20px;
         color: #333;
       }
     }
 
     &-content {
       flex: 0.5;
-      font-size: px2vw(24);
+      font-size: 24px;
       line-height: 1.5;
 
       p {
-        margin-bottom: px2vw(20);
+        margin-bottom: 20px;
       }
     }
   }
 
-  .logos {
+  .images {
+    white-space: nowrap;
+    display: inline-flex;
+
     &:hover {
-      .logo-slide {
+      .image-slide {
         animation-play-state: paused;
       }
     }
@@ -237,7 +275,7 @@
     &::after {
       position: absolute;
       top: 0;
-      width: px2vw(100);
+      width: 100px;
       height: 100%;
       content: "";
       z-index: 10;
@@ -251,24 +289,17 @@
       background: linear-gradient(to right, rgba(255,255,255,0), white)
     }
 
-    height: px2vw(300);
-    overflow-x: hidden;
-    white-space: nowrap;
+    height: 300px;
     position: relative;
 
-    .logo-slide {
-      display: inline-block;
-      // width: px2vw(2432);
-      // width: calc(482px * 6);
-      animation: 15s slide infinite linear;
-      margin: 0;
+    .image-slide {
+      animation: 20s slide infinite linear;
+      width: 2465px;
       
       img {
-        width: px2vw(450);
-        height: px2vw(300);
-        margin: 0 16px 0 16px;
+        width: 375px;
+        height: 250px;
         border-radius: 5px;
-        display: inline;
       }
     }
   }
@@ -276,17 +307,17 @@
   .read-more-button {
     display: flex;
     justify-content: center;
-    margin-bottom: px2vw(120);
+    margin-bottom: 120px;
 
     button {
       box-shadow: 1px 1px 5px 0px black;
-      width: px2vw(200);
-      height: px2vw(50);
-      font-size: px2vw(18);
+      width: 200px;
+      height: 50px;
+      font-size: 18px;
       background-color: #791111;
       color: #fff;
       font-weight: 500;
-      border-radius: px2vw(5);
+      border-radius: 5px;
       transition: all 0.5s ease;
     }
   }
@@ -303,25 +334,25 @@
     }
     
     & > div {
-      column-gap: px2vw(0);
-      row-gap: px2vw(60);
+      column-gap: 0;
+      row-gap: 60px;
     }
 
     img {
-      width: px2vw(783);
-      height: px2vw(476);
-      border-radius: px2vw(5);
+      width: 783px;
+      height: 476px;
+      border-radius: 5px;
     }
     
     &-title {
-      font-size: px2vw(64);
+      font-size: 64px;
       font-weight: 600;
       line-height: 1;
-      margin-bottom: px2vw(20);
+      margin-bottom: 20px;
     }
 
     &-content {
-      font-size: px2vw(24);
+      font-size: 24px;
       line-height: 1.5;
     }
   }
@@ -336,20 +367,20 @@
 
   @keyframes slideDown {
     from {
-      top: px2vw(5);
+      top: 5px;
       opacity: 1;
     }
     to {
-      top: px2vw(13);
+      top: 13px;
       opacity: 0.1;
     }
   }
   @keyframes slideUp {
     from {
-      bottom: px2vw(-50);
+      bottom: -50px;
     }
     to {
-      bottom: px2vw(50);
+      bottom: 50px;
     }
   }
 </style>
