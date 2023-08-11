@@ -39,23 +39,20 @@
 </footer>
 
 <style lang='scss'>
-  $root-size: 16;
-
-  @function px2vw($size, $bp: 1920) {
+  @function px2rem($size, $root-size: 16) {
     @return calc($size / $root-size) * 1rem;
-  }
-  
+}
   .footer {
     width: 100%;
-    height: px2vw(140);
+    height:  140px;
 
     &-top, &-bottom {
-      height: px2vw(70);
+      height: 70px;
       display: flex;
       flex-wrap: wrap;
       align-content: center;
-      padding: 0 px2vw(32);
-      border-top: px2vw(1) solid #eee;
+      padding: 0 32px;
+      border-top: 1px solid #eee;
     }
 
     &-top {
@@ -69,29 +66,29 @@
     }
 
     &-logo {
-      width: px2vw(50);
-      height: px2vw(50);
+      width: 50px;
+      height: 50px;
     }
 
     &-copyright,
     &-email {
       display: flex;
       align-items: center;
-      font-size: px2vw(12);
+      font-size: px2rem(12);
       color: #333;
     }
 
     &-copyright {
-      margin-left: px2vw(10);
+      margin-left: 10px;
     }
 
     &-menu {
       display: flex;
-      font-size: px2vw(12);
+      font-size: px2rem(12);
       align-items: center;
       &-item {
-        width: px2vw(60);
-        margin-right: px2vw(20);
+        width: 60px;
+        margin-right: 20px;
         text-align: center;
 
         &:hover {
@@ -105,12 +102,12 @@
       display: flex;
 
       svg {
-        width: px2vw(25);
-        height: px2vw(25);
+        width: 25px;
+        height: 25px;
       }
 
       &-ig, &-fb, &-yt {
-        margin-left: px2vw(40);
+        margin-left: 40px;
         position: relative;
         background-image: linear-gradient(to right, #000);
         z-index: 1;
@@ -136,7 +133,7 @@
           left: 0;
           z-index: -1;
           opacity: 0;
-          border-radius: px2vw(15);
+          border-radius: 15px;
           transition: opacity 0.3s ease;
           background-image: linear-gradient(45deg,#fccc63,#fbad50,#cd486b,#4c68d7);
         }
