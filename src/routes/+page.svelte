@@ -48,9 +48,11 @@
     document.querySelector(`[data-id="${currImage+1}"]`)?.scrollIntoView({ behavior, block: 'nearest', inline: 'center' })
   })
 
-  const handleClick = (e) => {
+  const handleClick = (e: MouseEvent) => {
     clearInterval(interval)
-    if(e.currentTarget.dataset.name === 'left') {
+    const el = e.currentTarget as HTMLElement;
+
+    if(el.dataset.name === 'left') {
       if(currImage === 0) behavior = 'auto'
       currImage = currImage === 0 ? numberOfImages - 1 : currImage - 1
     } else {
@@ -65,12 +67,12 @@
     }, 5000)
   }
 
-  const handleResize = (e) => {
-    const curr = document.querySelector(`[data-id="${currImage+1}"]`) as HTMLElement;
+  const handleResize = () => {
+    const el = document.querySelector(`[data-id="${currImage+1}"]`) as HTMLElement;
     if(window.innerWidth > 1023) {
-      (curr.children[0] as HTMLElement).style.backgroundPositionX = "0px"
+      (el.children[0] as HTMLElement).style.backgroundPositionX = "0px"
     }
-    curr.scrollIntoView({block: 'nearest', inline: 'center' })
+    el.scrollIntoView({block: 'nearest', inline: 'center' })
   }
 </script>
 
@@ -95,7 +97,7 @@
     <div class='main absolute text-white leading-tight z-0'>
       <div class='main-title'>
         <div class='name font-bold'>Asayake Taiko</div>
-        <div class='school text-gray-300'>University of California, San Diego</div>
+        <div class='school text-gray-200'>University of California, San Diego</div>
       </div>
       <div class='mission'>Our mission statement is to increase Japanese cultural awareness both within and outside of the UCSD community through the art of taiko.</div>
     </div>
@@ -119,13 +121,6 @@
 </main>
 
 <style lang="scss">
-@function px2vw($size, $bp: 1920) {
-  @return calc($size / $bp * 100) * 1vw;
-}
-@function px2rem($size, $root_size: 16) {
-  @return calc($size / $root_size) * 1rem;
-}
-
 .main {
   left: 50px;
   bottom: 50px;
@@ -136,13 +131,13 @@
     }
     .school {
       font-size: px2rem(16);
-      margin-top: 4px;
+      margin-top: px2em(4, 16);
     }
   }
   .mission {
     font-size: px2rem(16);
-    width: 600px;
-    margin-top: 32px;
+    width: min(90%, 600px);
+    margin-top: px2em(32, 16);
   }
 }
 
@@ -167,7 +162,7 @@
 
   .numbering {
     & > span:first-child {
-      width: 40px;
+      width: px2em(40, 32);
       font-size: px2rem(32);
     }
 
@@ -177,4 +172,5 @@
     }
   }
 }
+
 </style>
