@@ -39,9 +39,6 @@
 </footer>
 
 <style lang='scss'>
-  @function px2rem($size, $root-size: 16) {
-    @return calc($size / $root-size) * 1rem;
-}
   .footer {
     width: 100%;
     height:  140px;

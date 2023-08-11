@@ -84,16 +84,7 @@
 </header>
 
 <style lang="scss">
-$root-size: 16;
-
-@function px2vw($size, $bp: 1920) {
-  @return calc($size / $bp * 100) * 1vw;
-}
-
-@function px2rem($size, $root-size: 16) {
-    @return calc($size / $root-size) * 1rem;
-}
-
+  
 header {
   position: fixed;
   width: 100%;
@@ -113,7 +104,7 @@ header {
     position: relative;
     font-size: px2rem(14);
     font-weight: bold;
-    width: 80px;
+    width: px2em(80, 14);
     height: 40px;
     flex-direction: column;
     align-items: center;

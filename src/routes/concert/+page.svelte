@@ -131,14 +131,6 @@ const handleClick = (e) => {
 <Footer />
 
 <style lang="scss">
-  @function px2vw($size, $bp: 1920) {
-    @return calc($size / $bp * 100) * 1vw;
-  }
-
-  @function px2rem($size, $root_size: 16) {
-    @return calc($size / $root_size) * 1rem;
-  }
-
   .banner-wrapper {
     padding-top: 80px;
     // overflow: hidden;
