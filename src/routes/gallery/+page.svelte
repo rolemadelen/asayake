@@ -3,35 +3,36 @@
   import Footer from '../Footer.svelte';
   import Cursor from '../Cursor.svelte';
 
-  const numberOfImages = 34
-  const numberOfImages2 = 13
-  const totalImages = numberOfImages + numberOfImages2
+  const numberOfImages = 34;
+  const numberOfImages2 = 13;
+  const totalImages = numberOfImages + numberOfImages2;
 
   let preloadedImg: string[] = [];
-  $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/gallery/gallery${key+1}.jpg`)
-  $: preloadImageUrls2 = [...Array(numberOfImages2).keys()].map((key) => `/bg/webp/${key+1}.webp`)
+  $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/gallery/gallery${key+1}.jpg`);
+  $: preloadImageUrls2 = [...Array(numberOfImages2).keys()].map((key) => `/bg/webp/${key+1}.webp`);
   $: preloadedImg = [...preloadImageUrls, ...preloadImageUrls2];
 
-  const handleClick = (e) => {
-    const enlarge: HTMLDivElement | null = document.querySelector('.enlarge-section')
+  const handleClick = (e: MouseEvent) => {
+    const enlarge: HTMLDivElement | null = document.querySelector('.enlarge-section');
     const enlargedImg = enlarge!.children[0].children[0] as HTMLImageElement;
-    let index = +(enlargedImg.alt.split('-')[1])
+    let index = +(enlargedImg.alt.split('-')[1]);
+    const target = e.currentTarget as HTMLElement;
 
-    if(e.currentTarget.dataset.action === 'close') {
-      enlarge?.classList.add('hidden')
-    } else if (e.currentTarget.dataset.action === 'left') {
+    if(target.dataset.action === 'close') {
+      enlarge?.classList.add('hidden');
+    } else if (target.dataset.action === 'left') {
       index = (index - 1) < 0 ? totalImages - 1 : index - 1
       enlargedImg.src = preloadedImg[index];
-      enlargedImg.alt = `img-${index}`
-    } else if (e.currentTarget.dataset.action === 'right') {
-      index = (index + 1) % totalImages
-      enlargedImg.src = preloadedImg[index]
-      enlargedImg.alt = `img-${index}`
+      enlargedImg.alt = `img-${index}`;
+    } else if (target.dataset.action === 'right') {
+      index = (index + 1) % totalImages;
+      enlargedImg.src = preloadedImg[index];
+      enlargedImg.alt = `img-${index}`;
     } else {
       if(enlarge) {
-        enlarge.classList.remove('hidden')
-        enlargedImg.src = e.currentTarget.children[0].src
-        enlargedImg.alt = e.currentTarget.children[0].alt
+        enlarge.classList.remove('hidden');
+        enlargedImg.src = (target.children[0] as HTMLImageElement).src;
+        enlargedImg.alt = (target.children[0] as HTMLImageElement).alt;
       }
     }
   }
@@ -54,7 +55,7 @@
     <h1>Gallery</h1>
   </div>
 </div>
-<div class='gallery-wrapper'>
+<div class='gallery-wrapper mx-auto'>
   <span class='note'>*Click to Enlarge Image</span>
   <div class='gallery'>
     {#each preloadImageUrls as path, i}
@@ -103,7 +104,7 @@
 
     h1 {
       color: #791111;
-      font-size: px2rem(64);
+      font-size: max(min(64px, px2vw(64)), 50px);
       font-weight: bold;
     }
   }
@@ -117,21 +118,21 @@
 
   .gallery {
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
 
     &-wrapper {
-      margin: 100px auto;
-      margin-left: 32px;
+      margin: px2vw(100) 32px;
     }
 
     &-image {
-      width: 300px;
-      height: 150px;
+      width: 10%;
+      height: 100;
       position: relative;
       overflow: hidden;
-      margin-right: 11px;
-      margin-bottom:30px;
+      margin-right: px2vw(10);
+      margin-bottom: px2vw(20);
       will-change: transform;
       transition: transform 0.5s ease;
       
@@ -141,7 +142,6 @@
       }
       
       &:hover {
-        transform: scale(1.3);
         cursor: pointer;
         z-index: 10;
       }
@@ -162,18 +162,16 @@
       top: 50%;
       left: 50%;
       transform: translate(-50% ,-50%);
-      width: 1000px;
 
       img {
         width: 100%;
-        height: 100%;
       }
     }
 
     .close, .left, .right {
-      top: -60px;
-      width: 35px;
-      height: 35px;
+      top: min(-25px, px2vw(-50));
+      width: max(20px, px2vw(35));
+      height: max(20px, px2vw(35));
       position: fixed;
       z-index: 1001;
     }
@@ -189,4 +187,62 @@
       }
     }
   }
+
+@media screen and (max-width: 449px) {
+  .gallery-image {
+    width: 100%;
+
+    &:hover {
+      transform: none;
+      cursor: default;
+    }
+  }
+
+  .enlarge-section {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 450px) {
+  .gallery-image {
+    width: 49%;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .enlarge-section {
+    & > div {
+      width: 80%;
+    }
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .gallery-image {
+    width: 32%;
+
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+@media screen and (min-width: 1000px) {
+  .gallery-image {
+    width: 19%;
+
+
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
+
+  .enlarge-section {
+    & > div {
+      width: 70%;
+    }
+  }
+}
 </style>
