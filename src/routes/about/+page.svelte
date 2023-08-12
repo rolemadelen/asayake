@@ -2,59 +2,47 @@
   import Header from '../Header.svelte';
   import Footer from '../Footer.svelte'
   import Cursor from '../Cursor.svelte'
-  import { onMount } from "svelte";
 
   let imageSlide: HTMLDivElement
   let imageElem: HTMLElement
   let readMoreDiv: HTMLDivElement
   let toggleReadMore = false
-  const numberOfImages = 2
 
-  $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/about/${key+1}.jpg`)
-
-  const handleClick = (e) => {
+  const handleClick = (e: MouseEvent) => {
     toggleReadMore = !toggleReadMore;
     document.querySelector('.read-more')?.classList.toggle('!mb-0');
-    readMoreDiv.classList.toggle('!max-h-[200vh]')
-    e.currentTarget.classList.toggle('!bg-white');
-    e.currentTarget.classList.toggle('!text-[#791111]');
+    readMoreDiv.classList.toggle('!max-h-[200em]');
+
+    const target = e.currentTarget as HTMLElement;
+    target.classList.toggle('!bg-white');
+    target.classList.toggle('!text-[#791111]');
     
     if(toggleReadMore) {
-      e.currentTarget.innerText = "Read Less";
-      // e.currentTarget.children[1].src = "/icons/up-arrow.svg";
+      target.innerText = "Read Less";
     } else {
-      e.currentTarget.innerText = "Read More";
-      // e.currentTarget.children[1].src = "/icons/down-arrow.svg";
+      target.innerText = "Read More";
     }
   }
 
-  // onMount(() => {
-  //   let copy = imageSlide.cloneNode(true)
-  //   imageElem.appendChild(copy)
-  // })
 </script>
 
 <svelte:head>
   <title>Asayake Taiko | About</title>
   <meta name="description" content="Asayake Taiko | About" />
-  <!-- {#each preloadImageUrls as image}
-    <link rel="preload" as="image" href={image} />
-  {/each} -->
 </svelte:head>
 
 <Header page="about" />
-<main class='main-wrapper'>
+<main class='main-wrapper overflow-hidden'>
   <section class="relative w-full overflow-x-hidden h-screen bg-white">
     <video class="pc w-full h-full" src="/about/asayake-video-720.mp4" loop autoplay muted playsinline></video>
-    <div class='title'>About Us</div>
+    <h2 class='title'>About Us</h2>
     <span class='mouse-scroll'></span>
   </section>
   <section class='section'>
-    <div class='flex'>
-      <div class='section-title'>
+    <div class='md:flex'>
+      <div class='section-title mb-4 md:mb-0'>
         <div class="flex items-center">
-          <div>Asayake</div>
-          <div>あさやけ</div>
+          <h2>Asayake</h2>
         </div>
       </div>
       <div class="section-content">
@@ -108,10 +96,10 @@
   </section>
 
   <section class='section'>
-    <div class='flex'>
-      <div class='section-title'>
+    <div class='md:flex'>
+      <div class='section-title mb-4 md:mb-0'>
         <div class="flex items-center">
-          <div>History</div>
+          <h2>History</h2>
         </div>
       </div>
       <div class="section-content">
@@ -123,17 +111,17 @@
   </section>
 
   <section class='section read-more flex flex-col overflow-hidden !mb-0'>
-    <div bind:this="{readMoreDiv}" class='read-more-wrapper grid grid-cols-2 w-full mx-auto'>
+    <div bind:this="{readMoreDiv}" class='read-more-wrapper grid md:grid-cols-2 grid-cols-1 w-full mx-auto'>
       <img src="/about/webp/oguchi.webp" alt="oguchi" class='cell' />
       <div class='cell'>
-        <div class='read-more-title'>Origin</div>
-        <div class='read-more-content'>Taiko, meaning "drum", refers to a large family of Japanese percussive instruments. Traditional taiko had its use as a part of warfare, theater, festivals, and religious ceremonies. However, the art of taiko as we know it today can be traced back to Daihachi Oguchi in 1951. As a jazz drummer, Oguchi took traditional taiko music and arranged them to be performed as a group. This new ensemble style of taiko became known as kumi-daiko, which quickly spread to the rest of Japan and the world. Notable kumi-daiko ensembles that originated in Japan include Oguchi's own Osuwa Daiko, Oedo Sukeroku Daiko, Kodo, and Wadaiko Yamato.</div>
+        <h2 class='read-more-title mb-4 md:mb-0'>Origin</h2>
+        <div class='section-content'>Taiko, meaning "drum", refers to a large family of Japanese percussive instruments. Traditional taiko had its use as a part of warfare, theater, festivals, and religious ceremonies. However, the art of taiko as we know it today can be traced back to Daihachi Oguchi in 1951. As a jazz drummer, Oguchi took traditional taiko music and arranged them to be performed as a group. This new ensemble style of taiko became known as kumi-daiko, which quickly spread to the rest of Japan and the world. Notable kumi-daiko ensembles that originated in Japan include Oguchi's own Osuwa Daiko, Oedo Sukeroku Daiko, Kodo, and Wadaiko Yamato.</div>
       </div>
       <div class='col-span-2 !mt-20 !my-8'>
-        <div class='flex'>
-          <div class='section-title'>
+        <div class='md:flex'>
+          <div class='section-title mb-4 md:mb-0'>
             <div class="flex items-center">
-              <div>Spread</div>
+              <h2>Spread</h2>
             </div>
           </div>
           <div class="section-content">
@@ -142,10 +130,10 @@
         </div>
       </div>
       <div class='col-span-2 !my-8'>
-        <div class='flex'>
-          <div class='section-title'>
+        <div class='md:flex'>
+          <div class='section-title mb-4 md:mb-0'>
             <div class="flex items-center">
-              <div>Today</div>
+              <h2>Today</h2>
             </div>
           </div>
           <div class="section-content">
@@ -201,12 +189,16 @@
     }
     &::after {
       content: "scroll";
-      font-size: px2rem(12);
+      font-size: 12px;
       color: #d9d9d9;
       position: absolute;
-      bottom: -32px;
+      bottom: -16px;
       left: 50%;
       transform: translateX(-50%);
+      width: 35px;
+      height: 10px;
+      line-height: 1;
+      text-align: center;
     }
   }
 
@@ -219,6 +211,8 @@
     color: #fff;
     font-weight: bold;
     opacity: 0.8;
+    width: 100%;
+    text-align: center;
   }
 
   .section {
@@ -231,25 +225,20 @@
       flex: 0.5;
       line-height: 1;
 
-      div > div:nth-child(1) {
-        font-size: px2rem(64);
+      div > h2 {
+        font-size: max(px2rem(40), px2vw(64));
         font-weight: 600;
         margin-right: 10px;
-      }
-
-      div > div:nth-child(2) {
-        font-size: px2rem(20);
-        color: #333;
       }
     }
 
     &-content {
       flex: 0.5;
-      font-size: px2rem(24);
+      font-size: max(16px, px2vw(24));
       line-height: 1.5;
 
       p {
-        margin-bottom: 20px;
+        margin-bottom: px2em(20, 24);
       }
     }
   }
@@ -304,9 +293,9 @@
 
     button {
       box-shadow: 1px 1px 5px 0px black;
-      width: 200px;
-      height: 50px;
       font-size: px2rem(18);
+      width: px2em(200, 18);
+      height: px2em(50, 18);
       background-color: #791111;
       color: #fff;
       font-weight: 500;
@@ -332,21 +321,15 @@
     }
 
     img {
-      width: 783px;
-      height: 476px;
+      width: 80%;
       border-radius: 5px;
     }
     
     &-title {
-      font-size: px2rem(64);
+      font-size: max(px2rem(40), px2vw(64));
       font-weight: 600;
       line-height: 1;
       margin-bottom: 20px;
-    }
-
-    &-content {
-      font-size: px2rem(24);
-      line-height: 1.5;
     }
   }
   @keyframes slide {

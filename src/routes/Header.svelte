@@ -48,6 +48,8 @@
       </a>
     </nav>
     <nav class='hamburger-menu'>
+      <!-- svelte-ignore a11y-no-static-element-interactions -->
+      <!-- svelte-ignore a11y-click-events-have-key-events -->
       <div class='menu-button z-50 relative' class:text-black={page!=='home'} on:click={handleClick}>
         <span class='menu-button__line'></span>
         <span class='menu-button__line'></span>
