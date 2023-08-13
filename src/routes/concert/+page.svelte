@@ -77,13 +77,24 @@
     }
   ]
 
-const handleClick = (e) => {
-  document.querySelector('li.active')?.classList.remove('active');
-  e.currentTarget.classList.toggle('active');
+const handleClick = (e: MouseEvent) => {
+  const target = e.currentTarget as HTMLElement;
+  const activeList = document.querySelector('li.active') as HTMLElement;
+  if(target === activeList) {
+    activeList.children[1].classList.toggle('!max-h-[100vh]');
+    return;
+  }
+  activeList.classList.remove('active');
+  activeList.children[1].classList.remove('!max-h-[100vh]');
+  target.classList.toggle('active');
+  
+  (target.children[1] as HTMLElement).classList.toggle('!max-h-[100vh]');
 
-  const title = e.currentTarget.children[0].innerText;
-  const year = e.currentTarget.children[1].innerText;
-  const posterImg: HTMLImageElement | null = document.querySelector('.concert-poster > img');
+
+  const t = (target.children[0] as HTMLElement).children as HTMLCollectionOf<HTMLElement>;
+  const title = t[0].innerText;
+  const year = t[1].innerText;
+  const posterImg: HTMLImageElement | null = document.querySelector('.right > .concert-poster > img');
   if(posterImg) {
     posterImg.src = `/concerts/webp/poster_${year}.webp`;
     posterImg.alt = title;
@@ -110,14 +121,14 @@ const handleClick = (e) => {
       {#each concerts as concert, i}
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-      <li class='concert-menu-item relative' class:active={i===0} on:click={handleClick}>
-        <span class='title'>{concert.title}</span>
-        <span class='year'>{concert.year}</span>
-        {#if concert.link !== undefined}
-          <span class='link absolute duration-300'>
-            <a href="{concert.link}" target="_blank" rel="noopener noreferrer">↗</a>
-          </span>
-        {/if}
+      <li class='concert-menu-item' class:active={i===0} on:click={handleClick}>
+        <div class='flex w-full h-full justify-between items-center'>
+          <span class='title'>{concert.title}</span>
+          <span class='year'>{concert.year}</span>
+        </div>
+        <div class='concert-poster max-h-0 overflow-hidden duration-500' class:!max-h-[100vh]={i===0}>
+          <img src="/concerts/webp/poster_{concert.year}.webp" alt="{concert.title}" />
+        </div>
       </li>
       {/each}
     </ul>
@@ -148,25 +159,30 @@ const handleClick = (e) => {
     
     h1 {
       color: #791111;
-      font-size: 64px;
+      font-size: max(min(64px, px2vw(64)), 50px);
       font-weight: bold;
     }
   }
 
   .main-section {
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     position: relative;
+    margin: px2vw(100) 0;
 
-    .left, .right {
-      margin: 100px 32px;
+    nav {
+      width: 100%;
+      // margin: px2vw(100) auto;
     }
+    // .left, .right {
+    //   margin: 100px 32px;
+    // }
 
     .right {
       div {
-        width: 600px;
-        max-height: 800px;
-        margin-right: 250px;
+        width: px2vw(600);
+        max-height: px2vw(800);
+        margin-right: px2vw(250);
       }
       img {
         width: 100%;
@@ -176,26 +192,39 @@ const handleClick = (e) => {
   }
 
   .concert-menu {
-    margin-left: 78px;
+    // margin-left: 78px;
 
     &-item {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      flex-direction: column;
+      // justify-content: space-between;
+      // align-items: center;
       color: #999;
-      height: 50px;
-      width: 557px;
+      // height: 50px;
+      width: 600px;
       border-bottom: 1px solid #eee;
       cursor: pointer;
       transition: color 0.5s ease, border-bottom 0.5s ease;
       
+      & > div:first-of-type {
+        height: 50px;
+      }
+
+      & > div:last-of-type {
+        img {
+          margin: auto;
+          width: 80%;
+          margin-bottom: px2rem(16);
+        }
+      }
+
       &:hover {
         color: black;
       }
 
       .title {
         font-size: px2rem(20);
-        font-weight: 600;
+        font-weight: 500;
       }
       
       .year {
@@ -229,4 +258,67 @@ const handleClick = (e) => {
       transform: translateX(-100%);
     }
   }
+
+  @media screen and (max-width: 699px) {
+    .concert-menu {
+      &-item {
+        width: 90%;
+        margin: auto;
+      }
+    }
+    .right {
+      display: none;
+    }
+  }
+  
+  @media screen and (min-width: 700px) {
+    .concert-menu {
+      &-item {
+        width: 600px;
+        margin: auto;
+      }
+    }
+
+    .right {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 999px) {
+    .left {
+      margin-left: px2vw(133);
+    }
+    .concert-menu {
+      &-item {
+        width: 70%;
+        margin: 0;
+
+        & > div:first-of-type {
+          height: max(50px, px2vw(50));
+        }
+
+        .concert-poster {
+          display: none;
+        }
+
+        .title {
+          font-size: max(16px, px2vw(20));
+        }
+        
+        .year {
+          font-size: max(12px, px2vw(16));
+        }
+      }
+    }
+
+    .right {
+      display: block;
+
+      .concert-poster {
+        position: sticky;
+        top: px2vw(200);
+      }
+    }
+  }
+
 </style>
