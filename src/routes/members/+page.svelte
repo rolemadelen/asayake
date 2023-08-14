@@ -673,11 +673,6 @@ import Header from '../Header.svelte';
     }
   }
 
-
-@media screen and (max-width: 500px) {
-
-}
-
 @media screen and (max-width: 699px) {
   .main {
     flex-direction: column;
