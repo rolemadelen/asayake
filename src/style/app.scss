@@ -6,6 +6,6 @@
     @return calc($size / $root-size) * 1rem;
 }
 
-@function px2em($width, $size) {
+@function px2em($width, $size: 16) {
     @return calc($width / $size) * 1em;
 }
