@@ -267,20 +267,20 @@
       background: linear-gradient(to left, rgba(255,255,255,0), white)
     }
     &::after {
-      right: 0;
+      right: 61%;
       background: linear-gradient(to right, rgba(255,255,255,0), white)
     }
 
-    height: 300px;
+    height: px2vw(300);
     position: relative;
 
     .image-slide {
       animation: 20s slide infinite linear;
-      width: 2465px;
+      width: max(2465px, px2vw(2465));
       
       img {
-        width: 375px;
-        height: 250px;
+        width: max(375px, px2vw(375));
+        height: max(250px, px2vw(250));
         border-radius: 5px;
       }
     }

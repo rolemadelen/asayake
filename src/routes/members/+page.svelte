@@ -397,28 +397,39 @@ import Header from '../Header.svelte';
 
   let displayMembers = currentMembers;
 
-  const handleMouseOver = (e) => {
-    e.currentTarget.children[1].classList.remove('hidden');
-    e.currentTarget.children[3].classList.add('backdrop-brightness-[0.65]', '!top-0', '!rounded-none');
+  const handleMouseOver = (e: MouseEvent) => {
+    const target = (e.currentTarget as HTMLElement).children as HTMLCollectionOf<HTMLElement>;
+    const pparent = target[0].children as HTMLCollectionOf<HTMLElement>;
+    const parent = pparent[0].children as HTMLCollectionOf<HTMLElement>;
+    parent[1].classList.remove('!hidden');
+    parent[2].classList.remove('!opacity-0');
+    parent[2].classList.add('backdrop-brightness-[0.6]', '!top-0', '!rounded-none');
   }
-  const handleMouseLeave = (e) => {
-    e.currentTarget.children[1].classList.add('hidden');
-    e.currentTarget.children[3].classList.remove('backdrop-brightness-[0.65]', '!top-0', '!rounded-none');
+  const handleMouseLeave = (e: MouseEvent) => {
+    const target = (e.currentTarget as HTMLElement).children as HTMLCollectionOf<HTMLElement>;
+    const pparent = target[0].children as HTMLCollectionOf<HTMLElement>;
+    const parent = pparent[0].children as HTMLCollectionOf<HTMLElement>;
+    parent[1].classList.add('!hidden');
+    parent[2].classList.add('!opacity-0');
+    parent[2].classList.remove('backdrop-brightness-[0.6]', '!top-0', '!rounded-none');
   }
 
-  const handleClick = (e) => {
-    const selectedGen = e.currentTarget.dataset.gen;
+  const handleClick = (e: MouseEvent) => {  
+    const target = e.currentTarget as HTMLElement;
+
+    const selectedGen = target.dataset.gen;
     document.querySelector('li.active')?.classList.remove('active');
-    e.currentTarget.classList.toggle('active');
+    target.classList.toggle('active');
 
     if(selectedGen === 'alumni') {
-      document.querySelector('.gen-members')?.classList.add('hidden');
-      document.querySelector('.alumni')?.classList.remove('hidden');
+      console.log('here');
+      document.querySelector('.gen-members')?.classList.add('!hidden');
+      document.querySelector('.alumni')?.classList.remove('!hidden');
       return;
     }
 
-    document.querySelector('.gen-members')?.classList.remove('hidden');
-    document.querySelector('.alumni')?.classList.add('hidden');
+    document.querySelector('.gen-members')?.classList.remove('!hidden');
+    document.querySelector('.alumni')?.classList.add('!hidden');
 
     if(selectedGen === 'all') {
       displayMembers = currentMembers;
@@ -438,7 +449,7 @@ import Header from '../Header.svelte';
 <Header page="members" />
 <section class='banner-wrapper'>
   <div class='banner'>
-    <h1>Meet Our Team</h1>
+    <h1>Members</h1>
     <h2>Academic Year 21-22</h2>
   </div>
 </section>
@@ -455,7 +466,8 @@ import Header from '../Header.svelte';
       <li data-gen="alumni" on:click={handleClick} >Alumni</li>
     </ul>
   </nav>
-  <div class="gen-members grid grid-cols-3">
+  <!-- <div class="gen-members grid grid-cols-3"> -->
+  <div class="gen-members">
     {#each displayMembers as m}
       {#each m.members.sort((a, b) => {
         if(a.name < b.name) return -1;
@@ -463,26 +475,31 @@ import Header from '../Header.svelte';
       }) as member}
       <!-- svelte-ignore a11y-no-static-element-interactions -->
       <div class='gen-member relative' on:mouseover={handleMouseOver} on:mouseleave={handleMouseLeave} on:focus>
-        <img class='member-image' src="/members/{member.gen}/{member.imgs.main}.jpg" alt="{member.name}" />
-        <img class='member-image member-image-alt hidden' src="/members/{member.gen}/{member.imgs.alt}.jpg" alt="{member.name} alt" />
+        <div class='relative overflow-y-auto'>
+          <div class='h-full'>
+            <img class='member-image' src="/members/{member.gen}/{member.imgs.main}.jpg" alt="{member.name}" />
+            <img class='member-image member-image-alt !hidden' src="/members/{member.gen}/{member.imgs.alt}.jpg" alt="{member.name} alt" />
+            <div class='member-quote h-full overflow-y-auto !opacity-0 top-[-100%] duration-500 ease'>
+              <p>{member.quote}</p>
+            </div>
+          </div>
+        </div>
         <div class='member-info'>
           <span class='name'>{member.name}</span>
           <span class='major'>{member.major}</span>
-        </div>
-        <div class='member-quote top-[-100%] duration-500 ease'>
-          <p>{member.quote}</p>
         </div>
       </div>
       {/each}
     {/each}
   </div>
-  <div class='hidden alumni'>
+  <div class='!hidden alumni'>
     {#each alumni as alum} 
       <div class='alum'>
         <div class='alum-title'>
           {alum.gen}
         </div>
-        <div class='grid grid-cols-3'>
+        <!-- <div class='grid grid-cols-3'> -->
+        <div class='alum-names'>
           {#each alum.members.sort() as member} 
           <div class='alum-name'>{member}</div>
           {/each}
@@ -511,19 +528,16 @@ import Header from '../Header.svelte';
     justify-content: center;
     align-items: center;
     line-height: 1;
-
-    // background-color: #791111;
-    // color: #fff;
     
     h1 {
       color: #791111;
-      font-size: px2rem(64);
+      font-size: max(min(64px, px2vw(64)), 48px);
       font-weight: bold;
     }
 
     h2 {
       margin-top: 5px;
-      font-size: px2rem(18);
+      font-size: max(min(18px, px2vw(18)), 12px);
       font-weight: 600;
       color: #791111de;
     }
@@ -531,22 +545,26 @@ import Header from '../Header.svelte';
 
   .main {
     display: flex;
+    justify-content: space-between;
     position: relative;
-    padding: 100px 0;
+    padding: px2em(64) 0;
     height: 100%;
-    margin: auto 64px;
+    // margin: auto 64px;
   }
 
   .gen-menu-wrapper {
+    border-bottom: 1px solid #eee;
+    padding-bottom: px2em(32);
+    margin-bottom: px2em(64);
+
     .gen-menu {
-      position: sticky;
-      top: 200px;
-      width: 350px;
-      margin-right: 250px;
+      // position: sticky;
+      // top: 200px;
+      // width: px2em(300, 24);
 
       li {
-        height: 50px;
-        font-size: px2rem(24);
+        height: px2em(50, 24);
+        font-size: px2rem(20);
         color: #777;
         font-weight: 600;
         position: relative;
@@ -580,17 +598,20 @@ import Header from '../Header.svelte';
   }
 
   .gen-members {
-    width: 100%;
+  //   width: fit-content;
 
     .gen-member {
       overflow: hidden;
       position: relative;
-      height: 370px;
-      margin: 0 10px 10px 0;
+      // width: 400px;
+      // height: px2vw(370);
+      // margin: 0 10px 10px 0;
+      margin-bottom: px2em(32);
     }
 
     .member-image {
-      height: 270px;
+      // height: px2vw(300);
+      // width: 100%;
       border-radius: 5px;
 
       &-alt {
@@ -605,10 +626,9 @@ import Header from '../Header.svelte';
       position: absolute;
       left: 0;
       width: 100%;
-      height: 270px;
       overflow-y: auto;
       font-size: px2rem(16);
-      padding: 10px;
+      padding: px2em(10, 16);
       border-radius: 0 0 300px 300px;
       line-height: 1.5;
       color: white;
@@ -645,11 +665,90 @@ import Header from '../Header.svelte';
     }
 
     .alum-name {
-      width: 300px;
-      font-size: px2rem(18);
+      width: 100%;
+      font-size: px2rem(16);
       border-bottom: 1px solid #eee;
-      margin-right: 64px;
-      margin-bottom: 10px;
+      // margin-right: 64px;
+      margin-bottom: px2em(10);
     }
   }
+
+
+@media screen and (max-width: 500px) {
+
+}
+
+@media screen and (max-width: 699px) {
+  .main {
+    flex-direction: column;
+    margin: auto px2em(48);
+  }
+}
+  
+@media screen and (min-width: 700px) {
+  .main {
+    max-width: 1920px;
+    margin: px2em(100) auto;
+    padding: 0 px2em(22) 0 px2em(32);
+  }
+  .gen-menu-wrapper {
+    width: 50%;
+    border-bottom: none;
+
+    .gen-menu {
+      position: sticky;
+      top: px2em(180);
+      width: px2em(300, 24);
+    }
+  }
+
+  .gen-members {
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr;
+
+    .gen-member {
+      margin-right: px2em(10);
+    }
+
+    .member-quote {
+      font-size: px2rem(14);
+      line-height: 1.25;
+    }
+  }
+  .alumni {
+    width: 80%;
+
+    .alum-names {
+      display: grid;
+      grid-template-columns: 0.3fr 0.3fr;
+
+      .alum-name {
+        width: px2em(200);
+        margin-right: px2em(20);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .gen-menu-wrapper {
+    width: 30%;
+  }
+  .gen-members {
+    grid-template-columns: 0.45fr 0.45fr 0.45fr;
+  }
+
+  .alumni {
+    width: 90%;
+
+    .alum-names {
+      display: grid;
+      grid-template-columns: 0.3fr 0.3fr 0.3fr;
+
+      .alum-name {
+        width: px2em(200);
+      }
+    }
+  }
+}
 </style>
