@@ -147,7 +147,7 @@
 
     h1 {
       color: #791111;
-      font-size: px2rem(64);
+      font-size: max(min(64px, px2vw(64)), 50px);
       font-weight: bold;
     }
   }
