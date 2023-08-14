@@ -216,7 +216,7 @@
   }
 
   .section {
-    margin: 120px 64px;
+    margin: px2em(120) px2em(32);
     display: flex;
 
     &-title {
