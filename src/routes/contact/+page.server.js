@@ -6,9 +6,9 @@ export const actions = {
 		const data = await request.formData();
 
         // for spam protection
-        if(data.get('honey') !== '') {
-            return fail(403, {incorrect: true})
-        }
+        // if(data.get('honey') !== '') {
+        //     return fail(403, {incorrect: true})
+        // }
 
         sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
