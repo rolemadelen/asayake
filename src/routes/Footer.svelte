@@ -189,7 +189,4 @@
     }
   }
 }
-
-@media screen and (min-width: 1000px) {
-}
 </style>
