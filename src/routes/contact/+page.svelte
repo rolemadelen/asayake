@@ -133,7 +133,7 @@
 
 <style lang="scss">
   .banner-wrapper {
-    padding-top: 80px;
+    padding-top: px2em(80);
   }
   .banner {
     border-top: 1px solid #eee;
