@@ -1,5 +1,6 @@
 import { MailService } from '@sendgrid/mail';
 import { redirect, fail } from '@sveltejs/kit';
+import { SENDGRID_API_KEY } from '$lib/env.js';
 
 export const actions = {
 	default: async ({ request, cookies }) => {
@@ -11,7 +12,7 @@ export const actions = {
         }
 
         const sgMail = new MailService();
-        sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+        sgMail.setApiKey(SENDGRID_API_KEY)
         const msg = {
           to: 'ryuj0415@gmail.com', // Change to your recipient
           from: 'ryuj0415@gmail.com', // Change to your verified sender
