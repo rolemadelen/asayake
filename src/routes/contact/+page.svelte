@@ -17,15 +17,18 @@
     </div>
   </div>
 </section>
-<section class='main'>
+<section class='main max-w-screen-2xl'>
   <div class='left'>
     <div class='left-section'>
       <h2>General Inquiries</h2>
-      <div class='left-email'>
-        <svg width="20" height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 0V2.04793L10 6.1438L20 2.04793V0H0ZM0 4.09587V12.2876H20V4.09587L10 8.19173L0 4.09587Z" fill="#111111"/>
-        </svg>          
-        <p><a href="mailto:asayaketaiko@gmail.com">asayaketaiko@gmail.com</a></p>
+      <p>If you have any questions about our taiko team or need more information, please feel free to get in touch with us.</p>
+      <div class='links'>
+        <a class='links-email' href='mailto:asayaketaiko@gmail.com'>
+          <svg width="20" height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0V2.04793L10 6.1438L20 2.04793V0H0ZM0 4.09587V12.2876H20V4.09587L10 8.19173L0 4.09587Z" fill="#111111"/>
+          </svg>          
+          <span>asayaketaiko@gmail.com</span>
+        </a>
       </div>
     </div>
     <div class='left-section'>
@@ -150,16 +153,18 @@
   }
   
   .main {
-    margin: 100px 32px;
+    margin: 100px auto;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     h2 {
       font-size: px2rem(24);
       font-weight: 600;
     }
     .left {
-      width: 400px;
+      width: 80%;
 
       &-section {
         font-size: px2rem(16);
@@ -168,23 +173,26 @@
         .links {
           margin-top: 15px;
           display: flex;
+          // flex-wrap: wrap;
           align-items: center;
 
           span {
             font-size: px2rem(14);
-            color: #777;
+            color: #333;
             padding-left: 5px;
             transition: color 0.3s ease;
           }
 
           svg {
-            width: 30px;
-            height: 30px;
+            width: max(25px, px2vw(30));
+            height: max(25px, px2vw(30));
+            max-width: 30px;
+            max-height: 30px;
             will-change: transform;
             transition: transform 0.3s ease;
           }
 
-          &-yt, &-ig, &-fb, &-paypal, &-venmo {
+          &-yt, &-ig, &-fb, &-paypal, &-venmo, &-email {
             margin-right: 50px;
             display: flex;
             align-items: center;
@@ -201,30 +209,20 @@
         }
       }
 
-      &-email {
-        display: flex;
-        align-items: center;
-        color: #111;
-
-        svg {
-          width: 25px;
-          height: 20px;
-          margin-right: 10px;
-        }
-      }
       h2 {
         margin-bottom: 5px;
       }
 
       & > div {
-        margin-bottom: 100px;
+        margin-bottom: px2rem(100);
       }
     }
     .right {
-      width: 830px;
-      margin-right: 223px;
-      padding-left: 64px;
-      border-left: 1px solid #eee;
+      width: 80%;
+      // width: 830px;
+      // margin-right: 223px;
+      padding-top: 100px;
+      border-top: 1px solid #eee;
 
       h2 {
         margin-bottom: 40px;
@@ -236,20 +234,20 @@
     .submit {
       margin-top: 60px;
       background-color: #791111;
-      width: 280px;
-      height: 60px;
+      width: px2em(250, 16);
+      height: px2em(60, 16);
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: px2rem(18);
+      font-size: px2rem(16);
       color: #eee;
-      font-weight: 500;
+      font-weight: 400;
       border-radius: 5px;
       box-shadow: 0 0 5px 0 black;
 
       svg {
-        width: 40px;
-        margin-left: 30px;
+        width: min(25px, px2vw(40));
+        margin-left: max(20px, px2vw(30));
       }
       
       &:hover {
@@ -267,13 +265,19 @@
 
       &::placeholder {
         font-size: px2rem(14);
-        color: #bbb;
+        color: #999;
       }
     }
 
     div {
       display: flex;
       justify-content: space-between;
+      flex: 1;
+
+      & > div:nth-child(2) {
+        margin-left: px2rem(16);
+      }
+
       label {
         color: #333;
         font-size: px2rem(14);
@@ -282,7 +286,8 @@
 
       input {
         height: 50px;
-        width: 360px;
+        // width: 360px;
+        width: 100%;
         margin-bottom: 32px;
       }
     }
@@ -300,8 +305,67 @@
     transform: translateX(0);
   }
   to {
-    transform: translateX(20px);
+    transform: translateX(max(10px, px2vw(20)));
   }
 
+}
+
+@media screen and (max-width: 500px) {
+  form {
+    div {
+      flex-direction: column;
+      margin-left: 0 !important;
+    }
+  }
+}
+@media screen and (max-width: 699px) {
+  .main {
+    .left {
+      .links {
+        flex-wrap: wrap;
+        a {
+          margin-right: 2em;
+          margin-bottom: 1em;
+        }
+        span {
+          // display: none;
+        }
+      }
+    }
+
+    .left, .right {
+      width: 90%;
+    }
+  }
+}
+  
+@media screen and (min-width: 900px) {
+  .main {
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 100px px2vw(32);
+
+    .links {
+      flex-wrap: nowrap;
+    }
+    
+    .left {
+      width: min(400px, 50%);
+    }
+    .right {
+      padding: 0;
+      padding-left: 32px;
+      border: none;
+      border-left: 1px solid #eee;
+      width: min(px2vw(830), 50%);
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .main {
+    margin: 100px auto;
+    padding: 0 px2em(32, 16);
+  }
 }
 </style>
