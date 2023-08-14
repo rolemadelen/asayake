@@ -11,7 +11,7 @@ export const actions = {
             return fail(403, {incorrect: true})
         }
 
-        sendgrid.setApiKey(SENDGRID_API_KEY)
+        sendgrid.setApiKey(process.env.SENDGRID_API_KEY)
         
         const msg = {
           to: 'ryuj0415@gmail.com', // Change to your recipient
