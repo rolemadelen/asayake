@@ -246,7 +246,7 @@
       box-shadow: 0 0 5px 0 black;
 
       svg {
-        width: min(25px, px2vw(40));
+        width: max(25px, px2vw(40));
         margin-left: max(20px, px2vw(30));
       }
       

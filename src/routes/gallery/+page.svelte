@@ -197,6 +197,9 @@
       cursor: default;
     }
   }
+  .note {
+    display: none;
+  }
 
   .enlarge-section {
     display: none;

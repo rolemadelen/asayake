@@ -122,8 +122,8 @@
 
 <style lang="scss">
 .main {
-  left: 50px;
-  bottom: 50px;
+  left: max(20px, px2vw(50));
+  bottom: max(20px, px2vw(50));
 
   &-title {
     .name {
