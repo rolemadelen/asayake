@@ -197,6 +197,7 @@ const handleClick = (e: MouseEvent) => {
     &-item {
       display: flex;
       flex-direction: column;
+      padding: 0;
       // justify-content: space-between;
       // align-items: center;
       color: #999;
@@ -204,7 +205,7 @@ const handleClick = (e: MouseEvent) => {
       width: 600px;
       border-bottom: 1px solid #eee;
       cursor: pointer;
-      transition: color 0.5s ease, border-bottom 0.5s ease;
+      transition: color 0.5s ease, border-bottom 0.5s ease, padding 0.5s ease;
       
       & > div:first-of-type {
         height: 50px;
@@ -264,6 +265,15 @@ const handleClick = (e: MouseEvent) => {
       &-item {
         width: 90%;
         margin: auto;
+
+        &.active {
+          background-color: #791111;
+          color: #eee;
+          border-radius: 5px;
+          padding: 0 px2em(12);
+          transition: all 0.3s ease;
+          border-bottom: none;
+        }
       }
     }
     .right {
@@ -276,6 +286,15 @@ const handleClick = (e: MouseEvent) => {
       &-item {
         width: 600px;
         margin: auto;
+
+        &.active {
+          background-color: #791111;
+          color: #fff;
+          border-radius: 5px;
+          padding: 0 px2em(12);
+          transition: all 0.3s ease;
+          border-bottom: none;
+        }
       }
     }
 
