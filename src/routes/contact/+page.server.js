@@ -1,4 +1,4 @@
-import { MailService } from '@sendgrid/mail';
+import sendgrid from '@sendgrid/mail';
 import { redirect, fail } from '@sveltejs/kit';
 import { SENDGRID_API_KEY } from '$lib/env.js';
 
@@ -11,16 +11,16 @@ export const actions = {
             return fail(403, {incorrect: true})
         }
 
-        const sgMail = new MailService();
-        sgMail.setApiKey(SENDGRID_API_KEY)
+        sendgrid.setApiKey(SENDGRID_API_KEY)
         const msg = {
           to: 'ryuj0415@gmail.com', // Change to your recipient
           from: 'ryuj0415@gmail.com', // Change to your verified sender
-          subject: 'Asayake Taiko Performance Request',
+          subject: `${data.get('organization')} - Asayake Taiko Performance Request`,
           text: 'Asayake Taiko Performance Request',
           html: `Sent from Asayake Contact Page. <br /><br /> <b>Name</b>: ${data.get('name')} <br /> <b>Phone (optional)</b>: ${data.get('phone')} <br /> <b>Email</b>: ${data.get('email')} <br /> <b>Organization/Event</b>: ${data.get('organization')} <br /> <b>Date</b>: ${data.get('date')} <br /> <b>Time</b>: ${data.get('time')} <br /><br /> <b>Detail</b>: <pre>${data.get('detail')}</pre>`,
         }
-        sgMail
+
+        sendgrid
           .send(msg)
           .then(() => {
             console.log('Email sent')
