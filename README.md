@@ -1,9 +1,9 @@
 # Asayake Taiko Website Renewal
 
-![asa logo](./readme/asayake-logo.png)
+This project encompassed a complete overhaul of Asayake Taiko's existing [website](https://asayaketaiko.ucsd.edu/).
+The primary objectives were to enhance the website's visual appeal, optimize functionality, and elevate the overall user experience.
 
-The Asayake Taiko Website Renweal project involved the redesign and redevelopment
-of a website dedicated to the "[Asayake Taiko](https://asayaketaiko.ucsd.edu/)" team.
+![demo](./readme/demo.gif)
 
 ## Tech
 
@@ -16,13 +16,17 @@ of a website dedicated to the "[Asayake Taiko](https://asayaketaiko.ucsd.edu/)" 
 <img height="50" src="https://sendgrid.com/wp-content/themes/sgdotcom/pages/resource/brand/2016/SendGrid-Logomark.png" title="SendGrid" alt="SendGrid">
 </div>
 
-## Features
+## Key Highlights
 
 - Redesigned the website to provide a fresh and modern look.
 - Improved user experience by optimizing navigation and layout.
 - Implemented new functionalities to enhance user engagement.
 
-## Design Choices
+## Design
+
+### Prototype
+
+![prototype](./readme/figma.png)
 
 ### Color Palette
 
