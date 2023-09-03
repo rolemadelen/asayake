@@ -1,12 +1,10 @@
 <script lang="ts">
   import Header from '../Header.svelte';
   import Footer from '../Footer.svelte'
-  import Cursor from '../Cursor.svelte'
 
   type PosterType = {
     year: number,
     title: string,
-    link?: string | undefined
   }
 
   const concerts: PosterType[] = [
@@ -21,7 +19,6 @@
     {
       year: 2021,
       title: 'Virtual Showcase',
-      link: 'https://www.youtube.com/watch?v=OBxfIHyMfyA'
     },
     {
       year: 2020,
@@ -80,6 +77,7 @@
 const handleClick = (e: MouseEvent) => {
   const target = e.currentTarget as HTMLElement;
   const activeList = document.querySelector('li.active') as HTMLElement;
+
   if(target === activeList) {
     activeList.children[1].classList.toggle('!max-h-[100vh]');
     return;
@@ -90,15 +88,11 @@ const handleClick = (e: MouseEvent) => {
   
   (target.children[1] as HTMLElement).classList.toggle('!max-h-[100vh]');
 
-
   const t = (target.children[0] as HTMLElement).children as HTMLCollectionOf<HTMLElement>;
-  const title = t[0].innerText;
-  const year = t[1].innerText;
-  const posterImg: HTMLImageElement | null = document.querySelector('.right > .concert-poster > img');
-  if(posterImg) {
-    posterImg.src = `/concerts/webp/poster_${year}.webp`;
-    posterImg.alt = title;
-  }
+  const [title, year] = [t[0].innerText, t[1].innerText]
+  const posterImg = document.querySelector('.right > .concert-poster > img') as HTMLImageElement
+  posterImg.src = `/concerts/webp/poster_${year}.webp`;
+  posterImg.alt = title;
 }
 </script>
 
@@ -119,8 +113,6 @@ const handleClick = (e: MouseEvent) => {
   <nav class='left'>
     <ul class='concert-menu'>
       {#each concerts as concert, i}
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
       <li class='concert-menu-item' class:active={i===0} on:click={handleClick}>
         <div class='flex w-full h-full justify-between items-center'>
           <span class='title'>{concert.title}</span>
@@ -144,7 +136,6 @@ const handleClick = (e: MouseEvent) => {
 <style lang="scss">
   .banner-wrapper {
     padding-top: px2em(80);
-    // overflow: hidden;
   }
   .banner {
     border-top: 1px solid #eee;
@@ -166,17 +157,12 @@ const handleClick = (e: MouseEvent) => {
 
   .main-section {
     display: flex;
-    // justify-content: space-between;
     position: relative;
     margin: px2vw(100) 0;
 
     nav {
       width: 100%;
-      // margin: px2vw(100) auto;
     }
-    // .left, .right {
-    //   margin: 100px 32px;
-    // }
 
     .right {
       div {
@@ -192,16 +178,12 @@ const handleClick = (e: MouseEvent) => {
   }
 
   .concert-menu {
-    // margin-left: 78px;
 
     &-item {
       display: flex;
       flex-direction: column;
       padding: 0;
-      // justify-content: space-between;
-      // align-items: center;
       color: #999;
-      // height: 50px;
       width: 600px;
       border-bottom: 1px solid #eee;
       cursor: pointer;
@@ -232,18 +214,6 @@ const handleClick = (e: MouseEvent) => {
         font-size: px2rem(16);
       }
       
-      .link {
-        font-size: px2rem(16);
-        right: -30px;
-        top: 48%;
-        transform: translateY(-48%);
-        
-        &:hover {
-          top: 40%;
-          right: -33px;
-        }
-      }
-
       &.active {
         color: #000;
         border-bottom: 1px solid #791111;

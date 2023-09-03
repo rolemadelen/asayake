@@ -1,7 +1,6 @@
 <script lang="ts">
 import Header from '../Header.svelte';
   import Footer from '../Footer.svelte'
-  import Cursor from '../Cursor.svelte'
 
   type AlumniType = {
     gen: string,
@@ -549,7 +548,6 @@ import Header from '../Header.svelte';
     position: relative;
     padding: px2em(64) 0;
     height: 100%;
-    // margin: auto 64px;
   }
 
   .gen-menu-wrapper {
@@ -558,10 +556,6 @@ import Header from '../Header.svelte';
     margin-bottom: px2em(64);
 
     .gen-menu {
-      // position: sticky;
-      // top: 200px;
-      // width: px2em(300, 24);
-
       li {
         height: px2em(50, 24);
         font-size: px2rem(20);
@@ -598,20 +592,14 @@ import Header from '../Header.svelte';
   }
 
   .gen-members {
-  //   width: fit-content;
 
     .gen-member {
       overflow: hidden;
       position: relative;
-      // width: 400px;
-      // height: px2vw(370);
-      // margin: 0 10px 10px 0;
       margin-bottom: px2em(32);
     }
 
     .member-image {
-      // height: px2vw(300);
-      // width: 100%;
       border-radius: 5px;
 
       &-alt {
@@ -668,7 +656,6 @@ import Header from '../Header.svelte';
       width: 100%;
       font-size: px2rem(16);
       border-bottom: 1px solid #eee;
-      // margin-right: 64px;
       margin-bottom: px2em(10);
     }
   }
