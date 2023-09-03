@@ -30,6 +30,7 @@
     "@sveltejs/adapter-auto": "^2.1.0",
     "@sveltejs/kit": "^1.24.0",
     "@sveltejs/package": "^2.2.2",
+    "@types/node": "^20.5.9",
     "autoprefixer": "^10.4.15",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",

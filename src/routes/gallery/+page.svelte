@@ -1,7 +1,6 @@
 <script lang="ts">
   import Header from '../Header.svelte';
   import Footer from '../Footer.svelte';
-  import Cursor from '../Cursor.svelte';
 
   const numberOfImages = 34;
   const numberOfImages2 = 13;
