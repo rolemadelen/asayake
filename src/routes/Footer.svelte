@@ -35,7 +35,6 @@
       <span><a href="mailto:asayaketaiko@gmail.com">asayaketaiko@gmail.com</a></span>
     </div>
   </div>
-  
 </footer>
 
 <style lang='scss'>
@@ -62,7 +61,6 @@
       flex-direction: column;
       align-items: center;
       height: fit-content;
-      // justify-content: space-between;
 
       & > div {
         flex-direction: column;
@@ -92,12 +90,9 @@
 
     &-menu {
       display: none;
-      // display: flex;
       font-size: px2rem(12);
-      // align-items: center;
       &-item {
         width: px2em(100);
-        // margin-right: 20px;
         text-align: center;
 
         &:hover {

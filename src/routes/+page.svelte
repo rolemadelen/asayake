@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Cursor from './Cursor.svelte'
   import Header from './Header.svelte'
   import { onMount } from 'svelte'
 
@@ -51,14 +50,13 @@
   const handleClick = (e: MouseEvent) => {
     clearInterval(interval)
     const el = e.currentTarget as HTMLElement;
+    const isLeft = el.dataset.name === 'left'
 
-    if(el.dataset.name === 'left') {
-      if(currImage === 0) behavior = 'auto'
-      currImage = currImage === 0 ? numberOfImages - 1 : currImage - 1
-    } else {
-      if(currImage === numberOfImages - 1) behavior = 'auto'
-      currImage = (currImage + 1) % numberOfImages
+    if((isLeft && currImage ===0) || (!isLeft && currImage === numberOfImages - 1)) {
+      behavior = 'auto'
     }
+
+    currImage = isLeft ? (currImage === 0 ? numberOfImages - 1 : currImage - 1) : (currImage + 1 ) % numberOfImages;
 
     interval = setInterval(() => {
       prevImage = currImage

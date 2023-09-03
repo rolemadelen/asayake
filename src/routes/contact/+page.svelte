@@ -1,7 +1,6 @@
 <script lang="ts">
   import Header from '../Header.svelte'
   import Footer from '../Footer.svelte'
-  import Cursor from '../Cursor.svelte'
 </script>
 
 <svelte:head>
@@ -35,14 +34,14 @@
       <h2>Donate</h2>
       <p>Asayake Taiko is run on equipment and resources primarily sourced through fundraising and donations. We greatly appreciate any and all contributions, no matter the amount, that goes to the bettering of our team's musical and cultural development.</p>
       <div class='links'>
-        <a class='links-paypal' href="https://www.paypal.com/paypalme2/taikothon2k19">
+        <a class='links-paypal' href="#">
           <!-- License: MIT. Made by michaelampr: https://github.com/michaelampr/jam -->
           <svg fill="#000000" width="25" height="25" viewBox="-4 -2 24 24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin" class="jam jam-paypal">
             <path d='M4.328 16.127l-.011.07a.899.899 0 0 1-.887.744H.9a.892.892 0 0 1-.88-1.04L2.57.745A.892.892 0 0 1 3.45 0h6.92a4.141 4.141 0 0 1 4.142 4.141c0 .273-.017.54-.05.804a3.629 3.629 0 0 1 1.53 2.962 5.722 5.722 0 0 1-5.72 5.722h-.583c-.653 0-1.211.472-1.32 1.117l-.314 1.87.314-1.87a1.339 1.339 0 0 1 1.32-1.117h.582a5.722 5.722 0 0 0 5.722-5.722 3.629 3.629 0 0 0-1.53-2.962 6.52 6.52 0 0 1-6.47 5.716H6.06a.969.969 0 0 0-.93.701l-1.155 6.862c-.08.48.289.916.775.916h2.214a.786.786 0 0 0 .775-.655l.315-1.87-.315 1.87a.786.786 0 0 1-.775.655H4.751a.782.782 0 0 1-.6-.278.782.782 0 0 1-.175-.638l.352-2.097z' /><path d='M15.45 5.995c.365.567.578 1.242.578 1.967a5.722 5.722 0 0 1-5.722 5.722h-.581c-.654 0-1.212.472-1.32 1.117l-.63 3.739a.786.786 0 0 1-.774.655H4.973l1.15-6.833c.118-.41.495-.7.93-.7h1.932a6.52 6.52 0 0 0 6.464-5.667zm-10.477 13.2h-.187a.786.786 0 0 1-.775-.916l.057-.338h.355a.899.899 0 0 0 .886-.743l.012-.07-.348 2.067z'/>
           </svg>
           <span>PayPal</span>
         </a>
-        <a class='links-venmo' href="https://venmo.com/Asayake_Taiko">
+        <a class='links-venmo' href="#">
           <!-- License: MIT. Made by Ionicons: https://github.com/ionic-team/ionicons -->
           <svg width="25" height="25" viewBox="0 0 512 512" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg">
             <path d="M444.17,32H70.28C49.85,32,32,46.7,32,66.89V441.6C32,461.91,49.85,480,70.28,480H444.06C464.6,480,480,461.8,480,441.61V66.89C480.12,46.7,464.6,32,444.17,32ZM278,387H174.32L132.75,138.44l90.75-8.62,22,176.87c20.53-33.45,45.88-86,45.88-121.87,0-19.62-3.36-33-8.61-44L365.4,124.1c9.56,15.78,13.86,32,13.86,52.57C379.25,242.17,323.34,327.26,278,387Z"/>
@@ -173,7 +172,6 @@
         .links {
           margin-top: 15px;
           display: flex;
-          // flex-wrap: wrap;
           align-items: center;
 
           span {
@@ -219,8 +217,6 @@
     }
     .right {
       width: 80%;
-      // width: 830px;
-      // margin-right: 223px;
       padding-top: 100px;
       border-top: 1px solid #eee;
 
@@ -286,7 +282,6 @@
 
       input {
         height: 50px;
-        // width: 360px;
         width: 100%;
         margin-bottom: 32px;
       }
@@ -326,9 +321,6 @@
         a {
           margin-right: 2em;
           margin-bottom: 1em;
-        }
-        span {
-          // display: none;
         }
       }
     }

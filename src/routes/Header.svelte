@@ -1,14 +1,17 @@
-<script>
-  /**
-   * @type {string}
-   */
-   export let page;
-  /**
-   * @type {HTMLDivElement}
-   */
-  let hamburgerNav
+<script lang="ts">
+ export let page: string;
+  let hamburgerNav: HTMLDivElement;
 
-  const handleClick = (e) => {
+  let navLinks = [
+    { href: "/", page: "home", label: "Home" },
+    { href: "/about", page: "about", label: "About" },
+    { href: "/members", page: "members", label: "Members" },
+    { href: "/gallery", page: "gallery", label: "Gallery" },
+    { href: "/concert", page: "concert", label: "Concert" },
+    { href: "/contact", page: "contact", label: "Contact" },
+  ]
+
+  const handleClick = () => {
     document.querySelector('.hamburger-menu')?.classList.toggle('active')
     hamburgerNav.classList.toggle('!rounded-none')
     hamburgerNav.classList.toggle('!top-0')
@@ -48,35 +51,19 @@
       </a>
     </nav>
     <nav class='hamburger-menu'>
-      <!-- svelte-ignore a11y-no-static-element-interactions -->
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
       <div class='menu-button z-50 relative' class:text-black={page!=='home'} on:click={handleClick}>
         <span class='menu-button__line'></span>
         <span class='menu-button__line'></span>
         <span class='menu-button__line'></span>
       </div>
 
-      <!-- <div bind:this="{hamburgerNav}" class:top-[-1200%]={page!=="home"} class:top-[-120%]={page==="home"}  class='left-0 hamburger-menu-nav w-screen h-screen bg-asa-red rounded-bl-[300px] rounded-br-[300px] ease-out duration-1000'> -->
       <div bind:this="{hamburgerNav}" class='absolute top-[-120vh] left-0 w-screen h-screen bg-asa-red rounded-bl-[300px] rounded-br-[300px] ease-out duration-1000 bg-opacity-95 overflow-y-auto'>
         <div class='flex flex-col pt-20'>
-          <a href="/" class='nav-item' class:active={page==='home'}>
-            <p>Home</p>
-          </a>
-          <a href="/about" class='nav-item' class:active={page==='about'}>
-            <p>About</p>
-          </a>
-          <a href="/members" class='nav-item' class:active={page==='members'}>
-            <p>Members</p>
-          </a>
-          <a href="/gallery" class='nav-item' class:active={page==='gallery'}>
-            <p>Gallery</p>
-          </a>
-          <a href="/concert" class='nav-item' class:active={page==='concert'}>
-            <p>Concert</p>
-          </a>
-          <a href="/contact" class='nav-item' class:active={page==='contact'}>
-            <p>Contact</p>
-          </a>
+          {#each navLinks as navLink}
+            <a href={navLink.href} class='nav-item' class:active={page===navLink.page}>
+              <p>{navLink.label}</p>
+            </a>
+          {/each}
         </div>
         <div class='sns flex items-center justify-end mx-auto my-4'>
           <a class='footer-sns-ig' target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/asayake_taiko/">
@@ -180,7 +167,6 @@ header {
 }
 
 .hamburger-menu {
-  // position: relative;
   width: 50px;
   height: 50px;
   border-radius: px2vw(5);
@@ -189,8 +175,6 @@ header {
   .nav-item {
     font-size: px2rem(50);
     font-weight: 500;
-    // width: 100px;
-    // margin: px2em(16) auto;
     line-height: 1;
     padding: max(20px, px2vw(50)) px2em(15);
     border-top: 1px solid #ffffff2e;
