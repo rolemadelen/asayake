@@ -91,7 +91,7 @@ const handleClick = (e: MouseEvent) => {
   const t = (target.children[0] as HTMLElement).children as HTMLCollectionOf<HTMLElement>;
   const [title, year] = [t[0].innerText, t[1].innerText]
   const posterImg = document.querySelector('.right > .concert-poster > img') as HTMLImageElement
-  posterImg.src = `/concerts/webp/poster_${year}.webp`;
+  posterImg.src = `/concerts/poster_${year}.webp`;
   posterImg.alt = title;
 }
 </script>
@@ -119,7 +119,7 @@ const handleClick = (e: MouseEvent) => {
           <span class='year'>{concert.year}</span>
         </div>
         <div class='concert-poster max-h-0 overflow-hidden duration-500' class:!max-h-[100vh]={i===0}>
-          <img src="/concerts/webp/poster_{concert.year}.webp" alt="{concert.title}" />
+          <img src="/concerts/poster_{concert.year}.webp" alt="{concert.title}" />
         </div>
       </li>
       {/each}
@@ -127,7 +127,7 @@ const handleClick = (e: MouseEvent) => {
   </nav>
   <div class='right'>
     <div class='concert-poster'>
-      <img src="/concerts/webp/poster_2023.webp" alt="Hazakura" />
+      <img src="/concerts/poster_2023.webp" alt="Hazakura" />
     </div>
   </div>
 </section>

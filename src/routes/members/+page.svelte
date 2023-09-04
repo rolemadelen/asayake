@@ -476,8 +476,8 @@ import Header from '../Header.svelte';
       <div class='gen-member relative' on:mouseover={handleMouseOver} on:mouseleave={handleMouseLeave} on:focus>
         <div class='relative overflow-y-auto'>
           <div class='h-full'>
-            <img class='member-image' src="/members/{member.gen}/{member.imgs.main}.jpg" alt="{member.name}" />
-            <img class='member-image member-image-alt !hidden' src="/members/{member.gen}/{member.imgs.alt}.jpg" alt="{member.name} alt" />
+            <img class='member-image' src="/members/{member.gen}/{member.imgs.main}.webp" alt="{member.name}" />
+            <img class='member-image member-image-alt !hidden' src="/members/{member.gen}/{member.imgs.alt}.webp" alt="{member.name} alt" />
             <div class='member-quote h-full overflow-y-auto !opacity-0 top-[-100%] duration-500 ease'>
               <p>{member.quote}</p>
             </div>
