@@ -7,8 +7,8 @@
   const totalImages = numberOfImages + numberOfImages2;
 
   let preloadedImg: string[] = [];
-  $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/gallery/gallery${key+1}.jpg`);
-  $: preloadImageUrls2 = [...Array(numberOfImages2).keys()].map((key) => `/bg/webp/${key+1}.webp`);
+  $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/gallery/gallery${key+1}.webp`);
+  $: preloadImageUrls2 = [...Array(numberOfImages2).keys()].map((key) => `/bg/${key+1}.webp`);
   $: preloadedImg = [...preloadImageUrls, ...preloadImageUrls2];
 
   const handleClick = (e: MouseEvent) => {
