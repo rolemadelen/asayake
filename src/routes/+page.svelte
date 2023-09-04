@@ -9,7 +9,7 @@
   const numberOfImages = 14;
   let behavior: ScrollBehavior = 'smooth';
 
-  $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/bg/webp/${key+1}.webp`);
+  $: preloadImageUrls = [...Array(numberOfImages).keys()].map((key) => `/bg/${key+1}.webp`);
   $: {
     if(mainWrapper) {
       const prev = document.querySelector(`[data-id="${prevImage+1}"]`) as HTMLElement;

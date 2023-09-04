@@ -54,42 +54,42 @@
   <section bind:this="{imageElem}" class='images'>
     <div bind:this="{imageSlide}" class="image-slide max-w-full whitespace-nowrap">
       <div class="inline-flex justify-center items-center mx-4">
-        <img src="/about/temp/1.jpg" alt="asa1"/>
+        <img src="/about/1.webp" alt="asa1"/>
       </div>
       <div class="inline-flex justify-center items-center mx-4">
-        <img src="/about/temp/2.jpg" alt="asa2"/>
+        <img src="/about/2.webp" alt="asa2"/>
       </div>
       <div class="inline-flex justify-center items-center mx-4">
-        <img src="/about/temp/3.jpg" alt="asa3"/>
+        <img src="/about/3.webp" alt="asa3"/>
       </div>
       <div class="inline-flex justify-center items-center mx-4">
-        <img src="/about/temp/4.jpg" alt="asa4"/>
+        <img src="/about/4.webp" alt="asa4"/>
       </div>
       <div class="inline-flex justify-center items-center mx-4">
-        <img src="/about/temp/5.jpg" alt="asa5"/>
+        <img src="/about/5.webp" alt="asa5"/>
       </div>
       <div class="inline-flex justify-center items-center mx-4">
-        <img src="/about/temp/6.jpg" alt="asa6"/>
+        <img src="/about/6.webp" alt="asa6"/>
       </div>
     </div>
     <div bind:this="{imageSlide}" class="image-slide max-w-full whitespace-nowrap">
       <div class="inline-flex justify-center items-center mx-4">
-        <img src="/about/temp/1.jpg" alt="asa1"/>
+        <img src="/about/1.webp" alt="asa1"/>
       </div>
       <div class="inline-flex justify-center items-center mx-4">
-        <img src="/about/temp/2.jpg" alt="asa2"/>
+        <img src="/about/2.webp" alt="asa2"/>
       </div>
       <div class="inline-flex justify-center items-center mx-4">
-        <img src="/about/temp/3.jpg" alt="asa3"/>
+        <img src="/about/3.webp" alt="asa3"/>
       </div>
       <div class="inline-flex justify-center items-center mx-4">
-        <img src="/about/temp/4.jpg" alt="asa4"/>
+        <img src="/about/4.webp" alt="asa4"/>
       </div>
       <div class="inline-flex justify-center items-center mx-4">
-        <img src="/about/temp/5.jpg" alt="asa5"/>
+        <img src="/about/5.webp" alt="asa5"/>
       </div>
       <div class="inline-flex justify-center items-center mx-4">
-        <img src="/about/temp/6.jpg" alt="asa6"/>
+        <img src="/about/6.webp" alt="asa6"/>
       </div>
     </div>
   </section>
@@ -111,7 +111,7 @@
 
   <section class='section read-more flex flex-col overflow-hidden !mb-0'>
     <div bind:this="{readMoreDiv}" class='read-more-wrapper grid md:grid-cols-2 grid-cols-1 w-full mx-auto'>
-      <img src="/about/webp/oguchi.webp" alt="oguchi" class='cell' />
+      <img src="/about/oguchi.webp" alt="oguchi" class='cell' />
       <div class='cell'>
         <h2 class='read-more-title mb-4 md:mb-0'>Origin</h2>
         <div class='section-content'>Taiko, meaning "drum", refers to a large family of Japanese percussive instruments. Traditional taiko had its use as a part of warfare, theater, festivals, and religious ceremonies. However, the art of taiko as we know it today can be traced back to Daihachi Oguchi in 1951. As a jazz drummer, Oguchi took traditional taiko music and arranged them to be performed as a group. This new ensemble style of taiko became known as kumi-daiko, which quickly spread to the rest of Japan and the world. Notable kumi-daiko ensembles that originated in Japan include Oguchi's own Osuwa Daiko, Oedo Sukeroku Daiko, Kodo, and Wadaiko Yamato.</div>
