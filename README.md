@@ -51,3 +51,5 @@ The primary objectives were to enhance the website's visual appeal, optimize fun
 ## License
 
 Copyright © 2023, Jii Eu. Released under the [MIT License](./LICENSE).
+
+**Note:** Images used in this project belong to 'Asayake Taiko' and are used with permission or according to their respective licenses.
