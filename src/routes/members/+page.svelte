@@ -25,9 +25,17 @@ import Header from '../Header.svelte';
   }
 
   const alumni: AlumniType[] = [
+      {
+      gen: "Gen 21",
+      members: ['Ronan Konishi']
+    },
+    {
+      gen: "Gen 19",
+      members: ['Ayumi Bindley', 'Nikki Saito', 'Masanori Monguchi', 'Aunice Valdez', 'Julia Dohner']
+    },
     {
       gen: "Gen 18",
-      members: ['Henry Narabe', 'Jeremy Aban', 'David Song', 'Akihiro Fujita']
+      members: ['Reika Shimizu', 'Makoa Bryson', 'Austin Ma', 'Henry Helmuth',  'Henry Narabe', 'Jeremy Aban', 'David Song', 'Akihiro Fujita', 'Kazuha Miyoshi', 'Eric Igarashi']
     },
     {
       gen: "Gen 17",
@@ -59,23 +67,142 @@ import Header from '../Header.svelte';
     },
     {
       gen: "Gen 10",
-      members: ["Jimmy Nguyen"]
+      members: ["Jimmy Nguyen", "Jordan Tani", "Jinjoo Lee", "Nicholas Vu", "Jenny Ng", "Helen Park", "Thais Takei"]
     },
-  ];
+    {
+      gen: "Gen 8",
+      members: ["Vicky Phan"]
+    }
+  ]
 
   const currentMembers: MemberType[] = [
+  {
+  gen: "Gen 22",
+      members: [
+        {
+          name: "Ashley Omiya",
+          gen: "gen22",
+          major: "Not Specified",
+          fav: "N/A",
+          quote: "N/A",
+          imgs: {
+            main: "ashley_omiya_main",
+            alt: "ashley_omiya_alt",
+          }
+        },
+        {
+          name: "Jamie Shou",
+          gen: "gen22",
+          major: "Not Specified",
+          fav: "N/A",
+          quote: "N/A",
+          imgs: {
+            main: "jamie_shou_main",
+            alt: "jamie_shou_alt"
+          }
+        },
+        {
+          name: "Kristina Diep",
+          gen: "gen22",
+          major: "Not Specified",
+          fav: "N/A",
+          quote: "N/A",
+          imgs: {
+            main: "kristina_diep_main",
+            alt: "kristina_diep_alt"
+          }
+        },
+        {
+          name: "Kane Li",
+          gen: "gen22",
+          major: "Computer Science",
+          fav: "Taifuu",
+          quote: "Nice to see you here! My name is Kane Li and I am a freshman at UC San Diego majoring in Computer Science. While I had no prior musical nor taiko experience prior to joining Asayake Taiko, I fell in love with the style and personality of the Taiko community ever since attending my first workshop. It has been a great opportunity to bond, get in touch with my musical side, and even get some exercise! Outside of Taiko, I enjoy playing games such as Brawl Stars and Minecraft, watching shows/films, exercise, and reading manga. Fun fact: I have a missing tooth, it just never grew.",
+          imgs: {
+            main: "kane_li_main",
+            alt: "kane_li_alt"
+          }
+        },
+        {
+          name: "Katelyn Miyasaki",
+          gen: "gen22",
+          major: "Bioengineering",
+          fav: "N/A",
+          quote: "Katelyn is a grad student studying bioengineering. She often saw taiko performances growing up and is excited to be performing herself! She wanted to put her favorite Asa song in this bio, but couldn’t pick just one. Besides taiko, Katelyn likes sports anime, making playlists, and typography.",
+          imgs: {
+            main: "katelyn_miyasaki_main",
+            alt: "katelyn_miyasaki_alt"
+          }
+        },
+        {
+          name: "Kate Villadelgado",
+          gen: "gen22",
+          major: "Japanese Studies",
+          fav: "N/A",
+          quote: "YO! My name is Kateleen (Kate) Villadelgado. I’m a freshman at UCSD and my major is Japanese Studies. I've always loved the energy of taiko but this is my first time actually playing taiko! It's been really fun learning new songs and especially hanging out with the Asa Fam. Even though it's my first year here in Asayake Taiko, I already feel like I belong. Other than taiko, I really enjoy drawing fictional characters, trying (and failing) to 100% complete all Yakuza games, and singing badly. Also, my favorite food is curry (Coco Ichibanya go crazy). All in all, I’m here to live a good life, not a long one. We gamin’ frfr",
+          imgs: {
+            main: "kateleen_villadelgado_main",
+            alt: "kateleen_villadelgado_alt"
+          }
+        },
+        {
+          name: "Kylie Yanagi",
+          gen: "gen22",
+          major: "Not Specified",
+          fav: "N/A",
+          quote: "N/A",
+          imgs: {
+            main: "kylie_yanagi_main",
+            alt: "kylie_yanagi_alt"
+          }
+        },
+        {
+          name: "Matthew Alegrado",
+          gen: "gen22",
+          major: "Electrical Engineering",
+          fav: "N/A",
+          quote: "Hello, I'm Matthew and I'm a 2nd year Electrical Engineering major. I was born in Chula Vista, CA. This is my first year in Asa and my first year playing taiko.I joined Asa because I liked doing percussion in high school and I found out about Asa after a friend of mine joined a similar group. I liked the environment during tryouts with the way everyone helps each other and had fun together.",
+          imgs: {
+            main: "matthew_alegrado_main",
+            alt: "matthew_alegrado_alt"
+          }
+        },
+        {
+          name: "Micah Esmino",
+          gen: "gen22",
+          major: "Cognitive and Behavorial Neuroscience",
+          fav: "N/A",
+          quote: "Hi! I'm Micah Esmino, a first-year at Revelle college at UC San Diego. I'm currently studying cognitive and behavioral neuroscience. I've had previous experience in music--I was in choir for my entire life--but this is the first time I've ever done taiko! Outside of Asa, I enjoy singing, journaling, scrapbooking, and playing video games! Asa has a very welcoming energy with everyone in it; I love being around every member because of their fun and loving energy for what they do and those around them!!",
+          imgs: {
+            main: "micah_esmino_main",
+            alt: "micah_esmino_alt"
+          }
+        },
+        {
+          name: "Timothy Hsiao",
+          gen: "gen22",
+          major: "Bioinformatics",
+          fav: "N/A",
+          quote: "HI! I am Timothy Hsiao, and I am a first year Bioinformatics major at UC San Diego. This is my first year playing taiko, and I am having a great time so far! In addition to taiko, I also play piano, cello, and guitar, and I am learning violin and fue!",
+          imgs: {
+            main: "timothy_hsiao_main",
+            alt: "timothy_hsiao_alt"
+          }
+        }
+      ]
+    },
     {
       gen: "Gen 21",
       members: [
         {
-          name: "Kayla Kaneshiro",
+          name: "Kade Kaneshiro",
           gen: "gen21",
           major: "Structural Engineering",
           fav: "Ishi",
           quote: "It reminds me of retreat!",
           imgs: {
-            main: "kayla_kaneshiro_main",
-            alt: "kayla_kaneshiro_alt"
+            main: "kade_kaneshiro_main",
+            alt: "kade_kaneshiro_alt"
           }
         },
         {
@@ -169,7 +296,7 @@ import Header from '../Header.svelte';
         {
           name: "Erika Munekata",
           gen: "gen21",
-          major: "Undecided",
+          major: "Not Specified",
           fav: "Kodomo/Awakening",
           quote: "I love songs where you interact with fellow members and coordinate something together. Very fun.",
           imgs: {
@@ -186,17 +313,6 @@ import Header from '../Header.svelte';
           imgs: {
             main: "andrew_meckert_main",
             alt: "andrew_meckert_alt"
-          }
-        },
-        {
-          name: "Ronan Konishi",
-          gen: "gen21",
-          major: "Computer Science",
-          fav: "Jack Bazaar",
-          quote: "I like how each component of the song is so unique: the types of hits and the angles that you hit the Taiko from.",
-          imgs: {
-            main: "ronan_konishi_main",
-            alt: "ronan_konishi_alt"
           }
         }
       ]
@@ -320,77 +436,6 @@ import Header from '../Header.svelte';
           }
         }
       ]
-    },
-    {
-      gen: "Gen 18",
-      members: [
-        {
-          name: "Reika Shimizu",
-          major: "Structural Engineering",
-          gen: "gen18",
-          fav: "Kodomo",
-          quote: "Kodomo is my favorite song in Asa because it lets me interact and be silly with everyone I'm playing with! I feel like there are so many places to be creative within the song, and each time I play it is a new, fun memory for me!",
-          imgs: {
-            main: "reika_shimizu_main",
-            alt: "reika_shimizu_alt"
-          }
-        },
-        {
-          name: "Makoa Bryson",
-          major: "Cognitive and Behavioral Neuroscience",
-          gen: "gen18",
-          fav: "Kodomo",
-          quote: "It's my favorite song because its fun to play and interact with everyone in!",
-          imgs: {
-            main: "makoa_bryson_main",
-            alt: "makoa_bryson_alt"
-          }
-        },
-        {
-          name: "Kazuha Miyoshi",
-          major: "Cognitive Science",
-          gen: "gen18",
-          fav: "Kodomo",
-          quote: "Kodomo is my favorite song because I love how interactive it is and it's so much fun to play.",
-          imgs: {
-            main: "kazuha_miyoshi_main",
-            alt: "kazuha_miyoshi_alt"
-          }
-        },
-        {
-          name: "Austin Ma",
-          gen: "gen18",
-          major: "Cognitive Science",
-          fav: "Moving Forward",
-          quote: "Moving forward is my favorite song because it just sounds so tranquil and graceful. Plus there's a spot in the song that lets you yell a really sick kiai and I always get excited when that part comes.",
-          imgs: {
-            main: "austin_ma_main",
-            alt: "austin_ma_alt"
-          }
-        },
-        {
-          name: "Eric Igarashi",
-          gen: "gen18",
-          major: "Applied Mathematics",
-          fav: "Jikan",
-          quote: "Moving forward is my favorite song because it just sounds so tranquil and graceful. Plus there's a spot in the song that lets you yell a really sick kiai and I always get excited when that part comes.",
-          imgs: {
-            main: "eric_igarashi_main",
-            alt: "eric_igarashi_alt"
-          }
-        },
-        {
-          name: "Henry Helmuth",
-          gen: "gen18",
-          major: "Structural Engineering",
-          fav: "Tanoshii",
-          quote: "It's a bop.",
-          imgs: {
-            main: "henry_helmuth_main",
-            alt: "henry_helmuth_alt"
-          }
-        }
-      ]
     }
   ]
 
@@ -421,7 +466,6 @@ import Header from '../Header.svelte';
     target.classList.toggle('active');
 
     if(selectedGen === 'alumni') {
-      console.log('here');
       document.querySelector('.gen-members')?.classList.add('!hidden');
       document.querySelector('.alumni')?.classList.remove('!hidden');
       return;
@@ -432,14 +476,14 @@ import Header from '../Header.svelte';
 
     if(selectedGen === 'all') {
       displayMembers = currentMembers;
+    } else if (selectedGen === '22') {
+      displayMembers = currentMembers.filter(m => m.gen === "Gen 22");
     } else if (selectedGen === '21') {
       displayMembers = currentMembers.filter(m => m.gen === "Gen 21");
     } else if (selectedGen === '20') {
       displayMembers = currentMembers.filter(m => m.gen === "Gen 20");
     } else if (selectedGen === '19') {
       displayMembers = currentMembers.filter(m => m.gen === "Gen 19");
-    } else if (selectedGen === '18') {
-      displayMembers = currentMembers.filter(m => m.gen === "Gen 18");
     }
   }
 
@@ -454,33 +498,30 @@ import Header from '../Header.svelte';
 </section>
 <section class='main'>
   <nav class="gen-menu-wrapper">
-    <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
     <ul class='gen-menu'>
       <li data-gen="all" on:click={handleClick} class='active'>All</li>
+      <li data-gen="22" on:click={handleClick} >Generation 22</li>
       <li data-gen="21" on:click={handleClick} >Generation 21</li>
       <li data-gen="20" on:click={handleClick} >Generation 20</li>
       <li data-gen="19" on:click={handleClick} >Generation 19</li>
-      <li data-gen="18" on:click={handleClick} >Generation 18</li>
       <li data-gen="alumni" on:click={handleClick} >Alumni</li>
     </ul>
   </nav>
-  <!-- <div class="gen-members grid grid-cols-3"> -->
+
   <div class="gen-members">
     {#each displayMembers as m}
       {#each m.members.sort((a, b) => {
         if(a.name < b.name) return -1;
         else return 1;
       }) as member}
-      <!-- svelte-ignore a11y-no-static-element-interactions -->
       <div class='gen-member relative' on:mouseover={handleMouseOver} on:mouseleave={handleMouseLeave} on:focus>
         <div class='relative overflow-y-auto'>
           <div class='h-full'>
             <img class='member-image' src="/members/{member.gen}/{member.imgs.main}.webp" alt="{member.name}" />
             <img class='member-image member-image-alt !hidden' src="/members/{member.gen}/{member.imgs.alt}.webp" alt="{member.name} alt" />
-            <div class='member-quote h-full overflow-y-auto !opacity-0 top-[-100%] duration-500 ease'>
-              <p>{member.quote}</p>
-            </div>
+              <div class='member-quote h-full overflow-y-auto !opacity-0 top-[-100%] duration-500 ease'>
+                <p>{member.quote}</p>
+              </div>
           </div>
         </div>
         <div class='member-info'>
@@ -497,7 +538,6 @@ import Header from '../Header.svelte';
         <div class='alum-title'>
           {alum.gen}
         </div>
-        <!-- <div class='grid grid-cols-3'> -->
         <div class='alum-names'>
           {#each alum.members.sort() as member} 
           <div class='alum-name'>{member}</div>
@@ -635,6 +675,7 @@ import Header from '../Header.svelte';
       
       .major {
         margin-top: 5px;
+        padding-bottom: 2px;
         font-size: px2rem(12);
         color: #777;
       }
@@ -694,7 +735,7 @@ import Header from '../Header.svelte';
 
     .member-quote {
       font-size: px2rem(14);
-      line-height: 1.25;
+      line-height: 1.3;
     }
   }
   .alumni {
