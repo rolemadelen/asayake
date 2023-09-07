@@ -3,7 +3,11 @@
 This project encompassed a complete overhaul of Asayake Taiko's existing [website](https://asayaketaiko.ucsd.edu/).
 The primary objectives were to enhance the website's visual appeal, optimize functionality, and elevate the overall user experience.
 
-![demo](./readme/asayake-comparison.gif)
+## DEMO: Before and After
+
+![demo1](./readme/asayake-compare1.gif)
+![demo2](./readme/asayake-compare2.gif)
+![demo3](./readme/asayake-compare3.gif)
 
 ## Tech
 
