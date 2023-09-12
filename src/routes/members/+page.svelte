@@ -493,7 +493,7 @@ import Header from '../Header.svelte';
 <section class='banner-wrapper'>
   <div class='banner'>
     <h1>Members</h1>
-    <h2>Academic Year 21-22</h2>
+    <h2>Academic Year 22-23</h2>
   </div>
 </section>
 <section class='main'>
