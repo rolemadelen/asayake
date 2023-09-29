@@ -83,7 +83,7 @@
 </svelte:head>
 
 <main bind:this="{mainWrapper}" class='h(100vh) bg(--asa-red)'>
-   <div class='absolute flex w(100vw) h(100vh) overflow-x(hidden)'>
+   <div class='absolute hbox w(100vw) h(100vh) overflow-x(hidden)'>
     {#each preloadImageUrls as _, index }
       <div data-id={index+1}>
         <div class='w(100vw) h(100vh) relative cover transition-duration(5s) transition(background-position) @w(1024~):transition-duration(0s)'></div>
