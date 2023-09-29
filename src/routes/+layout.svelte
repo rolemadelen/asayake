@@ -1,6 +1,8 @@
 <script>
 import "../app.postcss";
 
+import "@adorable.css"
+
 // Your selected Skeleton theme:
 import '@skeletonlabs/skeleton/themes/theme-skeleton.css';
 
