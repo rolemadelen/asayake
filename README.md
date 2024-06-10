@@ -1,6 +1,8 @@
+> UPDATE: Asayake Taiko (https://asayaketaiko.ucsd.edu) has decided to revamp their website using my design and code. :)
+
 # Asayake Taiko Website Renewal
 
-This project encompassed a complete overhaul of Asayake Taiko's existing [website](https://asayaketaiko.ucsd.edu/).
+This side project encompassed a complete overhaul of Asayake Taiko's existing [website](https://asayaketaiko.ucsd.edu/).
 The primary objectives were to enhance the website's visual appeal, optimize functionality, and elevate the overall user experience.
 
 ## DEMO: Before and After
