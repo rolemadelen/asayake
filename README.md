@@ -1,4 +1,4 @@
-> UPDATE: Asayake Taiko (https://asayaketaiko.ucsd.edu) has decided to revamp their website using my design and code. :)
+> UPDATE: Asayake Taiko (https://asayaketaiko.com) has decided to revamp their website using my design and code. :)
 
 # Asayake Taiko Website Renewal
 
