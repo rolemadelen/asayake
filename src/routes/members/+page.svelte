@@ -39,7 +39,7 @@ import Header from '../Header.svelte';
     },
     {
       gen: "Gen 17",
-      members: ['Jii Eu', 'Alison Liu', 'Geoffery Hand', 'Miguel Lazaro', 'Yatavee Vajaphattana', 'Keita Kadokura', 'Nick Alan Wong', 'Jeff Onuma']
+      members: ['Jii Yoo', 'Alison Liu', 'Geoffery Hand', 'Miguel Lazaro', 'Yatavee Vajaphattana', 'Keita Kadokura', 'Nick Alan Wong', 'Jeff Onuma']
     },
     {
       gen: "Gen 16",
